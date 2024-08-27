@@ -17,7 +17,7 @@
 
     <script>
       // Initialize the map and set its view to the center of Europe with an appropriate zoom level
-      var map = L.map('map').setView([51.1657, 10.4515], 6);
+      var map = L.map('map').setView([46.1657, 10.4515], 4);
       
       // Add the OpenStreetMap tile layer
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -29,7 +29,16 @@
         // add GeoJSON layer to the map once the file is loaded
         L.geoJson(data).addTo(map);
       });
-      
+
+    
+      L.geoJson(data,{
+        pointToLayer: function(feature,latlng){
+          var marker = L.marker(latlng);
+          marker.bindPopup(feature.properties.Location + '<br/>' + feature.properties.nameascii);
+          return marker;
+      }
+    }).addTo(map);
+  });
     </script>
   </body>
 </html>
