@@ -16,10 +16,11 @@
       h1 {color: blue;font-family: Luminari;font-size: 300%;}
     </style>
   </head>
-  <header>
-      <h1>My Travelmap</h1>
-  </header>
+ 
   <body>
+    <header>
+      <h1>My Travelmap</h1>
+    </header>
     <!-- The map container -->
     <div id="map"></div>
 
@@ -49,7 +50,7 @@
         var marker = L.marker(latlng);
 
         // Bind the popup with the 'name' attribute
-        marker.bindPopup(feature.properties.name);
+        marker.bindPopup(feature.properties.coordinates);
 
         return marker;
         }
