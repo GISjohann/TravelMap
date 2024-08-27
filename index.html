@@ -37,7 +37,22 @@
         // add GeoJSON layer to the map once the file is loaded
         L.geoJson(data).addTo(map);
       });
+      // Define a custom icon (optional)
+      //var customIcon = L.icon({
+        //iconUrl: 'path-to-your-icon.png', // Replace with your icon's path
+        //iconSize: [25, 41], // Size of the icon
+        //iconAnchor: [12, 41] // Anchor point
+      //});
+      L.geoJSON(geojsonData, {
+      pointToLayer: function(feature, latlng) {
+        // Create the marker using the custom icon (or default icon if not specified)
+        var marker = L.marker(latlng);
 
+        // Bind the popup with the 'name' attribute
+        marker.bindPopup(feature.properties.name);
+
+        return marker;
+      }
     </script>
   </body>
 </html>
