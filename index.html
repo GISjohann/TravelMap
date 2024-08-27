@@ -16,19 +16,25 @@
     <div id="map"></div>
 
     <script>
-       // Initialize the map and set its view to the center of Europe with an appropriate zoom level
-      var map = L.map('map').setView([51.1657, 10.4515], 5);
+      // Initialize the map and set its view to the center of Europe with an appropriate zoom level
+      var map = L.map('map').setView([51.1657, 10.4515], 6);
       
       // Add the OpenStreetMap tile layer
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       }).addTo(map);
 
-       // load GeoJSON from an external file
-  $.getJSON("test.geojson",function(data){
-    // add GeoJSON layer to the map once the file is loaded
-    L.geoJson(data).addTo(map);
-  });
+      // load GeoJSON from an external file
+      $.getJSON("test.geojson",function(data){
+        // add GeoJSON layer to the map once the file is loaded
+        L.geoJson(data).addTo(map);
+      });
+      
+      pointToLayer: function(feature,latlng){
+        var marker = L.marker(latlng,{icon: ratIcon});
+          marker.bindPopup(feature.properties.Location + '<br/>' + feature.properties.nameascii);
+          return marker; 
+      }
     </script>
   </body>
 </html>
