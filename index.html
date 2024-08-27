@@ -5,6 +5,7 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <style>
       #map { width: 900px; height: 500px; }
+      h1 {color: blue;font-family: Luminari;font-size: 300%;}
     </style>
   </head>
   <body>
@@ -14,9 +15,9 @@
     <div id="map"></div>
 
     <script>
-      // Initialize the map and set its view
-      var map = L.map('map').setView([51.505, -0.09], 13); // Set to coordinates of your choice
-
+       // Initialize the map and set its view to the center of Europe with an appropriate zoom level
+      var map = L.map('map').setView([51.1657, 10.4515], 5);
+      
       // Add the OpenStreetMap tile layer
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
