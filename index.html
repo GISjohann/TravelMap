@@ -13,7 +13,7 @@
         align-items: center;
       }
       header {
-        position: relative; /* or absolute if needed */
+        position: absolute; /* or absolute if needed */
         top: 0;
         left: 0;
         width: 100%; /* Ensure it spans the full width */
@@ -64,6 +64,36 @@
         return marker;
         }
         }).addTo(map);
+
+    </script>
+    
+<link rel="stylesheet" href="./Leaflet-1.0.3/leaflet.css"/>
+<link rel="stylesheet" href="./Leaflet.markercluster-1.0.5/MarkerCluster.css"/>
+<script src="./Leaflet-1.0.3/leaflet.js"></script>
+<script src="./Leaflet.markercluster-1.0.5/leaflet.markercluster.js"></script>
+ <script src="./Leaflet.heat-0.2.0/leaflet-heat.js"></script> 
+<script src="jquery-2.1.1.min.js"></script>
+
+...
+
+<script>
+
+...
+
+$.getJSON("rodents.geojson",function(data){
+   var locations = data.features.map(function(rat) {
+    var location = rat.geometry.coordinates.reverse();
+    location.push(0.5);
+    return location;
+  });
+
+  var heat = L.heatLayer(locations, { radius: 35 });
+  map.addLayer(heat); 
+});
+
+...
+
+
     </script>
   </body>
 </html>
