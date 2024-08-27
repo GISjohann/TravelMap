@@ -1,5 +1,5 @@
 <html>
-  <head>
+  <head> <!--this is metadata -->
     <title>My Travelmap</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
@@ -16,15 +16,16 @@
       h1 {color: blue;font-family: Luminari;font-size: 300%;text-align: center;}
     </style>
   </head>
+  <header>
+      <h1>My Travelmap</h1>
+  </header>
   <body>
-    <h1>My Travelmap</h1>
-
     <!-- The map container -->
     <div id="map"></div>
 
     <script>
       // Initialize the map and set its view to the center of Europe with an appropriate zoom level
-      var map = L.map('map').setView([42.1657, 9.4515], 4);
+      var map = L.map('map').setView([47.1657, 9.4515], 5);
       
       // Add the OpenStreetMap tile layer
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
