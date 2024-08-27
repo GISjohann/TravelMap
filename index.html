@@ -44,15 +44,16 @@
         //iconAnchor: [12, 41] // Anchor point
       //});
       L.geoJSON(geojsonData, {
-      pointToLayer: function(feature, latlng) {
-        // Create the marker using the custom icon (or default icon if not specified)
+        pointToLayer: function(feature, latlng) {
+        // Create the marker using the default icon
         var marker = L.marker(latlng);
 
         // Bind the popup with the 'name' attribute
         marker.bindPopup(feature.properties.name);
 
         return marker;
-      }
+        }
+        }).addTo(map);
     </script>
   </body>
 </html>
