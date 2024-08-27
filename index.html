@@ -5,8 +5,15 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <script src="jquery-2.1.1.min.js"></script> 
     <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
       #map { width: 900px; height: 500px; }
-      h1 {color: blue;font-family: Luminari;font-size: 300%;}
+      h1 {color: blue;font-family: Luminari;font-size: 300%;text-align: center;}
     </style>
   </head>
   <body>
@@ -17,7 +24,7 @@
 
     <script>
       // Initialize the map and set its view to the center of Europe with an appropriate zoom level
-      var map = L.map('map').setView([46.1657, 10.4515], 4);
+      var map = L.map('map').setView([42.1657, 9.4515], 4);
       
       // Add the OpenStreetMap tile layer
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -30,15 +37,6 @@
         L.geoJson(data).addTo(map);
       });
 
-    
-      L.geoJson(data,{
-        pointToLayer: function(feature,latlng){
-          var marker = L.marker(latlng);
-          marker.bindPopup(feature.properties.Location + '<br/>' + feature.properties.nameascii);
-          return marker;
-      }
-    }).addTo(map);
-  });
     </script>
   </body>
 </html>
