@@ -31,7 +31,7 @@
  
   <body>
     <header>
-      <h1>My Travelmap 🐝</h1>
+      <h1>Places that I have 🐝n too</h1>
     </header>
     <!-- The map container -->
     <div id="map"></div>
@@ -59,9 +59,9 @@ L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
       iconSize: [50, 50]
     }); 
     
-    	$.getJSON("beeshex.geojson",function(hexagon){
-  	L.geoJson(hexagon).addTo(map);
-	}); 
+	$.getJSON("beeshex.geojson", function(data) {
+	    L.geoJSON(data).addTo(map);
+	});
 	
 	L.geoJSON(data, {
       	pointToLayer: function(feature, latlng) {
