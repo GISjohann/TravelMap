@@ -81,7 +81,7 @@ L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
   });
 
 //adding a line
-$.getJSON("poly_test.geojson", function(data) {
+$.getJSON("hex_test.geojson", function(data) {
   L.geoJSON(data, {
     style: function(feature) {
       return {
