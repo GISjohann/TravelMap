@@ -60,55 +60,34 @@ var maxZoom = 1;
 var geoJsonLayer;
 
 // Load GeoJSON from an external file
+// Load GeoJSON from an external file
 $.getJSON("test.geojson", function(data) {
     // Define a custom icon (optional)
     var markerIcon = L.icon({
-        iconUrl: 'bee.png',
-        iconSize: [50, 50]
-    });
+      iconUrl: 'bee.png',
+      iconSize: [50, 50]
+    }); 
+	
+	L.geoJSON(data, {
+      	pointToLayer: function(feature, latlng) {
+        // Create a marker with the custom icon
+        var marker = L.marker(latlng, { icon: markerIcon });
+        // Bind the popup with a feature property (adjust based on your GeoJSON structure)
+        marker.bindPopup(feature.properties.name); 
 
-    // Create the GeoJSON layer
-    geoJsonLayer = L.geoJSON(data, {
-        pointToLayer: function(feature, latlng) {
-            // Create a marker with the custom icon
-            var marker = L.marker(latlng, { icon: markerIcon });
-            // Bind the popup with a feature property (adjust based on your GeoJSON structure)
-            marker.bindPopup(feature.properties.name);
-
-            // Open popup on hover
-            marker.on('mouseover', function(e) {
-                this.openPopup();
-            });
-
-            // Close popup when the mouse leaves the marker
-            marker.on('mouseout', function(e) {
-                this.closePopup();
-            });
-
-            return marker;
-        }
-    });
-
-    // Function to manage layer visibility based on zoom level
-    function updateLayerVisibility() {
-        var currentZoom = map.getZoom();
-        if (currentZoom >= minZoom && currentZoom <= maxZoom) {
-            if (!map.hasLayer(geoJsonLayer)) {
-                geoJsonLayer.addTo(map);
-            }
-        } else {
-            if (map.hasLayer(geoJsonLayer)) {
-                map.removeLayer(geoJsonLayer);
-            }
-        }
-    }
-
-    // Add initial layer visibility
-    updateLayerVisibility();
-
-    // Add event listener for zoom changes
-    map.on('zoomend', updateLayerVisibility);
-});
+	// Open popup on hover
+        marker.on('mouseover', function(e) {
+        this.openPopup();
+        });
+            
+        // Close popup when the mouse leaves the marker
+        marker.on('mouseout', function(e) {
+        this.closePopup();
+        });
+        return marker;
+      }
+    }).addTo(map);
+  });
 
     </script>
   </body>
