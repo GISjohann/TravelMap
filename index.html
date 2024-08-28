@@ -37,31 +37,32 @@
     <div id="map"></div>
 
     <script>
-      // Initialize the map and set its view to the center of Europe with an appropriate zoom level
-      var map = L.map('map').setView([49.1657, 9.4515], 5);
-      
-      // Add the OpenStreetMap tile layer
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-      }).addTo(map);
-      
-      // load GeoJSON from an external file
-       // add GeoJSON layer to the map once the file is loaded
-	$.getJSON("test.geojson",function(data){
-           // Define a custom icon (optional)
-		var markerIcon = L.icon({
-	        iconUrl: 'simplepoint.png',
-	        iconSize: [30,30]
-      	}); 
-      L.geoJSON(geojsonData,{
-        pointToLayer: function(feature,latlng){
-	       var marker = L.marker(latlng,{icon: markerIcon});
-	    // Bind the popup with the 'name' attribute
-	marker.bindPopup(feature.properties.coordinates)
-      }	;
-	return marker;
-      }  ).addTo(map);
-
+  // Initialize the map and set its view to the center of Europe with an appropriate zoom level
+  var map = L.map('map').setView([49.1657, 9.4515], 5);
+  
+  // Add the OpenStreetMap tile layer
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(map);
+  
+  // Load GeoJSON from an external file and add GeoJSON layer to the map once the file is loaded
+  $.getJSON("test.geojson", function(data) {
+    // Define a custom icon (optional)
+    var markerIcon = L.icon({
+      iconUrl: 'simplepoint.png',
+      iconSize: [30, 30]
+    }); 
+    
+    L.geoJSON(data, {
+      pointToLayer: function(feature, latlng) {
+        // Create a marker with the custom icon
+        var marker = L.marker(latlng, { icon: markerIcon });
+        // Bind the popup with a feature property (adjust based on your GeoJSON structure)
+        marker.bindPopup(feature.properties.coordinates); 
+        return marker;
+      }
+    }).addTo(map);
+  });
 
     </script>
   </body>
