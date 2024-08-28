@@ -90,15 +90,6 @@ $.getJSON("line_test.geojson", function(data) {
       };
     }
   }).addTo(map);
-	$.getJSON("poly_test.geojson", function(data) {
-  L.geoJSON(data, {
-    style: function(feature) {
-      return {
-        color: "orange",
-        weight: 5
-      };
-    }
-  }).addTo(map);
 });
     </script>
   </body>
