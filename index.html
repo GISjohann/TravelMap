@@ -59,8 +59,10 @@ L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
       iconSize: [50, 50]
     }); 
 
-	$.getJSON("beeshex.geojson", function(polydata) {
-    	L.geoJSON(polydata, {
+	$.getJSON("beeshex.geojson", function(polygonData) {
+    console.log(polygonData);  // Log data to the console for debugging
+
+    L.geoJSON(polygonData, {
         style: function(feature) {
             return {
                 color: "blue",
@@ -70,7 +72,7 @@ L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
             };
         }
     }).addTo(map);
-});
+		});
 	
 	L.geoJSON(data, {
       	pointToLayer: function(feature, latlng) {
