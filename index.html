@@ -44,12 +44,25 @@
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       }).addTo(map);
-
-      // load GeoJSON from an external file
+      
+      
       $.getJSON("test.geojson",function(data){
-        // add GeoJSON layer to the map once the file is loaded
-        L.geoJson(data).addTo(map);
+        var beeIcon = L.icon({
+        iconUrl: 'bee.png',
+        iconSize: [50,40]
+      }); 
+      L.geoJson(data  ,{
+        pointToLayer: function(feature,latlng){
+	      return L.marker(latlng,{icon: beeIcon});
+      }
+      }  ).addTo(map);
       });
+      
+      // load GeoJSON from an external file
+      //$.getJSON("test.geojson",function(data){
+        // add GeoJSON layer to the map once the file is loaded
+        //L.geoJson(data).addTo(map);
+      //});
       // Define a custom icon (optional)
       //var customIcon = L.icon({
         //iconUrl: 'path-to-your-icon.png', // Replace with your icon's path
