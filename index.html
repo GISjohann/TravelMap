@@ -25,7 +25,7 @@
         margin: 0; /* Ensures no additional margins are applied */
       }
       #map { width: 900px; height: 500px; }
-      h1 {color: black;font-family: Luminari;font-size: 400%;text-align: center;}
+      h1 {color: black;font-family: Luminari;font-size: 300%;text-align: center;}
     </style>
   </head>
  
@@ -59,8 +59,12 @@ L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
       iconSize: [50, 50]
     }); 
     
-    L.geoJSON(data, {
-      pointToLayer: function(feature, latlng) {
+    	$.getJSON("beeshex.geojson",function(hexagon){
+  	L.geoJson(hexagon).addTo(map);
+	}); 
+	
+	L.geoJSON(data, {
+      	pointToLayer: function(feature, latlng) {
         // Create a marker with the custom icon
         var marker = L.marker(latlng, { icon: markerIcon });
         // Bind the popup with a feature property (adjust based on your GeoJSON structure)
