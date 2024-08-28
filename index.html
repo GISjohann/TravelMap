@@ -59,8 +59,8 @@ L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
       iconSize: [50, 50]
     }); 
     
-	$.getJSON("beeshex.geojson", function(data) {
-	    L.geoJSON(data).addTo(map);
+	$.getJSON("beeshex.geojson", function(datapoly) {
+	    L.geoJSON(datapoly).addTo(map);
 	});
 	
 	L.geoJSON(data, {
