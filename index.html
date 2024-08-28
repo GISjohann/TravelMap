@@ -5,15 +5,12 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <script src="jquery-2.1.1.min.js"></script> 
     <style>
-      .leaflet-marker-icon {
-    background-color: transparent !important;
-	}
-	    html, body {
-        height: 100%;
-        margin: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+	html, body {
+	        height: 100%;
+	        margin: 0;
+	        display: flex;
+	        justify-content: center;
+	        align-items: center;
       }
       header {
         display: flex; /* Enable flexbox */
@@ -51,8 +48,8 @@
       
       $.getJSON("test.geojson",function(data){
         var markerIcon = L.icon({
-        iconUrl: 'darkmark.png',
-        iconSize: [50,50]
+        iconUrl: 'simplepoint.png',
+        iconSize: [30,30]
       }); 
       L.geoJson(data  ,{
         pointToLayer: function(feature,latlng){
