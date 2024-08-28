@@ -20,18 +20,18 @@
         top: 0;
         left: 0;
         width: 100%; /* Ensure it spans the full width */
-        background-color: #f8f8f8; /* Optional: to make the header more visible */
+        background-color: yellow; /* Optional: to make the header more visible */
         padding: 10px; /* Optional: adds space around the content */
         margin: 0; /* Ensures no additional margins are applied */
       }
       #map { width: 900px; height: 500px; }
-      h1 {color: blue;font-family: Luminari;font-size: 300%;text-align: center;}
+      h1 {color: black;font-family: Luminari;font-size: 600%;text-align: center;}
     </style>
   </head>
  
   <body>
     <header>
-      <h1>My Travelmap</h1>
+      <h1>My Travelmap 🐝</h1>
     </header>
     <!-- The map container -->
     <div id="map"></div>
@@ -55,7 +55,7 @@ L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
   $.getJSON("test.geojson", function(data) {
     // Define a custom icon (optional)
     var markerIcon = L.icon({
-      iconUrl: 'simplepoint.png',
+      iconUrl: 'bee.png',
       iconSize: [20, 20]
     }); 
     
