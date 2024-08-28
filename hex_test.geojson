@@ -1,7 +1,7 @@
 {
 "type": "FeatureCollection",
 "name": "hex_test",
-"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::3857" } },
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "features": [
 { "type": "Feature", "properties": { "NUMPOINTS": 1.0 }, "geometry": { "type": "Polygon", "coordinates": [ [ [ -399999.0, 6235386.0 ], [ -333332.0, 6119916.0 ], [ -199999.0, 6119916.0 ], [ -133332.0, 6235386.0 ], [ -199999.0, 6350856.0 ], [ -333332.0, 6350856.0 ], [ -399999.0, 6235386.0 ] ] ] } },
 { "type": "Feature", "properties": { "NUMPOINTS": 1.0 }, "geometry": { "type": "Polygon", "coordinates": [ [ [ -199999.0, 6119916.0 ], [ -133332.0, 6004446.0 ], [ 2.0, 6004446.0 ], [ 66668.0, 6119916.0 ], [ 2.0, 6235386.0 ], [ -133332.0, 6235386.0 ], [ -199999.0, 6119916.0 ] ] ] } },
