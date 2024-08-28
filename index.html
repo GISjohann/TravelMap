@@ -58,7 +58,7 @@
         // Create a marker with the custom icon
         var marker = L.marker(latlng, { icon: markerIcon });
         // Bind the popup with a feature property (adjust based on your GeoJSON structure)
-        marker.bindPopup(feature.properties.coordinates); 
+        marker.bindPopup(feature.properties.name); 
         return marker;
       }
     }).addTo(map);
