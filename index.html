@@ -80,6 +80,17 @@ L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
     }).addTo(map);
   });
 
+//adding a line
+$.getJSON("line_test.geojson", function(data) {
+  L.geoJSON(data, {
+    style: function(feature) {
+      return {
+        color: "red",
+        weight: 3
+      };
+    }
+  }).addTo(map);
+});
     </script>
   </body>
 </html>
