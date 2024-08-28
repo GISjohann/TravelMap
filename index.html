@@ -25,13 +25,13 @@
         margin: 0; /* Ensures no additional margins are applied */
       }
       #map { width: 900px; height: 500px; }
-      h1 {color: black;font-family: Luminari;font-size: 300%;text-align: center;}
+      h1 {color: black;font-family: Luminari;font-size: 600%;text-align: center;}
     </style>
   </head>
  
   <body>
     <header>
-      <h1>Places that I have 🐝n too</h1>
+      <h1>My Travelmap 🐝</h1>
     </header>
     <!-- The map container -->
     <div id="map"></div>
@@ -52,24 +52,15 @@ L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
   //}).addTo(map);
   
   // Load GeoJSON from an external file and add GeoJSON layer to the map once the file is loaded
- / Define the zoom range where the markers should be visible
-var minZoom = 7;
-var maxZoom = 1;
-
-// Variable to hold the GeoJSON layer
-var geoJsonLayer;
-
-// Load GeoJSON from an external file
-// Load GeoJSON from an external file
-$.getJSON("test.geojson", function(data) {
+  $.getJSON("test.geojson", function(data) {
     // Define a custom icon (optional)
     var markerIcon = L.icon({
       iconUrl: 'bee.png',
-      iconSize: [50, 50]
+      iconSize: [20, 20]
     }); 
-	
-	L.geoJSON(data, {
-      	pointToLayer: function(feature, latlng) {
+    
+    L.geoJSON(data, {
+      pointToLayer: function(feature, latlng) {
         // Create a marker with the custom icon
         var marker = L.marker(latlng, { icon: markerIcon });
         // Bind the popup with a feature property (adjust based on your GeoJSON structure)
