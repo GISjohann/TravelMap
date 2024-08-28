@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "line_test",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "fid": 2, "line_name": "TestLine1" }, "geometry": { "type": "LineString", "coordinates": [ [ 8.612848487821553, 53.186330894806197 ], [ 8.975777224987802, 53.008467009726701 ], [ 9.82333104174311, 52.306372726518184 ], [ 9.984632702705888, 53.521895957344825 ], [ 8.5790039428874, 53.544939051768083 ], [ 8.5790039428874, 53.544939051768083 ] ] } }
+]
+}
