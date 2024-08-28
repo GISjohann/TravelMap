@@ -51,7 +51,7 @@
     // Define a custom icon (optional)
     var markerIcon = L.icon({
       iconUrl: 'simplepoint.png',
-      iconSize: [30, 30]
+      iconSize: [20, 20]
     }); 
     
     L.geoJSON(data, {
@@ -60,6 +60,16 @@
         var marker = L.marker(latlng, { icon: markerIcon });
         // Bind the popup with a feature property (adjust based on your GeoJSON structure)
         marker.bindPopup(feature.properties.name); 
+
+	// Open popup on hover
+        marker.on('mouseover', function(e) {
+        this.openPopup();
+        });
+            
+        // Close popup when the mouse leaves the marker
+        marker.on('mouseout', function(e) {
+        this.closePopup();
+        });
         return marker;
       }
     }).addTo(map);
