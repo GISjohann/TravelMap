@@ -58,10 +58,19 @@ L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
       iconUrl: 'bee.png',
       iconSize: [50, 50]
     }); 
-    
-	$.getJSON("beeshex.geojson", function(datapoly) {
-	    L.geoJSON(datapoly).addTo(map);
-	});
+
+	$.getJSON("beeshex.geojson", function(polydata) {
+    	L.geoJSON(polydata, {
+        style: function(feature) {
+            return {
+                color: "blue",
+                weight: 2,
+                fillColor: "yellow",
+                fillOpacity: 0.5
+            };
+        }
+    }).addTo(map);
+});
 	
 	L.geoJSON(data, {
       	pointToLayer: function(feature, latlng) {
