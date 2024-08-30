@@ -28,13 +28,17 @@
             justify-content: center;
             align-items: center;
         }
-
-        #map {
+	#top-div {
+            width: 900px;
+            height: 550px;
+            background-color: white;
+	}   
+	    #map {
             width: 900px;
             height: 550px;
             background-color: #eee; /* Background color for visibility */
-        }
-	#bonus {
+        }	
+	    #bottom-div {
             width: 900px;
             height: 550px;
             background-color: yellow;
@@ -66,7 +70,9 @@
       <h1>places I have🐝n too!</h1>
     </header>
     <!-- The map container -->
-    <div id="map"></div>  
+    <div id="top-div">
+	    <div id="map"></div>
+	</div>
     <script>
   // Initialize the map and set its view to the center of Europe with an appropriate zoom level
   var map = L.map('map').setView([48.1657, 9.4515], 5);
@@ -131,7 +137,7 @@ $.getJSON("hex_test_reproject.geojson", function(data) {
   }).addTo(map);
 });
 </script>
-<div id="bonus">
+<div id="bottom-div">
 	  
 	<h2>Du hast Hummeln im Hintern🐝</h2>
 	  
