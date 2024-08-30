@@ -105,7 +105,7 @@ L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
         // Create a marker with the custom icon
         var marker = L.marker(latlng, { icon: markerIcon });
         // Bind the popup with a feature property (adjust based on your GeoJSON structure)
-        marker.bindPopup(feature.properties.name, {closebutton = false}); 
+        marker.bindPopup(feature.properties.name, {closeButton = false}); 
 
 	// Open popup on hover
         marker.on('mouseover', function(e) {
