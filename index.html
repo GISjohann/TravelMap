@@ -54,7 +54,7 @@
 
     <script>
   // Initialize the map and set its view to the center of Europe with an appropriate zoom level
-  var map = L.map('map').setView([49.1657, 9.4515], 5);
+  var map = L.map('map').setView([47.1657, 9.4515], 5);
 	
   
   //Add the OpenStreetMap tile layer
@@ -102,13 +102,13 @@ $.getJSON("hex_test_reproject.geojson", function(data) {
     style: function(feature) {
 	var fillColor,
           density = feature.properties.NUMPOINTS;
-      if ( density > 8.0 ) fillColor = "#ffd51b";
-      else if ( density > 6.0 ) fillColor = "#ffdd34";
-      else if ( density > 4.0 ) fillColor = "#ffe64e";
-      else if ( density > 2.0 ) fillColor = "#ffee68";
-      else if ( density >= 1.0 ) fillColor = "#fff781";
+      if ( density >= 8.0 ) fillColor = "#ff841f";
+      else if ( density >= 6.0 ) fillColor = "#ffb61f";
+      else if ( density >= 4.0 ) fillColor = "#ffe91f";
+      else if ( density >= 2.0 ) fillColor = "#ffff6a";
+      else if ( density >= 1.0 ) fillColor = "#ffff9b";
       else fillColor = "#000000";  // no data
-      return { color: "yellow", weight: 5, fillColor: fillColor, fillOpacity: 1 };
+      return { color: "yellow", weight: 5, fillColor: fillColor, fillOpacity: 0.9 };
 
     }
   }).addTo(map);
