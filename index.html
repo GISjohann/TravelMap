@@ -5,27 +5,43 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <script src="jquery-2.1.1.min.js"></script> 
     <style>
-	html, body {
-	        height: 100%;
-	        margin: 0;
-	        display: flex;
-	        justify-content: center;
-	        align-items: center;
-      }
-      header {
-        display: flex; /* Enable flexbox */
-        justify-content: center; /* Center horizontally */
-        align-items: center; /* Center vertically */
-        position: absolute; /* or absolute if needed */
-        top: 0;
-        left: 0;
-        width: 100%; /* Ensure it spans the full width */
-        background-color: yellow; /* Optional: to make the header more visible */
-        padding: 10px; /* Optional: adds space around the content */
-        margin: 0; /* Ensures no additional margins are applied */
-      }
-      #map { width: 900px; height: 500px; }
-      h1 {color: black;font-family: Comic Sans;font-size: 400%;text-align: center;}
+	 html, body {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            position: fixed; /* Keep the header fixed at the top */
+            top: 0;
+            left: 0;
+            width: 100%; /* Full width */
+            background-color: yellow; /* Background color */
+            padding: 10px; /* Space inside the header */
+            box-sizing: border-box;
+            z-index: 1000; /* Ensure it stays above other content */
+        }
+
+        body {
+            padding-top: 60px; /* Offset body content by header height */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #map {
+            width: 900px;
+            height: 500px;
+            background-color: #eee; /* Background color for visibility */
+        }
+
+        h1 {
+            color: black;
+            font-family: Comic Sans, sans-serif;
+            font-size: 400%;
+            text-align: center;
+            margin: 0;
+        }
     </style>
   </head>
  
@@ -90,9 +106,9 @@ $.getJSON("hex_test_reproject.geojson", function(data) {
       else if ( density > 6.0 ) fillColor = "#ffdd34";
       else if ( density > 4.0 ) fillColor = "#ffe64e";
       else if ( density > 2.0 ) fillColor = "#ffee68";
-      else if ( density > 1.0 ) fillColor = "#fff781";
+      else if ( density >= 1.0 ) fillColor = "#fff781";
       else fillColor = "#000000";  // no data
-      return { color: "yellow", weight: 5, fillColor: fillColor, fillOpacity: 0.9 };
+      return { color: "yellow", weight: 5, fillColor: fillColor, fillOpacity: 1 };
 
     }
   }).addTo(map);
