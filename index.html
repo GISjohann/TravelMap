@@ -68,7 +68,7 @@
  
   <body>
     <header>
-      <h1>places I have🐝n too!</h1>
+      <h1>places I have🐝-n to!</h1>
     </header>
     <!-- The map container -->
     <div id="top-div">
@@ -80,11 +80,18 @@
 	
   
   //Add the OpenStreetMap tile layer
-L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://carto.com/attributions">CARTO</a>',
-	maxZoom: 8,
-      	minZoom: 5
-}).addTo(map);
+//L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+    //attribution: '&copy; <a href="https://carto.com/attributions">CARTO</a>',
+	//maxZoom: 8,
+      	//minZoom: 5
+//}).addTo(map);
+
+var Stadia_StamenWatercolor = L.tileLayer('https://tiles.stadiamaps.com/tiles/stamen_watercolor/{z}/{x}/{y}.{ext}', {
+	minZoom: 1,
+	maxZoom: 16,
+	attribution: '&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://www.stamen.com/" target="_blank">Stamen Design</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+	ext: 'jpg'
+});
 
 
 //L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -142,7 +149,8 @@ $.getJSON("hex_test_reproject.geojson", function(data) {
 	  
 	<h2>Du hast Hummeln im Hintern🐝</h2>
 	  
-	<p>This expression, out of the many I have learnt while on my OE, left a lasting impression and inspired the theme of this map. </p>
+	<p>This expression, out of the many I have learnt while on my OE, left a lasting impression and inspired the theme of this map. <br> 
+		Translated to English, it means you got bees in your bottom. Still confused? So was I, so it was further explained that your bottom is at such a risk of beeing stung that your always moving. In my case, traveling through 11 countires.  </p>
 </div>  	  
   </body>
 </html>
