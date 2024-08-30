@@ -42,6 +42,14 @@
             text-align: center;
             margin: 0;
         }
+	    
+	h2 {
+            color: black;
+            font-family: Brush Script MT, sans-serif;
+            font-size: 250%;
+            text-align: center;
+            margin: 0;
+        }
 	p {
             color: black;
             font-family: Brush Script MT, sans-serif;
@@ -55,8 +63,6 @@
     </header>
     <!-- The map container -->
     <div id="map"></div>
-	<h1>n\Du hast Hummeln im Hintern🐝</h1>
-	<p>n\n\This expression, out of the many I have learnt while on my OE, left a lasting impression and inspired the theme of this map. </p>
 	  
     <script>
   // Initialize the map and set its view to the center of Europe with an appropriate zoom level
@@ -65,7 +71,9 @@
   
   //Add the OpenStreetMap tile layer
 L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://carto.com/attributions">CARTO</a>'
+    attribution: '&copy; <a href="https://carto.com/attributions">CARTO</a>',
+	maxZoom: 8,
+      	minZoom: 5
 }).addTo(map);
 
 
@@ -114,11 +122,16 @@ $.getJSON("hex_test_reproject.geojson", function(data) {
       else if ( density >= 2.0 ) fillColor = "#ffff6a";
       else if ( density >= 1.0 ) fillColor = "#ffff9b";
       else fillColor = "#000000";  // no data
-      return { color: "yellow", weight: 5, fillColor: fillColor, fillOpacity: 0.9 };
+      return { color: "yellow", weight: 5, fillColor: fillColor, fillOpacity: 0.5 };
 
     }
   }).addTo(map);
 });
     </script>
+	  
+<h2>n\Du hast Hummeln im Hintern🐝</h2>
+	  
+<p>n\n\This expression, out of the many I have learnt while on my OE, left a lasting impression and inspired the theme of this map. </p>
+	  
   </body>
 </html>
