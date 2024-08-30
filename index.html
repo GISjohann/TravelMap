@@ -119,27 +119,7 @@ L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
     }).addTo(map);
   });
 	    
-// Function to update layer visibility based on zoom level
-function updateLayerVisibility() {
-	var currentZoom = map.getZoom();
-        if (currentZoom >= 4 && currentZoom <= 10) {
-        if (!map.hasLayer(marker)) {
-        	map.addLayer(marker);
-                }
-        } else {
-        if (map.hasLayer(marker)) {
-                map.removeLayer(marker);
-                }
-            }
-        }
-
-        // Call the function initially to check visibility
-        map.on('zoomend', updateLayerVisibility);
-
-        // Also call the function once initially to set the correct state
-        updateLayerVisibility();
-
-	    
+    
 //adding hexpolygons
 $.getJSON("hex_test_reproject.geojson", function(data) {
   L.geoJSON(data, {
