@@ -34,7 +34,11 @@
             height: 550px;
             background-color: #eee; /* Background color for visibility */
         }
-
+	description {
+            width: 900px;
+            height: 550px;
+            background-color: yellow;
+	}	
         h1 {
             color: black;
             font-family: Brush Script MT, sans-serif;
@@ -62,8 +66,7 @@
       <h1>places I have🐝n too!</h1>
     </header>
     <!-- The map container -->
-    <div id="map"></div>
-	  
+    <div id="map"></div>  
     <script>
   // Initialize the map and set its view to the center of Europe with an appropriate zoom level
   var map = L.map('map').setView([48.1657, 9.4515], 5);
@@ -127,11 +130,12 @@ $.getJSON("hex_test_reproject.geojson", function(data) {
     }
   }).addTo(map);
 });
-    </script>
+</script>
+<div id="description">
 	  
-<h2>n\Du hast Hummeln im Hintern🐝</h2>
+	<h2>Du hast Hummeln im Hintern🐝</h2>
 	  
-<p>n\n\This expression, out of the many I have learnt while on my OE, left a lasting impression and inspired the theme of this map. </p>
-	  
+	<p>This expression, out of the many I have learnt while on my OE, left a lasting impression and inspired the theme of this map. </p>
+</div>  	  
   </body>
 </html>
