@@ -56,7 +56,7 @@ L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
     // Define a custom icon (optional)
     var markerIcon = L.icon({
       iconUrl: 'bee.png',
-      iconSize: [40, 40]
+      iconSize: [30, 30]
     }); 
     
     L.geoJSON(data, {
@@ -86,13 +86,13 @@ $.getJSON("hex_test_reproject.geojson", function(data) {
     style: function(feature) {
 	var fillColor,
           density = feature.properties.NUMPOINTS;
-      if ( density > 8.0 ) fillColor = "#ff7f00";
-      else if ( density > 6.0 ) fillColor = "#ffbb00";
-      else if ( density > 4.0 ) fillColor = "#ffff1f";
-      else if ( density > 2.0 ) fillColor = "#ffff68";
-      else if ( density > 1.0 ) fillColor = "#ffff77";
+      if ( density > 8.0 ) fillColor = "#ffd51b";
+      else if ( density > 6.0 ) fillColor = "#ffdd34";
+      else if ( density > 4.0 ) fillColor = "#ffe64e";
+      else if ( density > 2.0 ) fillColor = "#ffee68";
+      else if ( density > 1.0 ) fillColor = #fff781";
       else fillColor = "#000000";  // no data
-      return { color: "yellow", weight: 10, fillColor: fillColor, fillOpacity: 0.5 };
+      return { color: "yellow", weight: 5, fillColor: fillColor, fillOpacity: 0.9 };
 
     }
   }).addTo(map);
