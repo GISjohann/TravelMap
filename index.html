@@ -212,7 +212,7 @@ function adjustOpacityBasedOnZoom() {
     var zoomLevel = map.getZoom();
     
     // Calculate new opacity, decrease by 0.1 for each zoom level above a base level
-    var newOpacity = Math.max(0, initialOpacity - (zoomLevel * 0.1)); // Ensure opacity doesn't go below 0
+    var newOpacity = Math.max(0, zoomLevel * 0.1); // Ensure opacity doesn't go below 0
     
     // Update the style of the GeoJSON layer
     HexLayer.setStyle({
