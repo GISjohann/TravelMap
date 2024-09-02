@@ -92,34 +92,83 @@ L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
 //attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
   //}).addTo(map);
   
-  // Load GeoJSON from an external file and add GeoJSON layer to the map once the file is loaded
-  $.getJSON("test.geojson", function(data) {
-    // Define a custom icon (optional)
-    var markerIcon = L.icon({
-      iconUrl: 'beeIcon.png',//attribution: <a href="https://www.flaticon.com/free-icons/bee" title="bee icons">Bee icons created by juicy_fish - Flaticon</a>
-      iconSize: [30, 30]
-    }); 
-    
-    L.geoJSON(data, {
-      pointToLayer: function(feature, latlng) {
-        // Create a marker with the custom icon
-        var marker = L.marker(latlng, { icon: markerIcon });
-        // Bind the popup with a feature property (adjust based on your GeoJSON structure)
-        marker.bindPopup(feature.properties.name); 
+ // Add fullscreen control to the map
+L.control.fullscreen().addTo(map);
 
-	// Open popup on hover
-        marker.on('mouseover', function(e) {
+// Handle events when entering/exiting fullscreen mode (optional)
+map.on('enterFullscreen', function(){
+    console.log('Entered fullscreen');
+});
+
+map.on('exitFullscreen', function(){
+    console.log('Exited fullscreen');
+});	    
+
+//L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+//attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  //}).addTo(map);
+  
+  // Load GeoJSON from an external file and add GeoJSON layer to the map once the file is loaded
+// load GeoJSON from an external file
+ // Define a custom icon (optional)
+// Define a custom icon (optional)
+var markerIcon = L.icon({
+  iconUrl: 'beeIconMod.png', // Attribution: <a href="https://www.flaticon.com/free-icons/bee" title="bee icons">Bee icons created by juicy_fish - Flaticon</a>
+  iconSize: [50, 50]
+});
+
+// Declare a variable to store the GeoJSON data globally
+var geoJsonData;
+var geoJsonLayer;
+
+// Function to add the GeoJSON layer to the map
+function addGeoJsonLayer() {
+  geoJsonLayer = L.geoJSON(geoJsonData, {
+    pointToLayer: function(feature, latlng) {
+      var marker = L.marker(latlng, { icon: markerIcon });   
+      	var popupContent = '<img src="fotos/' + feature.properties.fotoID + '" alt="Foto nicht gefunden" style="width: 200px; height: auto;">' + 
+    '<br>' + feature.properties.name;
+	    marker.bindPopup(popupContent, { closeButton: false });
+
+      // Open popup on hover
+      marker.on('mouseover', function() {
         this.openPopup();
-        });
-            
-        // Close popup when the mouse leaves the marker
-        marker.on('mouseout', function(e) {
+      });
+
+      // Close popup when the mouse leaves the marker
+      marker.on('mouseout', function() {
         this.closePopup();
-        });
-        return marker;
-      }
-    }).addTo(map);
-  });
+      });
+
+      return marker;
+    }
+  }).addTo(map);
+}
+
+// Function to update layer visibility based on zoom level
+function updateLayerVisibility() {
+  var zoom = map.getZoom();
+  
+  if (zoom < 7 && geoJsonLayer) {
+    // Remove the layer if the zoom level is less than 6
+    map.removeLayer(geoJsonLayer);
+    geoJsonLayer = null;
+  } else if (zoom >= 7 && !geoJsonLayer) {
+    // Re-add the layer if the zoom level is 6 or higher and the layer doesn't exist
+    addGeoJsonLayer();
+  }
+}
+
+// Fetch GeoJSON data and store it globally
+$.getJSON("orte.geojson", function(loadedData) {
+  geoJsonData = loadedData; // Store the data globally
+
+  // Initialize visibility based on the initial zoom level
+  updateLayerVisibility();
+});
+
+// Update layer visibility on zoom end
+map.on('zoomend', updateLayerVisibility);
 
 //adding hexpolygons
 $.getJSON("hex_test_reproject.geojson", function(data) {
