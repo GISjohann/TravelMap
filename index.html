@@ -189,10 +189,10 @@ map.on('zoomend', updateLayerVisibility);
 
 
 // Define the initial style for the polygon
-var initialOpacity = 0.7; // Fully opaque	    
+var initialOpacity = 1.0; // Fully opaque	    
 //adding hexpolygons
-var HexLayer = $.getJSON("hex_test_reproject.geojson", function(data) {
-  L.geoJSON(data, {
+var GeoJsonSource = $.getJSON("hex_test_reproject.geojson", function(data) {
+  var HexLayer = L.geoJSON(data, {
     style: function(feature) {
 	var fillColor,
           density = feature.properties.NUMPOINTS;
@@ -216,7 +216,7 @@ function adjustOpacityBasedOnZoom() {
     
     // Update the style of the GeoJSON layer
     HexLayer.setStyle({
-        fillOpacity: newOpacity
+        fillOpacity: newOpacity;
     });
 }
 
