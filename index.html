@@ -64,6 +64,21 @@
             color: black;
             font-family: Brush Script MT, sans-serif;
 	}
+		/* Change the popup background color and text color */
+  .leaflet-popup-content-wrapper {
+      background-color: yellow; 
+      border-radius: 5px; /* Rounded corners */
+      border: 2px solid black; /* Dark grey border */
+        text-align: center;  /* Center the content */
+	color: black; /* Dark text */
+	font-size: 12pt;
+	font-weight: bold; /* Bold text */
+	font-family: Comic Sans MS;
+  }
+
+  /* Change the color of the popup tip (the little triangle) */
+  .leaflet-popup-tip {
+      display: none;
     </style>
   </head>
  
@@ -151,11 +166,11 @@ function addGeoJsonLayer() {
 function updateLayerVisibility() {
   var zoom = map.getZoom();
   
-  if (zoom < 7 && geoJsonLayer) {
+  if (zoom < 6 && geoJsonLayer) {
     // Remove the layer if the zoom level is less than 6
     map.removeLayer(geoJsonLayer);
     geoJsonLayer = null;
-  } else if (zoom >= 7 && !geoJsonLayer) {
+  } else if (zoom >= 6 && !geoJsonLayer) {
     // Re-add the layer if the zoom level is 6 or higher and the layer doesn't exist
     addGeoJsonLayer();
   }
