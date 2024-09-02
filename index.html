@@ -166,18 +166,18 @@ function addGeoJsonLayer() {
 function updateLayerVisibility() {
   var zoom = map.getZoom();
   
-  if (zoom < 6 && geoJsonLayer) {
+  if (zoom < 7 && geoJsonLayer) {
     // Remove the layer if the zoom level is less than 6
     map.removeLayer(geoJsonLayer);
     geoJsonLayer = null;
-  } else if (zoom >= 6 && !geoJsonLayer) {
+  } else if (zoom >= 7 && !geoJsonLayer) {
     // Re-add the layer if the zoom level is 6 or higher and the layer doesn't exist
     addGeoJsonLayer();
   }
 }
 
 // Fetch GeoJSON data and store it globally
-$.getJSON("orte.geojson", function(loadedData) {
+$.getJSON("test.geojson", function(loadedData) {
   geoJsonData = loadedData; // Store the data globally
 
   // Initialize visibility based on the initial zoom level
