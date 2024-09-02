@@ -187,8 +187,11 @@ $.getJSON("test.geojson", function(loadedData) {
 // Update layer visibility on zoom end
 map.on('zoomend', updateLayerVisibility);
 
+
+// Define the initial style for the polygon
+var initialOpacity = 0.7; // Fully opaque	    
 //adding hexpolygons
-$.getJSON("hex_test_reproject.geojson", function(data) {
+var HexLayer = $.getJSON("hex_test_reproject.geojson", function(data) {
   L.geoJSON(data, {
     style: function(feature) {
 	var fillColor,
@@ -199,10 +202,29 @@ $.getJSON("hex_test_reproject.geojson", function(data) {
       else if ( density >= 2.0 ) fillColor = "#ffff6a";
       else if ( density >= 1.0 ) fillColor = "#ffff9b";
       else fillColor = "#000000";  // no data
-      return { color: "yellow", weight: 3, fillColor: fillColor, fillOpacity: 0.7 };
+      return { color: "yellow", weight: 3, fillColor: fillColor, initialOpacity}; //see above for initial Opacity variable.
 
     }
   }).addTo(map);
+
+// Define the function to adjust opacity based on zoom level
+function adjustOpacityBasedOnZoom() {
+    var zoomLevel = map.getZoom();
+    
+    // Calculate new opacity, decrease by 0.1 for each zoom level above a base level
+    var newOpacity = Math.max(0, initialOpacity - (zoomLevel * 0.1)); // Ensure opacity doesn't go below 0
+    
+    // Update the style of the GeoJSON layer
+    HexLayer.setStyle({
+        fillOpacity: newOpacity
+    });
+}
+
+// Attach the function to the zoomend event
+map.on('zoomend', adjustOpacityBasedOnZoom);
+
+// Adjust opacity initially
+adjustOpacityBasedOnZoom();
 });
 </script>
 <div id="bottom-div">
