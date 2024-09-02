@@ -190,7 +190,7 @@ map.on('zoomend', updateLayerVisibility);
 
 
 // Define the initial style for the polygon
-var initialOpacity = 1.0; // Fully opaque	    
+var initialOpacity = 0.8; // Fully opaque	    
 //adding hexpolygons
 var GeoJsonSource = $.getJSON("hex_test_reproject.geojson", function(data) {
   var HexLayer = L.geoJSON(data, {
@@ -213,7 +213,7 @@ function adjustOpacityBasedOnZoom() {
     var zoomLevel = map.getZoom();
     
     // Calculate new opacity, decrease by 0.1 for each zoom level above a base level
-    var newOpacity = initialOpacity - (zoomLevel - startingZoomLevel) * 0.1;
+    var newOpacity = initialOpacity - (zoomLevel - startingZoomLevel) * 0.2;
     var newOpacity = Math.max(0, newOpacity); // Ensure opacity doesn't go below 0
     
     // Update the style of the GeoJSON layer
