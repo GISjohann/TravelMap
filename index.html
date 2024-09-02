@@ -94,7 +94,8 @@
 	</div>
     <script>
   // Initialize the map and set its view to the center of Europe with an appropriate zoom level
-  var map = L.map('map').setView([48.1657, 9.4515], 5);
+  var startingZoomLevel = 5;
+  var map = L.map('map').setView([48.1657, 9.4515], startingZoomLevel);
 	
   
   //Add the OpenStreetMap tile layer
@@ -212,7 +213,8 @@ function adjustOpacityBasedOnZoom() {
     var zoomLevel = map.getZoom();
     
     // Calculate new opacity, decrease by 0.1 for each zoom level above a base level
-    var newOpacity = Math.max(0, zoomLevel * 0.1); // Ensure opacity doesn't go below 0
+    var newOpacity = initialOpacity - (zoomLevel - startingZoomLevel) * 0.1;
+    var newOpacity = Math.max(0, newOpacity); // Ensure opacity doesn't go below 0
     
     // Update the style of the GeoJSON layer
     HexLayer.setStyle({
