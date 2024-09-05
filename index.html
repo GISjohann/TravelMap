@@ -180,9 +180,9 @@ function addGeoJsonLayer() {
 
       // Bind tooltip (shown on hover)
       marker.bindTooltip(HoverContent, { 
-          permanent: false, 
-          direction: 'top',
-          className: 'custom-tooltip' 
+          offset: [0, -30],
+	  permanent: false, 
+          direction: 'top'
       });
 
       // Bind popup initially
