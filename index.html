@@ -79,7 +79,7 @@
 	    
 /* Hide the tooltip pointer (arrow) */
 .leaflet-tooltip .leaflet-tooltip-tip {
-  display: none; /* Hide the tooltip arrow */
+   background-color: yellow; 
 }
 	    
 .leaflet-popup-content-wrapper {
@@ -180,7 +180,7 @@ function addGeoJsonLayer() {
 
       // Bind tooltip (shown on hover) 
       marker.bindTooltip(HoverContent, { 
-          offset: [0, -55], //(this is 50px icon size + 25 to compensate for when hover or click icon is on)
+          offset: [0, -30], //(this is 50px icon size + 25 to compensate for when hover or click icon is on)
 	  permanent: false, 
           direction: 'top'
       });
