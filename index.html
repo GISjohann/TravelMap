@@ -175,7 +175,7 @@ function addGeoJsonLayer() {
     pointToLayer: function(feature, latlng) {
       var marker = L.marker(latlng, { icon: DefaultMarkerIcon }); // Set default icon
 
-      var HoverContent = "<div class='custom-popup'><p>"+ feature.properties.name + </p></div>";
+      var HoverContent = "<div class='custom-popup'><p>"+ feature.properties.name + "</p></div>";
       var PopupContent = '<div class="custom-popup">' +
                          '<img src="fotos/' + feature.properties.fotoID + '" alt="Foto nicht gefunden" style="width: 200px; height: auto;">' +
                          '<br>' + feature.properties.name +
