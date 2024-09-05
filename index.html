@@ -77,16 +77,12 @@
 	font-family: Comic Sans MS;
   } 
 	    
-/* Hide the custom tooltip arrow */
-.leaflet-tooltip::after {
-    content: '';
-    position: absolute;
-    bottom: -10px; /* Adjust based on your arrow position */
-    left: 50%;
-    transform: translateX(-50%);
-    border-width: 10px;
-    border-style: solid;
-    border-color: transparent transparent transparent transparent; /* Make arrow fully transparent */
+.custom-popup {
+    background-color: blue;  /* Customize background */
+    border-radius: 5px;
+    border: 2px solid black;
+    color: white;  /* Customize text color */
+    padding: 10px;
 }
 	    
 .leaflet-popup-content-wrapper {
@@ -179,7 +175,7 @@ function addGeoJsonLayer() {
     pointToLayer: function(feature, latlng) {
       var marker = L.marker(latlng, { icon: DefaultMarkerIcon }); // Set default icon
 
-      var HoverContent = feature.properties.name;
+      var HoverContent = "<div class='custom-popup'><p>"+ feature.properties.name + </p></div>";
       var PopupContent = '<div class="custom-popup">' +
                          '<img src="fotos/' + feature.properties.fotoID + '" alt="Foto nicht gefunden" style="width: 200px; height: auto;">' +
                          '<br>' + feature.properties.name +
