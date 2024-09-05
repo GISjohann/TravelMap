@@ -128,11 +128,20 @@ map.on('exitFullscreen', function(){
   
   // Load GeoJSON from an external file and add GeoJSON layer to the map once the file is loaded
 // load GeoJSON from an external file
- // Define a custom icon (optional)
-// Define a custom icon (optional)
-var markerIcon = L.icon({
+// Define custom icons
+var DefaultMarkerIcon = L.icon({
   iconUrl: 'beeIconMod.png', // Attribution: <a href="https://www.flaticon.com/free-icons/bee" title="bee icons">Bee icons created by juicy_fish - Flaticon</a>
   iconSize: [50, 50]
+});
+
+var HoverMarkerIcon = L.icon({
+  iconUrl: 'beeIconMod.png', // Attribution: <a href="https://www.flaticon.com/free-icons/bee" title="bee icons">Bee icons created by juicy_fish - Flaticon</a>
+  iconSize: [75, 75]
+});
+
+var PopupMarkerIcon = L.icon({
+  iconUrl: 'BuzzBee40.gif', // Attribution: <a href="https://www.flaticon.com/free-icons/bee" title="bee icons">Bee icons created by juicy_fish - Flaticon</a>
+  iconSize: [80, 75]
 });
 
 // Declare a variable to store the GeoJSON data globally
@@ -143,19 +152,60 @@ var geoJsonLayer;
 function addGeoJsonLayer() {
   geoJsonLayer = L.geoJSON(geoJsonData, {
     pointToLayer: function(feature, latlng) {
-      var marker = L.marker(latlng, { icon: markerIcon });   
-      	var popupContent = '<img src="fotos/' + feature.properties.fotoID + '" alt="Foto nicht gefunden" style="width: 200px; height: auto;">' + 
-    '<br>' + feature.properties.name;
-	    marker.bindPopup(popupContent, { closeButton: false });
+      var marker = L.marker(latlng, { icon: DefaultMarkerIcon }); // Set default icon
 
-      // Open popup on hover
-      marker.on('mouseover', function() {
-        this.openPopup();
+      var HoverContent = feature.properties.name;
+      var PopupContent = '<div class="custom-popup">' +
+                         '<img src="fotos/' + feature.properties.fotoID + '" alt="Foto nicht gefunden" style="width: 200px; height: auto;">' +
+                         '<br>' + feature.properties.name +
+                         '</div>';
+
+      // Bind tooltip (shown on hover)
+      marker.bindTooltip(HoverContent, { 
+          permanent: false, 
+          direction: 'top',
+          className: 'custom-tooltip' 
       });
 
-      // Close popup when the mouse leaves the marker
+      // Bind popup initially
+      marker.bindPopup(PopupContent);
+
+      // Event listener for marker click (opens popup and changes icon)
+      marker.on('click', function() {
+          this.setIcon(PopupMarkerIcon);  // Change to popup icon on click
+          this.unbindTooltip();           // Disable tooltip when popup is open
+          this.bindPopup(PopupContent).openPopup();  // Show the popup
+      });
+
+      // Ensure icon stays as PopupMarkerIcon when the popup is open
+      marker.on('popupopen', function() {
+          this.setIcon(PopupMarkerIcon);  // Ensure icon remains PopupMarkerIcon
+      });
+
+      // Revert to default icon when the popup is closed
+      marker.on('popupclose', function() {
+          this.setIcon(DefaultMarkerIcon);  // Revert to the default icon when the popup is closed
+          this.bindTooltip(HoverContent, {  // Re-enable the tooltip
+              permanent: false, 
+              direction: 'top',
+              className: 'custom-tooltip'
+          });
+      });
+
+      // Event listener for mouseover (hover) - show tooltip and change icon
+      marker.on('mouseover', function() {
+          if (!this.isPopupOpen()) {  // Only change to HoverMarkerIcon if popup is not open
+              this.setIcon(HoverMarkerIcon);
+              this.openTooltip();  // Show the tooltip on hover
+          }
+      });
+
+      // Event listener for mouseout - revert to default icon and close tooltip
       marker.on('mouseout', function() {
-        this.closePopup();
+          if (!this.isPopupOpen()) {  // Only revert to DefaultMarkerIcon if popup is not open
+              this.setIcon(DefaultMarkerIcon);
+              this.closeTooltip();  // Hide the tooltip when not hovering
+          }
       });
 
       return marker;
@@ -168,17 +218,17 @@ function updateLayerVisibility() {
   var zoom = map.getZoom();
   
   if (zoom < 7 && geoJsonLayer) {
-    // Remove the layer if the zoom level is less than 6
+    // Remove the layer if the zoom level is less than 7
     map.removeLayer(geoJsonLayer);
     geoJsonLayer = null;
   } else if (zoom >= 7 && !geoJsonLayer) {
-    // Re-add the layer if the zoom level is 6 or higher and the layer doesn't exist
+    // Re-add the layer if the zoom level is 7 or higher and the layer doesn't exist
     addGeoJsonLayer();
   }
 }
 
 // Fetch GeoJSON data and store it globally
-$.getJSON("test.geojson", function(loadedData) {
+$.getJSON("orte.geojson", function(loadedData) {
   geoJsonData = loadedData; // Store the data globally
 
   // Initialize visibility based on the initial zoom level
@@ -187,6 +237,7 @@ $.getJSON("test.geojson", function(loadedData) {
 
 // Update layer visibility on zoom end
 map.on('zoomend', updateLayerVisibility);
+
 
 
 // Define the initial style for the polygon
