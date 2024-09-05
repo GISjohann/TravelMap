@@ -76,15 +76,7 @@
 	font-weight: bold; /* Bold text */
 	font-family: Comic Sans MS;
   } 
-	    
-.custom-popup {
-    background-color: blue;  /* Customize background */
-    border-radius: 5px;
-    border: 2px solid black;
-    color: white;  /* Customize text color */
-    padding: 10px;
-}
-	    
+	    	    
 .leaflet-popup-content-wrapper {
      transform: translateY(-30px); 
       background-color: yellow; 
@@ -175,11 +167,11 @@ function addGeoJsonLayer() {
     pointToLayer: function(feature, latlng) {
       var marker = L.marker(latlng, { icon: DefaultMarkerIcon }); // Set default icon
 
-      var HoverContent = "<div class='custom-popup'><p>"+ feature.properties.name + "</p></div>";
-      var PopupContent = '<div class="custom-popup">' +
+      var HoverContent = "" + feature.properties.name + "";
+      var PopupContent = "" +
                          '<img src="fotos/' + feature.properties.fotoID + '" alt="Foto nicht gefunden" style="width: 200px; height: auto;">' +
                          '<br>' + feature.properties.name +
-                         '</div>';
+                         "";
 
       // Bind tooltip (shown on hover) 
       marker.bindTooltip(HoverContent, { 
