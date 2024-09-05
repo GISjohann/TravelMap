@@ -178,9 +178,9 @@ function addGeoJsonLayer() {
                          '<br>' + feature.properties.name +
                          '</div>';
 
-      // Bind tooltip (shown on hover)
+      // Bind tooltip (shown on hover) 
       marker.bindTooltip(HoverContent, { 
-          offset: [0, -60],
+          offset: [0, -55], //(this is 50px icon size + 25 to compensate for when hover or click icon is on)
 	  permanent: false, 
           direction: 'top'
       });
