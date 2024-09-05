@@ -79,7 +79,14 @@
 	    
 /* Hide the custom tooltip arrow */
 .leaflet-tooltip::after {
-  background-color: transparent;
+    content: '';
+    position: absolute;
+    bottom: -10px; /* Adjust based on your arrow position */
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent transparent transparent; /* Make arrow fully transparent */
 }
 	    
 .leaflet-popup-content-wrapper {
