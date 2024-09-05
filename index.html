@@ -66,7 +66,7 @@
 	}
 		/* Change the popup background color and text color */
 .leaflet-tooltip {
-      transform: translateY(-30px); 
+      margin-top: -30px; /* Move tooltip content 30px up */
       background-color: blue; 
       border-radius: 5px; /* Rounded corners */
       border: 2px solid black; /* Dark grey border */
@@ -76,6 +76,11 @@
 	font-weight: bold; /* Bold text */
 	font-family: Comic Sans MS;
   } 
+	    
+/* Hide the tooltip pointer (arrow) */
+.leaflet-tooltip .leaflet-tooltip-tip {
+  display: none; /* Hide the tooltip arrow */
+}
 	    
 .leaflet-popup-content-wrapper {
      transform: translateY(-30px); 
