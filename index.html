@@ -97,7 +97,7 @@
  
   <body>
     <header>
-      <h1>places I have🐝-n to!</h1>
+      <h1>PLACES I HAVE🐝-N TO!</h1>
     </header>
     <!-- The map container -->
     <div id="top-div">
@@ -241,7 +241,7 @@ function updateLayerVisibility() {
 }
 
 // Fetch GeoJSON data and store it globally
-$.getJSON("test.geojson", function(loadedData) {
+$.getJSON("places.geojson", function(loadedData) {
   geoJsonData = loadedData; // Store the data globally
 
   // Initialize visibility based on the initial zoom level
@@ -256,7 +256,7 @@ map.on('zoomend', updateLayerVisibility);
 // Define the initial style for the polygon
 var initialOpacity = 0.8; // Fully opaque	    
 //adding hexpolygons
-var GeoJsonSource = $.getJSON("hex_test_reproject.geojson", function(data) {
+var GeoJsonSource = $.getJSON("Hex_cells.geojson", function(data) {
   var HexLayer = L.geoJSON(data, {
     style: function(feature) {
 	var fillColor,
