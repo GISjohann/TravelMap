@@ -1,8 +1,0 @@
-{
-"type": "FeatureCollection",
-"name": "poly_test",
-"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
-"features": [
-{ "type": "Feature", "properties": { "fid": 1, "check": "chur" }, "geometry": { "type": "Polygon", "coordinates": [ [ [ 7.367469879518079, 45.198795180722897 ], [ 12.006024096385548, 45.5 ], [ 12.259036144578321, 42.75301204819278 ], [ 7.596385542168681, 42.5 ], [ 7.367469879518079, 45.198795180722897 ] ] ] } }
-]
-}
