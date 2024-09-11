@@ -1,7 +1,7 @@
 {
 "type": "FeatureCollection",
 "name": "test",
-"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"crs": { "type": "places", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "features": [
 { "type": "Feature", "properties": { "name": "Vatican City" }, "geometry": { "type": "Point", "coordinates": [ 12.4533865, 41.9032822 ] } },
 { "type": "Feature", "properties": { "name": "Dortmund" }, "geometry": { "type": "Point", "coordinates": [ 7.4500256, 51.5299671 ] } },
