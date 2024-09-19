@@ -27,24 +27,23 @@
         }
 
         body {
-            padding-top: 60px; /* Offset body content by header height */
             display: flex;
-		flex-direction: column;
+	    flex-direction: column;
             justify-content: center;
             align-items: center;
         }
 	#top-div {
-            width: 900px;
+            width: 1000px;
             height: 550px;
             background-color: white;
 	}   
 	    #map {
-            width: 900px;
+            width: 1000px;
             height: 550px;
             background-color: #eee; /* Background color for visibility */
         }	
 	    #bottom-div {
-            width: 900px;
+            width: 1000px;
             height: 250px;
             background-color: yellow;
 	}	
@@ -150,7 +149,7 @@
     <script>
   // Initialize the map and set its view to the center of Europe with an appropriate zoom level
   var startingZoomLevel = 5;
-  var map = L.map('map').setView([48.1657, 9.4515], startingZoomLevel);
+    var map = L.map('map').setView([48.1657, 9.9515], startingZoomLevel);
 	
   
   //Add the OpenStreetMap tile layer
