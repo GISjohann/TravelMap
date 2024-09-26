@@ -13,7 +13,7 @@
 { "type": "Feature", "properties": { "name": "Maribor", "Weight": 2, "abv": "mrr" }, "geometry": { "type": "Point", "coordinates": [ 15.6500419, 46.5404783 ] } },
 { "type": "Feature", "properties": { "name": "Utrecht", "Weight": 2, "abv": "urt" }, "geometry": { "type": "Point", "coordinates": [ 5.1200386, 52.1003457 ] } },
 { "type": "Feature", "properties": { "name": "Verona", "Weight": 2, "abv": "vra" }, "geometry": { "type": "Point", "coordinates": [ 10.9900162, 45.4403904 ] } },
-{ "type": "Feature", "properties": { "name": "Bonn", "Weight": 2, "abv": "bnn" }, "geometry": { "type": "Point", "coordinates": [ 7.0800223, 50.7204557 ] } },
+{ "type": "Feature", "properties": { "name": "Bonn", "talky": "Birthplace of Beethoven, and Haribo!", "Weight": 2, "abv": "bnn" }, "geometry": { "type": "Point", "coordinates": [ 7.0800223, 50.7204557 ] } },
 { "type": "Feature", "properties": { "name": "Münster", "Weight": 2, "abv": "mnr" }, "geometry": { "type": "Point", "coordinates": [ 7.6200411, 51.9704053 ] } },
 { "type": "Feature", "properties": { "name": "Freiburg", "Weight": 2, "abv": "feg" }, "geometry": { "type": "Point", "coordinates": [ 7.8699483, 48.0004151 ] } },
 { "type": "Feature", "properties": { "name": "Bremerhaven", "Weight": 2, "abv": "bhn" }, "geometry": { "type": "Point", "coordinates": [ 8.5799825, 53.550438 ] } },
