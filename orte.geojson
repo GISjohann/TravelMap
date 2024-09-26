@@ -48,7 +48,7 @@
 { "type": "Feature", "properties": { "name": "Berlin", "Weight": 1, "abv": "brn" }, "geometry": { "type": "Point", "coordinates": [ 13.3996028, 52.5237645 ] } },
 { "type": "Feature", "properties": { "name": "Vienna", "Weight": 1, "abv": "vea" }, "geometry": { "type": "Point", "coordinates": [ 16.3646931, 48.2019611 ] } },
 { "type": "Feature", "properties": { "name": "Rome", "Weight": 1, "abv": "rme" }, "geometry": { "type": "Point", "coordinates": [ 12.4813126, 41.8979015 ] } },
-{ "type": "Feature", "properties": { "name": "Paris", "Weight": 1, "abv": "prs" }, "geometry": { "type": "Point", "coordinates": [ 2.352992461539213, 48.858092316269108 ] } },
+{ "type": "Feature", "properties": { "name": "Paris", "talky": "had an exciting time in Paris","Weight": 1, "abv": "prs" }, "geometry": { "type": "Point", "coordinates": [ 2.352992461539213, 48.858092316269108 ] } },
 { "type": "Feature", "properties": { "name": "Dreilaenderpunkt", "Weight": 3, "abv": "det" }, "geometry": { "type": "Point", "coordinates": [ 6.019877426428817, 50.755442525367933 ] } },
 { "type": "Feature", "properties": { "name": "Aachen", "Weight": 2, "abv": "acn" }, "geometry": { "type": "Point", "coordinates": [ 6.084049851174387, 50.775179144119015 ] } },
 { "type": "Feature", "properties": { "name": "Konigstein", "Weight": 3, "abv": "knn" }, "geometry": { "type": "Point", "coordinates": [ 14.060697916087756, 50.918008383666731 ] } },
