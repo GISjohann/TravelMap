@@ -34,7 +34,7 @@
 { "type": "Feature", "properties": { "name": "Lille", "Weight": 2, "abv": "lle" }, "geometry": { "type": "Point", "coordinates": [ 3.0780622, 50.651915 ] } },
 { "type": "Feature", "properties": { "name": "Strasbourg", "Weight": 2, "abv": "srg" }, "geometry": { "type": "Point", "coordinates": [ 7.7500073, 48.5799662 ] } },
 { "type": "Feature", "properties": { "name": "Antwerpen", "Weight": 2, "abv": "atn" }, "geometry": { "type": "Point", "coordinates": [ 4.4130712, 51.2223194 ] } },
-{ "type": "Feature", "properties": { "name": "Genoa", "Weight": 2, "abv": "gna" }, "geometry": { "type": "Point", "coordinates": [ 8.9300386, 44.4099882 ] } },
+{ "type": "Feature", "properties": { "name": "Genoa", "talky": "I spent an amazing 5 weeks here, and made really cool friends. I swam in the ocean multiple times, learned a bit of italiano, went in a submarine", "Weight": 2, "abv": "gna" }, "geometry": { "type": "Point", "coordinates": [ 8.9300386, 44.4099882 ] } },
 { "type": "Feature", "properties": { "name": "Cologne", "Weight": 2, "abv": "cle" }, "geometry": { "type": "Point", "coordinates": [ 6.9480586, 50.9319495 ] } },
 { "type": "Feature", "properties": { "name": "Monaco", "Weight": 1, "abv": "mno" }, "geometry": { "type": "Point", "coordinates": [ 7.4069132, 43.7396457 ] } },
 { "type": "Feature", "properties": { "name": "Florence", "Weight": 2, "abv": "foe" }, "geometry": { "type": "Point", "coordinates": [ 11.2500004, 43.7800008 ] } },
