@@ -2,13 +2,22 @@
 <html>
   <head> <!--this is metadata -->
     <title>My Travelmap</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-    <script src="jquery-2.1.1.min.js"></script> 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- Include Leaflet CSS and JS -->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+        <!-- Fullscreen plugin CSS and JS -->
+        <link rel="stylesheet" href="https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css" />
+        <script src="https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js"></script>
+
+        <!-- JQuery -->
+        <script src="jquery-2.1.1.min.js"></script> 
+
+	  <!-- Fonts -->
+    	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap" rel="stylesheet">
-    <style>
+    	<style>
 	 html, body {
             height: 100%;
             margin: 0;
@@ -127,7 +136,18 @@
 	    margin: 10px auto; /* Center the button horizontally with auto margins */
             width: fit-content; /* Set button width based on its content */
 }
+.leaflet-control-zoom-out, .leaflet-control-zoom-in {
+	background-color: yellow !important;  
+    color: black;
+    border: transparent;
+}
 
+/* Style the fullscreen button */
+.leaflet-control-fullscreen a {
+    background-color: yellow !important;  
+    color: black;
+    border: transparent;
+}
         }
   }
 
@@ -202,7 +222,8 @@ map.on('exitFullscreen', function(){
  // Global variable to keep track of the last clicked marker
         var lastClickedMarker = null;
 	    
-  	var DefaultPopupContent = '<h3>Click on a 🐝 to see more of my adventures</h3>';
+  	var DefaultPopupContent = '<h3>Click on a 🐝 to see more of my adventures</h3>' +
+                                      '<img src="BeeKey.jpeg' +'" style="width: 100%; height: auto;">';
 	// Function to set the default content of the right-hand popup and reset the marker icon
 	    
         // Create a custom control for the right-hand side popup
