@@ -258,8 +258,8 @@ map.on('exitFullscreen', function(){
         // Function to update the custom right-hand popup content with a reset button
 	
 	function updateRightPopup(properties, latlng) {
-		if (properties.words = null) subtext = '';
-		else subtext = properties.words;
+		if (properties.words = null) subtext = 'nope';
+		else properties.words = subtext;
 		rightPopupDiv.innerHTML = '<h2>' + properties.name + '</h2>' +
                                       '<img src="fotos/' + properties.abv + '.jpeg' +'" style="width: 100%; height: auto;">' + subtext +
                                       '<button class="reset-button" onclick="setDefaultPopupContent()">Buzz off</button>';
