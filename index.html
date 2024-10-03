@@ -223,7 +223,7 @@ map.on('exitFullscreen', function(){
  // Global variable to keep track of the last clicked marker
         var lastClickedMarker = null;
 	    
-  	var DefaultPopupContent = '<h3>Click on a 🐝 to see more of my adventures</h3>' +
+  	var DefaultPopupContent = '<h3>Zoom in, then click a 🐝 to see where I was. Legend:</h3>' +
                                       '<img src="BeeKey.jpeg' +'" style="width: 100%; height: auto;">';
 	// Function to set the default content of the right-hand popup and reset the marker icon
 	    
@@ -256,9 +256,12 @@ map.on('exitFullscreen', function(){
 }
 
         // Function to update the custom right-hand popup content with a reset button
-        function updateRightPopup(properties, latlng) {
-            rightPopupDiv.innerHTML = '<h2>' + properties.name + '</h2>' +
-                                      '<img src="fotos/' + properties.abv + '.jpeg' +'" style="width: 100%; height: auto;">' + properties.words +
+	
+	function updateRightPopup(properties, latlng) {
+		if (properties.words = null) subtext = '';
+		else subtext = properties.words;
+		rightPopupDiv.innerHTML = '<h2>' + properties.name + '</h2>' +
+                                      '<img src="fotos/' + properties.abv + '.jpeg' +'" style="width: 100%; height: auto;">' + subtext +
                                       '<button class="reset-button" onclick="setDefaultPopupContent()">Buzz off</button>';
         }
 
