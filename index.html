@@ -265,10 +265,10 @@ map.on('exitFullscreen', function(){
         			subtext = properties.words;
     			}
     	rightPopupDiv.innerHTML = '<h2>' + properties.name + '</h2>' +
-                                      '<img src="fotos/' + properties.abv + '.jpeg' +'" style="width: 100%; height: auto;" onerror="this.style.display='none'">' + subtext +
+                                      '<img src="fotos/' + properties.abv + '.jpeg' +'" alt="" style="width: 100%; height: auto;">' + subtext +
                                       '<button class="reset-button" onclick="setDefaultPopupContent()">Buzz off</button>';
 		}
-
+		     
         // GeoJSON data (can be replaced with your actual GeoJSON)
         var geoJsonData = {
             "type": "FeatureCollection",
