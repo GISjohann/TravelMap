@@ -108,7 +108,7 @@
  /* Custom popup style on the right side inside the map frame */
     .leaflet-right-popup {
     /*position: absolute;*/
-    max-width: 50% !important;/* Set the width to 25% of the map's width */ 
+    max-width: 25% !important;/* Set the width to 25% of the map's width */ 
     right: 5px;
     top: 5px;/*this is offset*/
     background: yellow;
@@ -121,7 +121,7 @@
     font-size: 12pt;
     
     /* Scrollbar settings */
-    max-height: 400px; /* Adjust this value to control the popup height */
+    /*max-height: 400px;  Adjust this value to control the popup height */
     overflow-y: auto; /* Add vertical scroll if content overflows */
     /* Add padding to make scrollbar fit within rounded edges */
     padding-right: 10px;
@@ -129,7 +129,7 @@
 
 /* WebKit browsers */
 .leaflet-right-popup::-webkit-scrollbar {
-    width: 10px; /* Width of the scrollbar */
+    width: 30px; /* Width of the scrollbar */
     border-radius: 8px; /* Round the scrollbar to match the popup */
 }
 
@@ -164,8 +164,8 @@
             cursor: pointer;
             text-align: center;
             border-radius: 5px;
-          display: block;
-          margin: 10px auto; /* Center the button horizontally with auto margins */
+            display: block;
+            margin: 10px auto; /* Center the button horizontally with auto margins */
             width: fit-content; /* Set button width based on its content */
 }
 .leaflet-control-zoom-in {
