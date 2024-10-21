@@ -51,7 +51,7 @@
   /* Ensure the map container is set to fill the available screen space */
       #map {
             width: 100%;  /* The map should take up the full width of its container */
-            height: 120%;
+            height: 100%;
 }
 
 
@@ -108,7 +108,7 @@
  /* Custom popup style on the right side inside the map frame */
     .leaflet-right-popup {
     /*position: absolute;*/
-    min-width: 75% !important;/* Set the width to 25% of the map's width */ 
+    max-width: 50% !important;/* Set the width to 25% of the map's width */ 
     right: 5px;
     top: 5px;/*this is offset*/
     background: yellow;
@@ -387,7 +387,7 @@ function updateLayerVisibility() {
     }
   } 
   // Show only layers with weight 1 if zoom is 7 or more
-  else if (zoom >= 7 && zoom < 9) {
+  else if (zoom >= 7 && zoom < 8) {
     if (weight === 1 && !map.hasLayer(layer)) {
       map.addLayer(layer); // Add layer with weight 1
     } else if (weight !== 1 && map.hasLayer(layer)) {
@@ -395,7 +395,7 @@ function updateLayerVisibility() {
     }
   } 
   // Show layers with weight 1 and 2 if zoom is 9 or more
-  else if (zoom >= 9 && zoom < 10) {
+  else if (zoom >= 8 && zoom < 9) {
     if ((weight === 1 || weight === 2) && !map.hasLayer(layer)) {
       map.addLayer(layer); // Add layers with weight 1 or 2
     } else if (weight > 2 && map.hasLayer(layer)) {
@@ -403,7 +403,7 @@ function updateLayerVisibility() {
     }
   } 
   // Show layers with weight 1, 2, and 3 if zoom is 10 or more
-  else if (zoom >= 10) {
+  else if (zoom >= 9) {
     if ((weight === 1 || weight === 2 || weight === 3) && !map.hasLayer(layer)) {
       map.addLayer(layer); // Add layers with weight 1, 2, or 3
     }
