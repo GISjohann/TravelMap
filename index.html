@@ -41,7 +41,7 @@
         }
 	#top-div {
             width: 1000px;
-            height: 800px; /*can#t go more than this for some reason*/
+            height: 850px; /*can#t go more than this for some reason*/
             background-color: white;
 	}  
 
@@ -51,7 +51,6 @@
         width: 100%;  /* The map should take up the full width of its container */
         height: 100%;
 }
-
 
 	    #bottom-div {
             width: 1000px;
@@ -116,7 +115,7 @@
     z-index: 1000;
     
     /* Scrollbar settings */
-    max-height: 790px; /*calc(100% - 10px) !important;  /*Adjust this value to control the popup height */
+    max-height: calc(100% - 20px) !important;  /*Adjust this value to control the popup height */
     overflow-y: auto; /* Add vertical scroll if content overflows */
     /* Add padding to make scrollbar fit within rounded edges */
 }
