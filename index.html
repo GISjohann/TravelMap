@@ -34,10 +34,10 @@
         }
 
         body {
-            display: block; /* used to say flex;*/
-	          /*flex-direction: column;
+            display: flex; /* used to say block;*/
+	          flex-direction: column;
             justify-content: center;
-            align-items: center;*/
+            align-items: center;
         }
 	#map{ /*used to be called top-div, with map css following*/
     position: relative; /* Set the map's position to relative */
@@ -104,7 +104,7 @@
  /* Custom popup style on the right side inside the map frame */
     .leaflet-right-popup {
     position: absolute;
-    max-width: 30% !important;/* Set the width to 30% of the map's width */ 
+    max-width: 30%; /* Set the width to 30% of the map's width */ 
     right: 5px;
     top: 5px;/*this is offset*/
     background: yellow;
@@ -115,7 +115,7 @@
     z-index: 1000;
     
     /* Scrollbar settings */
-    max-height: 90% !important;  /*Adjust this value to control the popup height */
+    max-height: 90%;  /*Adjust this value to control the popup height */
     overflow-y: auto; /* Add vertical scroll if content overflows */
     /* Add padding to make scrollbar fit within rounded edges */
 }
