@@ -39,18 +39,18 @@
             justify-content: center;
             align-items: center;*/
         }
-	#top-div {
+	#map{ /*used to be called top-div, with map css following*/
     position: relative; /* Set the map's position to relative */
           width: 1000px;
             height: 850px; /*can#t go more than this for some reason*/
             background-color: white;
 	}  
 
-  /* Ensure the map container is set to fill the available screen space */
+  /* Ensure the map container is set to fill the available screen space 
       #map {
-        width: 100%;  /* The map should take up the full width of its container */
+        width: 100%;   The map should take up the full width of its container 
         height: 100%;
-}
+}*/
 
 	    #bottom-div {
             width: 1000px;
@@ -201,12 +201,11 @@
     <header>
       <h1>🐝hold my map</h1>
     </header>
-    <!-- The map container -->
-    <div id="top-div">
-	    <div id="map"></div>
+    <!-- The map container   <div id="top-div">-->
+    <div id="map"></div>
     <link rel="stylesheet" href="https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css" />
     <script src="https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js"></script>
-	</div>
+	  </div>
     <script>
   // Initialize the map and set its view to the center of Europe with an appropriate zoom level
   var startingZoomLevel = 5;
