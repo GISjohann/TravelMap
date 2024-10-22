@@ -295,7 +295,7 @@ function setLegendPopupContent() {
 // Function to update the right-hand popup content with marker info
 function updateRightPopup(properties, latlng) {
   var subtext = properties.words || ''; // Show subtext if available
-  rightPopupDiv.innerHTML = '<h2>' + properties.name + '</h2> \n <img src="fotos/' + properties.abv + '.jpeg" alt="nope" style="width: 100%; height: auto;"> \n <p>' + subtext + '</p> \n <button class="button" onclick="setDefaultPopupContent()">Buzz off</button>';
+  rightPopupDiv.innerHTML = '<h2>' + properties.name + '</h2> \n <img src="fotos/' + properties.abv + '.jpeg" alt="beeIconMod.png" style="width: 100%; height: auto;"> \n <p>' + subtext + '</p> \n <button class="button" onclick="setDefaultPopupContent()">Buzz off</button>';
 }
 //---------------------------------   POINT LAYER   --------------------------------------------
 
@@ -372,13 +372,13 @@ function updateLayerVisibility() {
   var weight = layer.feature.properties.weight; // Get the weight of each layer
 
   // Remove all layers if zoom is less than 7
-  if (zoom < 7) {
+  if (zoom < 6) {
     if (map.hasLayer(layer)) {
       map.removeLayer(layer); // Remove any layers that are already added
     }
   } 
   // Show only layers with weight 1 if zoom is 7 or more
-  else if (zoom >= 7 && zoom < 8) {
+  else if (zoom >= 6 && zoom < 7) {
     if (weight === 1 && !map.hasLayer(layer)) {
       map.addLayer(layer); // Add layer with weight 1
     } else if (weight !== 1 && map.hasLayer(layer)) {
@@ -386,7 +386,7 @@ function updateLayerVisibility() {
     }
   } 
   // Show layers with weight 1 and 2 if zoom is 9 or more
-  else if (zoom >= 8 && zoom < 9) {
+  else if (zoom >= 7 && zoom < 8) {
     if ((weight === 1 || weight === 2) && !map.hasLayer(layer)) {
       map.addLayer(layer); // Add layers with weight 1 or 2
     } else if (weight > 2 && map.hasLayer(layer)) {
@@ -394,7 +394,7 @@ function updateLayerVisibility() {
     }
   } 
   // Show layers with weight 1, 2, and 3 if zoom is 10 or more
-  else if (zoom >= 9) {
+  else if (zoom >= 8) {
     if ((weight === 1 || weight === 2 || weight === 3) && !map.hasLayer(layer)) {
       map.addLayer(layer); // Add layers with weight 1, 2, or 3
     }
