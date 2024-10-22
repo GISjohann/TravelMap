@@ -91,8 +91,8 @@
 .leaflet-tooltip {
       margin-top: -30px; /* Move tooltip content 30px up */
       background-color: yellow; 
-      border-radius: 8px; /* Rounded corners */
-      border: 2px solid black; /* Dark grey border */
+      border-radius: 5px; /* Rounded corners */
+      border: 2px solid black;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
       text-align: center;  /* Center the content */
       color: black; /* Dark text */
@@ -103,19 +103,19 @@
 	  
  /* Custom popup style on the right side inside the map frame */
     .leaflet-right-popup {
-    /*position: absolute;*/
+    position: absolute;
     max-width: 30% !important;/* Set the width to 30% of the map's width */ 
     right: 5px;
     top: 5px;/*this is offset*/
     background: yellow;
-    border: 2px solid black; /* Dark grey border */
+    border: 2px solid black;
     /* padding: 1px; /*inside content*/
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     z-index: 1000;
     
     /* Scrollbar settings */
-    max-height: calc(100% - 20px) !important;  /*Adjust this value to control the popup height */
+    max-height: 90% !important;  /*Adjust this value to control the popup height */
     overflow-y: auto; /* Add vertical scroll if content overflows */
     /* Add padding to make scrollbar fit within rounded edges */
 }
@@ -295,7 +295,7 @@ function setLegendPopupContent() {
 // Function to update the right-hand popup content with marker info
 function updateRightPopup(properties, latlng) {
   var subtext = properties.words || ''; // Show subtext if available
-  rightPopupDiv.innerHTML = '<h2>' + properties.name + '</h2> \n <img src="fotos/' + properties.abv + '.jpeg" alt="beeIconMod.png" style="width: 100%; height: auto;"> \n <p>' + subtext + '</p> \n <button class="button" onclick="setDefaultPopupContent()">Buzz off</button>';
+  rightPopupDiv.innerHTML = '<h2>' + properties.name + '</h2> \n <img src="fotos/' + properties.abv + '.jpeg" alt="fotos/acn.jpeg" style="width: auto; height: auto;"> \n <p>' + subtext + '</p> \n <button class="button" onclick="setDefaultPopupContent()">Buzz off</button>';
 }
 //---------------------------------   POINT LAYER   --------------------------------------------
 
@@ -394,7 +394,7 @@ function updateLayerVisibility() {
     }
   } 
   // Show layers with weight 1, 2, and 3 if zoom is 10 or more
-  else if (zoom >= 8) {
+  else if (zoom >= 10) {
     if ((weight === 1 || weight === 2 || weight === 3) && !map.hasLayer(layer)) {
       map.addLayer(layer); // Add layers with weight 1, 2, or 3
     }
