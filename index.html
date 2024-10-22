@@ -34,10 +34,10 @@
         }
 
         body {
-            display: flex;
-	          flex-direction: column;
+            display: block; /* used to say flex;*/
+	          /*flex-direction: column;
             justify-content: center;
-            align-items: center;
+            align-items: center;*/
         }
 	#top-div {
             width: 1000px;
@@ -103,7 +103,7 @@
 	  
  /* Custom popup style on the right side inside the map frame */
     .leaflet-right-popup {
-    /*position: absolute;*/
+    position: absolute;
     max-width: 30% !important;/* Set the width to 30% of the map's width */ 
     right: 5px;
     top: 5px;/*this is offset*/
@@ -295,7 +295,7 @@ function setLegendPopupContent() {
 // Function to update the right-hand popup content with marker info
 function updateRightPopup(properties, latlng) {
   var subtext = properties.words || ''; // Show subtext if available
-  rightPopupDiv.innerHTML = '<h2>' + properties.name + '</h2> \n <img src="fotos/' + properties.abv + '.jpeg" alt="404" onerror="fotos/acn.jpeg" style="width: 100%; height: auto;"> \n <p>' + subtext + '</p> \n <button class="button" onclick="setDefaultPopupContent()">Buzz off</button>';
+  rightPopupDiv.innerHTML = '<h2>' + properties.name + '</h2> \n <img src="fotos/' + properties.abv + '.jpeg" alt="404" style="width: 100%; height: auto;"> \n <p>' + subtext + '</p> \n <button class="button" onclick="setDefaultPopupContent()">Buzz off</button>';
 }
 //---------------------------------   POINT LAYER   --------------------------------------------
 
