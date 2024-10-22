@@ -26,10 +26,8 @@
         }
 
         header {
-            /*position: fixed;  Keep the header fixed at the top */
-            top: 0;
-            left: 0;
             width: 100%; /* Full width */
+            height: 150px;
             background-color: yellow; /* Background color */
             padding: 10px; /* Space inside the header */
             box-sizing: border-box;
@@ -113,16 +111,15 @@
     top: 5px;/*this is offset*/
     background: yellow;
     border: 2px solid black; /* Dark grey border */
-    padding: 1px; /*inside content*/
+    /* padding: 1px; /*inside content*/
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     z-index: 1000;
     
     /* Scrollbar settings */
-    max-height: 750px;  /*Adjust this value to control the popup height */
+    max-height: 750px !important;  /*Adjust this value to control the popup height */
     overflow-y: auto; /* Add vertical scroll if content overflows */
     /* Add padding to make scrollbar fit within rounded edges */
-    padding-right:10px;
 }
 
 /* WebKit browsers */
@@ -137,7 +134,7 @@
 }
 
 .leaflet-right-popup::-webkit-scrollbar-track {
-    background: transparent; /* Transparent track to blend with the background */
+    background: yellow; /* Transparent track to blend with the background */
     border-radius: 8px; /* Round the track as well */
 }
 
