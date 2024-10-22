@@ -57,7 +57,7 @@
 
 	    #bottom-div {
             width: 1000px;
-            height: 50px;
+            height: 5px;
             background-color: yellow;
 	}	
         h1 {
@@ -299,8 +299,7 @@ function setLegendPopupContent() {
 // Function to update the right-hand popup content with marker info
 function updateRightPopup(properties, latlng) {
   var subtext = properties.words || ''; // Show subtext if available
-  rightPopupDiv.innerHTML = '<h2>' + properties.name + '</h2>' + subtext + 
-    '<img src="fotos/' + properties.abv + '.jpeg" alt="nope" style="width: 100%; height: auto;">' +
+  rightPopupDiv.innerHTML = '<h2>' + properties.name + '</h2> \n \n <p>' + subtext + '</p> \n <img src="fotos/' + properties.abv + '.jpeg" alt="nope" style="width: 100%; height: auto;">' +
     '<button class="button" onclick="setDefaultPopupContent()">Buzz off</button>';
 }
 //---------------------------------   POINT LAYER   --------------------------------------------
