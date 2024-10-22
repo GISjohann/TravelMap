@@ -27,7 +27,6 @@
 
         header {
             width: 100%; /* Full width */
-            height: 150px;
             background-color: yellow; /* Background color */
             padding: 10px; /* Space inside the header */
             box-sizing: border-box;
@@ -36,7 +35,7 @@
 
         body {
             display: flex;
-	    flex-direction: column;
+	          flex-direction: column;
             justify-content: center;
             align-items: center;
         }
@@ -48,8 +47,9 @@
 
   /* Ensure the map container is set to fill the available screen space */
       #map {
-            width: 100%;  /* The map should take up the full width of its container */
-            height: 100%;
+        position: relative; /* Set the map's position to relative */
+        width: 100%;  /* The map should take up the full width of its container */
+        height: 100%;
 }
 
 
@@ -116,7 +116,7 @@
     z-index: 1000;
     
     /* Scrollbar settings */
-    max-height: 80% !important;  /*Adjust this value to control the popup height */
+    max-height: calc(100% - 10px) !important;  /*Adjust this value to control the popup height */
     overflow-y: auto; /* Add vertical scroll if content overflows */
     /* Add padding to make scrollbar fit within rounded edges */
 }
