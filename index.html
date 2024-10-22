@@ -108,7 +108,7 @@
  /* Custom popup style on the right side inside the map frame */
     .leaflet-right-popup {
     /*position: absolute;*/
-    max-width: 25% !important;/* Set the width to 25% of the map's width */ 
+    max-width: 50% !important;/* Set the width to 50% of the map's width */ 
     right: 5px;
     top: 5px;/*this is offset*/
     background: yellow;
@@ -302,7 +302,7 @@ function setLegendPopupContent() {
 function updateRightPopup(properties, latlng) {
   var subtext = properties.words || ''; // Show subtext if available
   rightPopupDiv.innerHTML = '<h2>' + properties.name + '</h2>' +
-    '<img src="fotos/' + properties.abv + '.jpeg" alt="nope" style="width: 150%; height: auto;">' +
+    '<img src="fotos/' + properties.abv + '.jpeg" alt="nope" style="width: 130%; height: auto;">' +
     '<button class="button" onclick="setDefaultPopupContent()">Buzz off</button>';
 }
 //---------------------------------   POINT LAYER   --------------------------------------------
