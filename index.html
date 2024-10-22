@@ -22,7 +22,7 @@
 	 html, body {
             height: 100%;
             margin: 0;
-            font-family: Brush Script MT, sans-serif;
+            font-family: Arial, Helvetica, sans-serif
         }
 
         header {
@@ -70,14 +70,14 @@
 	    
 	h2 {
             color: black;
-            font-family: Brush Script MT, sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
             font-size: 250%;
             text-align: center;
             margin: 0;
         }
 	p {
             color: black;
-            font-family: Brush Script MT, sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
 	}
 	.mochiy-pop-one-regular {
   font-family: "Mochiy Pop One", sans-serif;
@@ -124,7 +124,7 @@
     /*max-height: 400px;  Adjust this value to control the popup height */
     overflow-y: auto; /* Add vertical scroll if content overflows */
     /* Add padding to make scrollbar fit within rounded edges */
-    padding-right: 100px;
+    /*padding-right:10px;*/
 }
 
 /* WebKit browsers */
@@ -302,7 +302,7 @@ function setLegendPopupContent() {
 function updateRightPopup(properties, latlng) {
   var subtext = properties.words || ''; // Show subtext if available
   rightPopupDiv.innerHTML = '<h2>' + properties.name + '</h2>' +
-    '<img src="fotos/' + properties.abv + '.jpeg" alt="nope" style="width: 100%; height: auto;">' +
+    '<img src="fotos/' + properties.abv + '.jpeg" alt="nope" style="width: 150%; height: auto;">' +
     '<button class="button" onclick="setDefaultPopupContent()">Buzz off</button>';
 }
 //---------------------------------   POINT LAYER   --------------------------------------------
