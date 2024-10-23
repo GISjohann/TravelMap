@@ -41,7 +41,7 @@
         }
 	#map{ /*used to be called top-div, with map css following*/
     position: relative; /* Set the map's position to relative */
-    width: 1000px;
+    width: 1200px;
     height: 850px; /*can#t go more than this for some reason*/
     background-color: white;
 	}  
@@ -87,6 +87,8 @@
     background-clip: padding-box;
 }
 
+
+
 		/* Change the popup background color and text color */
 .leaflet-tooltip {
       margin-top: -30px; /* Move tooltip content 30px up */
@@ -99,15 +101,15 @@
       font-size: 12pt;
       font-weight: bold; /* Bold text */
       font-family: Mochiy Pop One;
-  } 	  
+  } 
 	  
  /* Custom popup style on the right side inside the map frame */
     .leaflet-right-popup {
-    position: absolute;
+    /*position: absolute;*/
     display: block; /* Ensure it's not hidden */
     visibility: visible;
-    width:100px;
-    max-width: 30%; /* Set the width to 30% of the map's width */ 
+    width:fit-content;
+     /* Set the width to 30% of the map's width */ 
     right: 5px;
     top: 5px;/*this is offset*/
     background: yellow;
@@ -118,13 +120,56 @@
     z-index: 1000;
     
     /* Scrollbar settings */
-    height: 100px;
-    max-height: 90%;  /*Adjust this value to control the popup height */
-    overflow-y: auto; /* Add vertical scroll if content overflows */
+    height: fit-content;
+    /*max-height: 80%;  /*Adjust this value to control the popup height */
+    overflow-y:auto; /* Add vertical scroll if content overflows */
     /* Add padding to make scrollbar fit within rounded edges */
 }
 
 
+
+/* WebKit browsers */
+.leaflet-right-popup::-webkit-scrollbar {
+    width: 30px; /* Width of the scrollbar */
+    border-radius: 8px; /* Round the scrollbar to match the popup */
+}
+
+.leaflet-right-popup::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.5); /* Color of the scrollbar thumb */
+    border-radius: 8px; /* Match the rounded corners */
+}
+
+.leaflet-right-popup::-webkit-scrollbar-track {
+    background: yellow; /* Transparent track to blend with the background */
+    border-radius: 8px; /* Round the track as well */
+}
+
+/* For Firefox */
+.leaflet-right-popup {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.5) transparent; /* Thumb and track colors */
+}
+
+/* Scrollbar thumb for Firefox */
+.leaflet-right-popup::-webkit-scrollbar-thumb {
+    border-radius: 8px; /* Rounded corners */
+}
+
+/* Button styling */
+        .button {
+	    background-color: rgb(202, 133, 6);
+            color: black;
+            font-family: Mochiy Pop One;
+            font-size: 10px;
+            padding: 10px;
+            border: black;
+            cursor: pointer;
+            text-align: center;
+            border-radius: 5px;
+            display: block;
+            margin: 10px auto; /* Center the button horizontally with auto margins */
+            width: fit-content; /* Set button width based on its content */
+}
 
 .leaflet-control-zoom-in {
 	background-color: yellow !important;  
@@ -246,7 +291,7 @@ function setDefaultPopupContent() {
 // Function to set the legend content in the right-hand popup
 function setLegendPopupContent() {
   rightPopupDiv.innerHTML = '<h3>Legend:</h3>' + 
-    '<img src="BeeKey.jpeg" style="width: auto; height: auto;">' + 
+    '<img src="BeeKey.jpeg" style="width: fit-content; height: fit-content;">' + 
     '<button class="button" onclick="setDefaultPopupContent()">Buzz off</button>';
   
   if (lastClickedMarker) {
