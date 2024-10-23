@@ -125,21 +125,7 @@
 }
 
 
-/* Button styling */
-        .button {
-	    background-color: rgb(202, 133, 6);
-            color: black;
-            font-family: Mochiy Pop One;
-            font-size: 10px;
-            padding: 10px;
-            border: black;
-            cursor: pointer;
-            text-align: center;
-            border-radius: 5px;
-            display: block;
-            margin: 10px auto; /* Center the button horizontally with auto margins */
-            width: fit-content; /* Set button width based on its content */
-}
+
 .leaflet-control-zoom-in {
 	background-color: yellow !important;  
     color: black;
@@ -260,7 +246,7 @@ function setDefaultPopupContent() {
 // Function to set the legend content in the right-hand popup
 function setLegendPopupContent() {
   rightPopupDiv.innerHTML = '<h3>Legend:</h3>' + 
-    '<img src="BeeKey.jpeg" style="width: 100%; height: auto;">' + 
+    '<img src="BeeKey.jpeg" style="width: auto; height: auto;">' + 
     '<button class="button" onclick="setDefaultPopupContent()">Buzz off</button>';
   
   if (lastClickedMarker) {
