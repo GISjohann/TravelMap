@@ -111,8 +111,8 @@
     position: absolute;
     display: block; /* Ensure it's not hidden */
     visibility: visible;
-    width:25vw; /*fit-content;*/
-    max-width:50vw; /* Set the width to 30% of the map's width */ 
+    width:fit-content;
+    max-width:50vw !important; /* Set the width to 30% of the map's width */ 
     right: 5px;
     top: 5px;/*this is offset*/
     background: yellow;
@@ -124,7 +124,7 @@
 
     /* Scrollbar settings */
     height: fit-content;
-    max-height: 90vh !important /*Adjust this value to control the popup height */
+    max-height: 90vh !important; /*Adjust this value to control the popup height */
     overflow-y:auto; /* Add vertical scroll if content overflows */
     /* Add padding to make scrollbar fit within rounded edges */
 }
