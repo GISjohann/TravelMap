@@ -42,7 +42,7 @@
 	#map{ /*used to be called top-div, with map css following*/
     position: relative; /* Set the map's position to relative */
     width: 1000px;
-    height: 850px; can#t go more than this for some reason*/
+    height: 850px; /*can#t go more than this for some reason*/
     background-color: white;
 	}  
 
@@ -106,7 +106,8 @@
     position: absolute;
     display: block; /* Ensure it's not hidden */
     visibility: visible;
-    /*max-width: 30%; /* Set the width to 30% of the map's width */ 
+    width:100px;
+    max-width: 30%; /* Set the width to 30% of the map's width */ 
     right: 5px;
     top: 5px;/*this is offset*/
     background: yellow;
@@ -117,6 +118,7 @@
     z-index: 1000;
     
     /* Scrollbar settings */
+    height: 100px;
     max-height: 90%;  /*Adjust this value to control the popup height */
     overflow-y: auto; /* Add vertical scroll if content overflows */
     /* Add padding to make scrollbar fit within rounded edges */
