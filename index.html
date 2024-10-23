@@ -124,7 +124,7 @@
 
     /* Scrollbar settings */
     height: fit-content;
-    max-height: 90vh;  /*Adjust this value to control the popup height */
+    max-height: 90vh !important /*Adjust this value to control the popup height */
     overflow-y:auto; /* Add vertical scroll if content overflows */
     /* Add padding to make scrollbar fit within rounded edges */
 }
@@ -306,7 +306,7 @@ function setLegendPopupContent() {
 // Function to update the right-hand popup content with marker info
 function updateRightPopup(properties, latlng) {
   var subtext = properties.words || ''; // Show subtext if available
-  rightPopupDiv.innerHTML = '<h2>' + properties.name + '</h2> \n <img src="fotos/' + properties.abv + '.jpeg" alt="404" style="width: auto; height: auto;"> \n <p>' + subtext + '</p> \n <button class="button" onclick="setDefaultPopupContent()">Buzz off</button>';
+  rightPopupDiv.innerHTML = '<h2>' + properties.name + '</h2> \n <img src="fotos/' + properties.abv + '.jpeg" alt="404" style="width: 100%; height: auto;"> \n <p>' + subtext + '</p> \n <button class="button" onclick="setDefaultPopupContent()">Buzz off</button>';
 }
 //---------------------------------   POINT LAYER   --------------------------------------------
 
