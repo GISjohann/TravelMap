@@ -1,7 +1,7 @@
 
 <html>
-  <head> <!--this is metadata -->
-    <title>Travel Map</title>
+  <head> 
+    <title>Travel Map - nearly there I'm buzzing</title>
     <!-- Include Leaflet CSS and JS -->
         <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
         <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
@@ -60,6 +60,35 @@
             height: 5px;
             background-color: yellow;
 	}	
+
+  #nameList {
+                background-color: black;
+                width: 250px; /* Adjust the width to fit your layout */
+                height: 450px; /* Set a fixed height to allow scrolling */
+                overflow-y: auto; /* Allow vertical scrolling */
+                font-family: Mochiy Pop One;
+}
+
+      /* Style for individual name items */
+      .name-item {
+        padding: 8px;
+        margin-bottom: 5px;
+        background-color: yellow; /* Light gray background for each name item */
+        border-radius: 4px; /* Slightly rounded corners for each item */
+        cursor: pointer;
+        transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+        font-size: 14px; /* Set a reasonable font size */
+        color: black;
+      }
+
+      /* Hover effect for name items */
+      .name-item:hover {
+        background-color: rgb(202, 133, 6); 
+        transform: scaleY(1.15); /* Increase Y size by 15% */
+}
+      
+
+
         h1 {
             color: black;
             font-family: Mochiy Pop One;
@@ -132,17 +161,17 @@
 
 
 /* WebKit browsers */
-.leaflet-right-popup::-webkit-scrollbar {
+::-webkit-scrollbar {
     width: 30px; /* Width of the scrollbar */
     border-radius: 8px; /* Round the scrollbar to match the popup */
 }
 
-.leaflet-right-popup::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
     background-color: rgba(0, 0, 0, 0.5); /* Color of the scrollbar thumb */
     border-radius: 8px; /* Match the rounded corners */
 }
 
-.leaflet-right-popup::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
     background: yellow; /* Transparent track to blend with the background */
     border-radius: 8px; /* Round the track as well */
 }
@@ -173,6 +202,11 @@
             margin: 10px auto; /* Center the button horizontally with auto margins */
             width: fit-content; /* Set button width based on its content */
 }
+/* Button hover effect */
+.button:hover {
+  transform: scale(1.15); /* Increase size by 15% (3px more in every direction) */
+}
+
 
 .leaflet-control-zoom-in {
 	background-color: yellow !important;  
@@ -181,15 +215,23 @@
     margin-bottom: 10px !important;
     border-radius: 20px !important;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-
-
 }
+
+.leaflet-control-zoom-in:hover {
+  transform: scale(1.2); /* Increase size by 20% (6px more in every direction) */
+}
+
+
 .leaflet-control-zoom-out{
 	background-color: yellow !important;  
     color: black;
     border: 2px solid black !important;
     border-radius: 20px !important;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.leaflet-control-zoom-out:hover {
+  transform: scale(1.2); /* Increase size by 20% (6px more in every direction) */
 }
 
 /* Style the fullscreen button */
@@ -201,6 +243,11 @@
     border-radius: 20px !important;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
+
+.leaflet-control-fullscreen a:hover {
+
+  transform: scale(1.2); /* Increase size by 20% (6px more in every direction) */
+}
         
   
 
@@ -211,7 +258,7 @@
  
   <body>
     <header>
-      <h1>🐝hold my map</h1>
+      <h1>Travel Map - nearly there I'm buzzing</h1>
     </header>
     <!-- The map container   <div id="top-div">-->
     <div id="map"></div>
@@ -263,7 +310,8 @@ var lastClickedMarker = null;
 
 // Default content for the right-hand popup
 var DefaultPopupContent = '<h3>Zoom in, then click a 🐝 to see where I was.</h3>' + 
-  '<button class="button" onclick="setLegendPopupContent()">View Legend</button>';
+  '<button class="button" onclick="setLegendPopupContent()">View Legend</button>' +
+  '<button class="button" onclick="setListPopupContent()">View List</button>';
 
 // Create a custom control for the right-hand side popup
 var rightSidePopup = L.Control.extend({
@@ -303,10 +351,25 @@ function setLegendPopupContent() {
   }
 }
 
+// Function to set the list content inside the popup
+function setListPopupContent() {
+  // Set the HTML content of the popup, including a header and a button
+  rightPopupDiv.innerHTML = `
+    <h3>Places I have 🐝-n</h3>
+    <div id="nameList"></div> <!-- This is where the list will be inserted -->
+    <button class="button" onclick="setDefaultPopupContent()">Buzz off</button>
+  `;
+
+  // Now, after setting the popup content, create the list dynamically
+  createClickableList(); // This function will populate the list inside #nameList
+}
+
 // Function to update the right-hand popup content with marker info
 function updateRightPopup(properties, latlng) {
   var subtext = properties.words || ''; // Show subtext if available
-  rightPopupDiv.innerHTML = '<h2>' + properties.name + '</h2> \n <img src="fotos/' + properties.abv + '.jpeg" alt="404" style="width: 100%; height: auto; object-fit: contain;"> \n <p>' + subtext + '</p> \n <button class="button" onclick="setDefaultPopupContent()">Buzz off</button>';
+  rightPopupDiv.innerHTML = '<h2>' + properties.name + '</h2> \n <img src="fotos/' + properties.abv + '.jpeg" alt="404" style="width: 100%;'+
+  'height: auto; object-fit: contain;"> \n <p>' + subtext + '</p> \n <button class="button" onclick="setDefaultPopupContent()">Buzz off</button>'+
+  '<button class="button" onclick="setListPopupContent()">View List</button>';
 }
 //---------------------------------   POINT LAYER   --------------------------------------------
 
@@ -326,6 +389,10 @@ var PopupMarkerIcon = L.icon({
   iconSize: [80, 75]
 });
 
+var geoJsonLayer;  // GeoJSON Layer
+var markers = {};   // Store markers by name for easy lookup
+var lastClickedMarker = null; // To keep track of the last clicked marker
+
 // Function to add GeoJSON layer but not immediately to the map
 function addGeoJsonLayer() {
   geoJsonLayer = L.geoJSON(geoJsonData, {
@@ -344,15 +411,8 @@ function addGeoJsonLayer() {
 
       // Event listener for marker click (updates right-hand popup and changes icon)
       marker.on('click', function() {
-        if (lastClickedMarker && lastClickedMarker !== marker) {
-          lastClickedMarker.setIcon(DefaultMarkerIcon); // Reset previous marker
-        }
-
-        lastClickedMarker = marker; // Set the current marker as last clicked
-
-        this.setIcon(PopupMarkerIcon); // Change to popup icon
-
-        updateRightPopup(feature.properties, latlng); // Update popup
+        // Same behavior as clicking the name from the list
+        handleMarkerClick(marker, feature, latlng);
       });
 
       // Hover behavior
@@ -370,10 +430,15 @@ function addGeoJsonLayer() {
         }
       });
 
+    // Store marker in global markers object by name
+    markers[feature.properties.name] = marker;
+
       // Return marker without adding it to the map yet
       return marker;
+
     }
 });
+
 }
 
 // Function to handle layer visibility based on zoom level and feature properties
@@ -413,6 +478,62 @@ function updateLayerVisibility() {
 });
 }
 
+// Function to handle actions when a marker is clicked or a name is clicked from the list
+function handleMarkerClick(marker, feature, latlng) {
+  // Reset the last clicked marker if necessary
+  if (lastClickedMarker && lastClickedMarker !== marker) {
+    lastClickedMarker.setIcon(DefaultMarkerIcon); // Reset previous marker
+  }
+
+  lastClickedMarker = marker; // Set the current marker as last clicked
+  marker.setIcon(PopupMarkerIcon); // Change to popup icon
+  marker.openPopup(); // Open the popup for the clicked marker
+
+  updateRightPopup(feature.properties, latlng); // Update the right-side popup
+}
+
+// Create the clickable list from GeoJSON properties
+function createClickableList() {
+  var nameListDiv = document.getElementById('nameList');
+  var names = [];
+
+  // Loop through GeoJSON features and collect names
+  geoJsonData.features.forEach(function(feature) {
+    if (feature.properties && feature.properties.name) {
+      names.push({
+        name: feature.properties.name,
+        latlng: feature.geometry.coordinates ? L.latLng(feature.geometry.coordinates[1], feature.geometry.coordinates[0]) : null
+      });
+    }
+  });
+
+  // Sort the names alphabetically
+  names.sort(function(a, b) {
+    return a.name.localeCompare(b.name);
+  });
+
+// Create list items for each name and add them to the popup content
+names.forEach(function(item) {
+    var listItem = document.createElement('div');
+    listItem.classList.add('name-item');
+    listItem.textContent = item.name;
+    
+    // When a name is clicked, zoom to the marker and trigger the same behavior as a marker click
+    listItem.addEventListener('click', function() {
+      var marker = markers[item.name];  // Retrieve marker by name
+      if (marker) {
+        handleMarkerClick(marker, geoJsonData.features.find(f => f.properties.name === item.name));
+        map.setView(item.latlng, 8);  // Zoom to the marker
+        updateLayerVisibility(); //didn't do anything?
+      
+      }
+    });
+
+    // Append the list item to the #nameList div inside the popup
+    nameListDiv.appendChild(listItem);
+  });
+}
+
 
 // Load the GeoJSON data and add it to the map
 $.getJSON("orte.geojson")
@@ -423,6 +544,7 @@ $.getJSON("orte.geojson")
 
     // Initialize visibility based on the initial zoom level
     updateLayerVisibility();
+    createClickableList();
   })
   .fail(function(jqxhr, textStatus, error) {
     var err = textStatus + ", " + error;
@@ -432,7 +554,7 @@ $.getJSON("orte.geojson")
 // Listen for zoom changes and update layer visibility
 map.on('zoomend', updateLayerVisibility);
 
-//properties.weight 
+
 
 //---------------------------------   POLYGON LAYER   --------------------------------------------
 
