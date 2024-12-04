@@ -161,17 +161,17 @@
 
 
 /* WebKit browsers */
-::-webkit-scrollbar {
+#nameList::-webkit-scrollbar {
     width: 30px; /* Width of the scrollbar */
     border-radius: 8px; /* Round the scrollbar to match the popup */
 }
 
-::-webkit-scrollbar-thumb {
+#nameList::-webkit-scrollbar-thumb {
     background-color: rgba(0, 0, 0, 0.5); /* Color of the scrollbar thumb */
     border-radius: 8px; /* Match the rounded corners */
 }
 
-::-webkit-scrollbar-track {
+#nameList::-webkit-scrollbar-track {
     background: yellow; /* Transparent track to blend with the background */
     border-radius: 8px; /* Round the track as well */
 }
@@ -523,8 +523,7 @@ names.forEach(function(item) {
       var marker = markers[item.name];  // Retrieve marker by name
       if (marker) {
         handleMarkerClick(marker, geoJsonData.features.find(f => f.properties.name === item.name));
-        map.setView(item.latlng, 8);  // Zoom to the marker
-        updateLayerVisibility(); //didn't do anything?
+        map.setView(item.latlng, 11);  // Zoom to the marker
       
       }
     });
