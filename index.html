@@ -20,6 +20,7 @@
     	<style>
         :root {
           --myyellow: #f2c91c; /* rgb(242, 201, 28); */
+          --newyellow:#ffb02e;
         }
 
 
@@ -121,14 +122,13 @@
 
 
 .leaflet-touch .leaflet-control-layers, .leaflet-touch .leaflet-bar {
-    border: #ff00a2;
-    background-clip: padding-box;
+    background-clip: padding-box; /* removes ugly box around the buttons */
 }
 
 		/* Change the popup background color and text color */
 .leaflet-tooltip {
       margin-top: -30px; /* Move tooltip content 30px up */
-      background-color:var(--myyellow); 
+      background-color:yellow; 
       border-radius: 6px; /* Rounded corners */
       border: 2px solid black;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
@@ -193,7 +193,7 @@
 
 /* Button styling */
         .button {
-	    background-color: rgb(202, 133, 6);
+	    background-color: var(--newyellow); 
             color: black;
             font-family: Mochiy Pop One;
             font-size: 10px;
@@ -213,7 +213,7 @@
 
 
 .leaflet-control-zoom-in {
-	background-color: yellow !important;  
+	background-color: var(--newyellow)  !important;  
     color: black;
     border: 2px solid black !important;
     margin-bottom: 10px !important;
