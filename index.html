@@ -68,8 +68,9 @@
 
   #nameList {
                 background-color: var(--myyellow);
-                width: 250px; /* Adjust the width to fit your layout */
+                position: relative; /* Adjust the width to fit your layout */
                 height: 450px; /* Set a fixed height to allow scrolling */
+                padding: 10px;
                 overflow-y: auto; /* Allow vertical scrolling */
                 font-family: Mochiy Pop One;
 }
@@ -78,7 +79,7 @@
       .name-item {
         padding: 8px;
         margin-bottom: 5px;
-        background-color: yellow; /* Light gray background for each name item */
+        background-color: yellow; 
         border-radius: 4px; /* Slightly rounded corners for each item */
         border: 2px solid black;
         cursor: pointer;
@@ -91,6 +92,8 @@
       .name-item:hover {
         background-color: rgb(202, 133, 6); 
         transform: scaleY(1.15); /* Increase Y size by 15% */
+        font-size: 14px; /* Set a reasonable font size */
+        font-weight: bold;
 }
       
 
