@@ -68,7 +68,7 @@
 
   #nameList {
                 background-color: var(--myyellow);
-                position: relative; /* Adjust the width to fit your layout */
+                position: 200px;
                 height: 450px; /* Set a fixed height to allow scrolling */
                 padding: 10px;
                 overflow-y: auto; /* Allow vertical scrolling */
@@ -82,6 +82,7 @@
         background-color: yellow; 
         border-radius: 4px; /* Slightly rounded corners for each item */
         border: 2px solid black;
+        justify-content: center;
         cursor: pointer;
         transition: background-color 0.3s ease; /* Smooth transition for hover effect */
         font-size: 14px; /* Set a reasonable font size */
@@ -152,7 +153,7 @@
     max-width:50vw !important; /* Set the width to 30% of the map's width */ 
     right: 0px;
     top: 5px;/*this is offset*/
-    background: yellow;
+    background: var(--newyellow);
     border: 2px solid black;
     /* padding: 1px; /*inside content*/
     border-radius: 6px; /* Rounded corners */
@@ -197,7 +198,7 @@
 
 /* Button styling */
         .button {
-	    background-color: var(--newyellow); 
+	    background-color: yellow; 
             color: black;
             font-family: Mochiy Pop One;
             font-size: 10px;
@@ -217,7 +218,7 @@
 
 
 .leaflet-control-zoom-in {
-	background-color: var(--newyellow)  !important;  
+	background-color: yellow  !important;  
     color: black;
     border: 2px solid black !important;
     margin-bottom: 10px !important;
@@ -243,7 +244,7 @@
 
 /* Style the fullscreen button */
 .leaflet-control-fullscreen a {
-    background-color: var(--myyellow) !important;  
+    background-color: yellow !important;  
     color: black;
     border: 2px solid black !important;
     border-bottom: 2px solid black !important;
