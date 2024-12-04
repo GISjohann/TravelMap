@@ -19,7 +19,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap" rel="stylesheet">
     	<style>
         :root {
-          --myyellow: rgb(242, 201, 28);
+          --myyellow: #f2c91c; /* rgb(242, 201, 28); */
         }
 
 
@@ -119,10 +119,6 @@
   font-style: normal;
 }
 
-.leaflet-touch .leaflet-control-layers, .leaflet-touch .leaflet-bar {
-    border: #ff00a2;
-    background-clip: padding-box;
-}
 
 
 
@@ -223,9 +219,8 @@
 }
 
 .leaflet-control-zoom-in:hover {
-  transform: scale(1.25); /* Increase size by 25% (6px more in every direction) */
+  transform: scale(1.25); /* Increase size by 25% */
 }
-
 
 .leaflet-control-zoom-out{
 	background-color: yellow !important;  
@@ -236,7 +231,7 @@
 }
 
 .leaflet-control-zoom-out:hover {
-  transform: scale(1.2); /* Increase size by 20% (6px more in every direction) */
+  transform: scale(1.25); /* Increase size by 25 */
 }
 
 /* Style the fullscreen button */
@@ -251,7 +246,7 @@
 
 .leaflet-control-fullscreen a:hover {
 
-  transform: scale(1.3); /* Increase size by 30% (6px more in every direction) */
+  transform: scale(1.25); /* Increase size by 25% */
 }
         
   
