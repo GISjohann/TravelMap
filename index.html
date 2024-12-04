@@ -44,6 +44,7 @@
             justify-content: center;
             align-items: center;
         }
+
 	#map{ /*used to be called top-div, with map css following*/
     position: relative; /* Set the map's position to relative */
     width: 100%;   /*The map should take up the full width of its container */
@@ -67,10 +68,10 @@
 	}	
 
   #nameList {
-                background-color: var(--myyellow);
+                background-color: yellow;
                 /*position: relative;*/
                 height: 450px; /* Set a fixed height to allow scrolling */
-                width:100px;
+                width:200px;
                 padding: 10px;
                 overflow-y: auto; /* Allow vertical scrolling */
                 font-family: Mochiy Pop One;
@@ -80,7 +81,7 @@
       .name-item {
         padding: 8px;
         margin-bottom: 5px;
-        background-color: yellow; 
+        background-color: var(--newyellow); 
         border-radius: 4px; /* Slightly rounded corners for each item */
         border: 2px solid black;
         justify-content: center;
@@ -154,7 +155,7 @@
     max-width:50vw !important; /* Set the width to 30% of the map's width */ 
     right: 0px;
     top: 5px;/*this is offset*/
-    background: var(--myyellow);
+    background: yellow;
     border: 2px solid black;
     /* padding: 1px; /*inside content*/
     border-radius: 6px; /* Rounded corners */
@@ -199,7 +200,7 @@
 
 /* Button styling */
         .button {
-	    background-color: yellow; 
+	    background-color: var(--newyellow);
             color: black;
             font-family: Mochiy Pop One;
             font-size: 10px;
