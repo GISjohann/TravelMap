@@ -69,9 +69,8 @@
 
   #nameList {
                 background-color: yellow;
-                /*position: relative;*/
+                position: relative;
                 height: 450px; /* Set a fixed height to allow scrolling */
-                width:200px;
                 padding: 10px;
                 overflow-y: auto; /* Allow vertical scrolling */
                 font-family: Mochiy Pop One;
@@ -79,6 +78,7 @@
 
       /* Style for individual name items */
       .name-item {
+        width:230px;
         padding: 8px;
         margin-bottom: 5px;
         background-color: var(--newyellow); 
@@ -92,11 +92,11 @@
       }
 
       /* Hover effect for name items */
-      .name-item:hover {
-        background-color: rgb(202, 133, 6); 
+      .name-item:hover { 
         transform: scaleY(1.15); /* Increase Y size by 15% */
-        font-size: 14px; /* Set a reasonable font size */
+        font-size: 16px; /* Set a reasonable font size */
         font-weight: bold;
+        border: 4px solid black;
 }
       
 
@@ -128,7 +128,7 @@
 
 
 .leaflet-touch .leaflet-control-layers, .leaflet-touch .leaflet-bar {
-    border: #ff00a2;
+    border: #00000000;
     background-clip: padding-box; /* removes ugly box around the buttons */
 }
 
