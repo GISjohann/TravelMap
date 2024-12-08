@@ -39,6 +39,7 @@
         }
 
         body {
+            background-color: yellow; /* Background color */
             display: flex; /* used to say block;*/
 	          flex-direction: column;
             justify-content: center;
@@ -62,10 +63,9 @@
 }*/
 
 	    #bottom-div {
-            position: relative;
             width: 100%;
-            height: 150px;
-            background-color: yellow;
+            height: 20px;
+            background-color: var(--myyellow);
 	}	
 
   #nameList {
@@ -355,7 +355,7 @@ function setDefaultPopupContent() {
 // Function to set the legend content in the right-hand popup
 function setLegendPopupContent() {
   rightPopupDiv.innerHTML = '<h3>Legend:</h3>' + 
-    '<img src="BeeKey.png" style="width: auto; height: auto;">' + 
+    '<img src="BeeKey.png" style="width: auto; height: auto;">' + '<p> Map inspired by the German idiom - "Du hast hummeln im Hintern🐝" <br> This expression, out of the many I have learnt while on my OE, left a lasting impression and inspired the theme of this map. <br> Translated to English, it means you got bees in your bottom. Still confused? So was I, so it was further explained that your bottom is at such a risk of beeing stung that your always moving. In my case, traveling through 11 countires.  </p>'
     '<button class="button" onclick="setDefaultPopupContent()">Buzz off</button>';
   
   if (lastClickedMarker) {
@@ -612,10 +612,7 @@ adjustOpacityBasedOnZoom();
 </script>
 <div id="bottom-div">
 	  
-	<h2><br>Du hast Hummeln im Hintern🐝</h2>
-	  
-	<p>This expression, out of the many I have learnt while on my OE, left a lasting impression and inspired the theme of this map. <br> 
-		Translated to English, it means you got bees in your bottom. Still confused? So was I, so it was further explained that your bottom is at such a risk of beeing stung that your always moving. In my case, traveling through 11 countires.  </p>
+	<p>Johann Kissick, 2024 </p>
 
   </div>  	  
   </body>
