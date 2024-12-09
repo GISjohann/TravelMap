@@ -126,6 +126,7 @@
 	p {
             color: black;
             font-family: Arial, Helvetica, sans-serif;
+            font-weight: bold; /* Bold text */
 	}
 	.mochiy-pop-one-regular {
   font-family: "Mochiy Pop One", sans-serif;
@@ -430,7 +431,7 @@ function addGeoJsonLayer() {
 
       // Bind tooltip (shown on hover)
       marker.bindTooltip(HoverContent, {
-        offset: [0, -30],
+        offset: [0, -10], // Just a little bit up
         permanent: false,
         direction: 'top',
         className: 'custom-tooltip'
