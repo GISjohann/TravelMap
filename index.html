@@ -75,7 +75,7 @@
 	}	
 */
   #nameList {
-                background-color: var(--myyellow);
+                background-color: yellow;
                 position: relative;
                 justify-content: center;
                 height: fit-content; /* Set a fixed height to allow scrolling */
@@ -218,7 +218,7 @@
             color: black;
             font-family: Mochiy Pop One;
             font-size: 10px;
-            padding: 1px;
+            padding: 8px;
             border: 2px solid black;
             cursor: pointer;
             text-align: center;
@@ -368,7 +368,7 @@ function setDefaultPopupContent() {
 // Function to set the legend content in the right-hand popup
 function setLegendPopupContent() {
   rightPopupDiv.innerHTML = '<h2>Legend:</h2>' + 
-    '<img src="BeeKey.png" style="width: auto; height: auto;">' + '<p> Map inspired by the German idiom - "Du hast hummeln im Hintern🐝" <br> This expression, out of the many I have learnt while on my OE, left a lasting impression and inspired the theme of this map. <br> Translated to English, it means you got bees in your bottom. Still confused? So was I, so it was further explained that your bottom is at such a risk of beeing stung that your always moving. In my case, traveling through 11 countires.  </p>'
+    '<img src="BeeKey.png" style="width: auto; height: auto;">' + '<p> Map inspired by the German idiom - "Du hast hummeln im Hintern🐝" <br> This expression, out of the many I have learnt while on my OE, left a lasting impression and inspired the theme of this map. <br> Translated to English, it means you got bees in your bottom. Still confused? So was I, so it was further explained that your bottom is at such a risk of beeing stung that your always moving. In my case, traveling through 11 countires.  </p>'+
     '<button class="button" onclick="setDefaultPopupContent()">Buzz off</button>';
   
   if (lastClickedMarker) {
@@ -393,10 +393,11 @@ function setListPopupContent() {
 // Function to update the right-hand popup content with marker info
 function updateRightPopup(properties, latlng) {
   var subtext = properties.words || ''; // Show subtext if available
-  rightPopupDiv.innerHTML = '<h2>' + properties.name + '</h2> \n <img src="fotos/' + properties.abv + '.jpeg" alt="404" style="width: 100%;'+
+  rightPopupDiv.innerHTML = '<h2>' + properties.name + '</h2> \n <img src="fotos/' + properties.abv + '.jpeg" alt="4🐝4" style="width: 100%;'+
   'height: auto; object-fit: contain;"> \n <p>' + subtext + '</p> \n <button class="button" onclick="setDefaultPopupContent()">Buzz off</button>'+
   '<button class="button" onclick="setListPopupContent()">View List</button>';
 }
+
 //---------------------------------   POINT LAYER   --------------------------------------------
 
 // Marker icons for different states
