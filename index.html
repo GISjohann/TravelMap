@@ -78,7 +78,7 @@
                 background-color: var(--myyellow);
                 position: relative;
                 justify-content: center;
-                height: 390px; /* Set a fixed height to allow scrolling */
+                height: fit-content; /* Set a fixed height to allow scrolling */
                 padding-left: 15px;
                 overflow-y: auto; /* Allow vertical scrolling */
                 font-family: Mochiy Pop One;
@@ -218,7 +218,7 @@
             color: black;
             font-family: Mochiy Pop One;
             font-size: 10px;
-            padding: 10px;
+            padding: 1px;
             border: 2px solid black;
             cursor: pointer;
             text-align: center;
@@ -304,7 +304,9 @@
 
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+	maxZoom: 12,
+  minZoom: 5,
   }).addTo(map);
   
  // Add fullscreen control to the map
@@ -333,7 +335,7 @@ map.on('exitFullscreen', function(){
 var lastClickedMarker = null;
 
 // Default content for the right-hand popup
-var DefaultPopupContent = '<h3>Zoom in, then click a 🐝 to see where I was.</h3>' + 
+var DefaultPopupContent = '<h2>Zoom in and click on a 🐝, or navigate the list :)</h2>' + 
   '<button class="button" onclick="setLegendPopupContent()">View Legend</button>' +
   '<button class="button" onclick="setListPopupContent()">View List</button>';
 
@@ -365,7 +367,7 @@ function setDefaultPopupContent() {
 
 // Function to set the legend content in the right-hand popup
 function setLegendPopupContent() {
-  rightPopupDiv.innerHTML = '<h3>Legend:</h3>' + 
+  rightPopupDiv.innerHTML = '<h2>Legend:</h2>' + 
     '<img src="BeeKey.png" style="width: auto; height: auto;">' + '<p> Map inspired by the German idiom - "Du hast hummeln im Hintern🐝" <br> This expression, out of the many I have learnt while on my OE, left a lasting impression and inspired the theme of this map. <br> Translated to English, it means you got bees in your bottom. Still confused? So was I, so it was further explained that your bottom is at such a risk of beeing stung that your always moving. In my case, traveling through 11 countires.  </p>'
     '<button class="button" onclick="setDefaultPopupContent()">Buzz off</button>';
   
@@ -379,7 +381,7 @@ function setLegendPopupContent() {
 function setListPopupContent() {
   // Set the HTML content of the popup, including a header and a button
   rightPopupDiv.innerHTML = `
-    <h3>Places I have 🐝-n</h3>
+    <h2>Places I have 🐝-n</h2>
     <div id="nameList"></div> <!-- This is where the list will be inserted -->
     <button class="button" onclick="setDefaultPopupContent()">Buzz off</button>
   `;
