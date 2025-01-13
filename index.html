@@ -185,12 +185,18 @@
     pointer-events: none;  /* Disable interaction with the map when over the popup */
 }
 
+/* When the cursor is not over the popup, the map interaction should be enabled */
+.leaflet-right-popup:not(:hover) + .map{
+    pointer-events: auto;  /* Re-enable interaction with the map */
+}
+
 /* Style for the popup content inside */
 .leaflet-popup-content {
     /*max-height: 50vh; /* Limit the content height */
   /* Allow scrolling inside the popup if content exceeds the height */
     word-wrap: break-word; /* Ensure long text breaks to fit inside the container */
 }
+
 
 
 /* WebKit browsers */
