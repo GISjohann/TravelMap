@@ -180,14 +180,13 @@
 
 }
 
-/* When the cursor is over the popup, disable scroll on the map */
-.leaflet-right-popup:hover + .map{
-    pointer-events: none;  /* Disable interaction with the map when over the popup */
+/* When the cursor is over the popup, disable scroll interaction with the map */
+.leaflet-right-popup:hover {
+    pointer-events: auto;  /* Keep the popup interactive */
 }
 
-/* When the cursor is not over the popup, the map interaction should be enabled */
-.leaflet-right-popup:not(:hover) + .map{
-    pointer-events: auto;  /* Re-enable interaction with the map */
+.leaflet-right-popup:hover ~ #map {
+    pointer-events: none;  /* Disable map interaction while hovering over the popup */
 }
 
 /* Style for the popup content inside */
