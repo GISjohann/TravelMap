@@ -54,7 +54,7 @@
     position: relative; /* Set the map's position to relative */
     width: 100%;   /*The map should take up the full width of its container */
     height: 100%;
-    pointer-events: auto;  /* Allows interaction with the popup */
+    pointer-events: auto !important;  /* Allows interaction with the popup */
 
   }
 
@@ -170,7 +170,7 @@
     border-radius: 6px; /* Rounded corners */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     z-index: 9999;
-    pointer-events: auto;  /* Allows interaction with the popup */
+    pointer-events: auto !important;  /* Allows interaction with the popup */
 
     /* Scrollbar settings     height: fit-content;*/
 
@@ -182,11 +182,11 @@
 
 /* When the cursor is over the popup, disable scroll interaction with the map */
 .leaflet-right-popup:hover {
-    pointer-events: auto;  /* Keep the popup interactive */
+    pointer-events: auto !important;  /* Keep the popup interactive */
 }
 
 .leaflet-right-popup:hover ~ #map {
-    pointer-events: none;  /* Disable map interaction while hovering over the popup */
+    pointer-events: none !important;  /* Disable map interaction while hovering over the popup */
 }
 
 /* Style for the popup content inside */
