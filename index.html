@@ -1,6 +1,6 @@
 
-<html> travel map
-  <head> <!--this is metadata -->
+<html>
+  <head> 
     <title>Travel Map</title>
     <!-- Include Leaflet CSS and JS -->
         <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
@@ -18,7 +18,12 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap" rel="stylesheet">
     	<style>
-		
+        :root {
+          --myyellow: #f2c91c; /* rgb(242, 201, 28); */
+          --newyellow:#ffb02e;
+        }
+
+
 	 html, body {
             height: 100%;
             margin: 0;
@@ -31,19 +36,42 @@
             padding: 10px; /* Space inside the header */
             box-sizing: border-box;
             z-index: 1000; /* Ensure it stays above other content */
+            
         }
 
         body {
+            background-color: yellow; /* Background color */
             display: flex; /* used to say block;*/
 	          flex-direction: column;
             justify-content: center;
             align-items: center;
+            height: 100vh; /* 100% of the viewport height */
+            
         }
+
 	#map{ /*used to be called top-div, with map css following*/
+    border: 2px solid black;
     position: relative; /* Set the map's position to relative */
     width: 100%;   /*The map should take up the full width of its container */
     height: 100%;
+    pointer-events: none !important;
+    touch-action: none;  /* Allows interaction with the popup */
+
   }
+
+  /* Enable scrolling on the map when the cursor is not over the popup */
+#map:hover {
+    overflow: auto;  /* Allow scrolling when hovering over the map (outside the popup) */
+    pointer-events: auto !important;
+    touch-action: auto;  /* Allows interaction with the popup */
+}
+
+/* Prevent the map from scrolling when the cursor is over the popup */
+.leaflet-right-popup:hover ~ #map {
+    overflow: hidden; 
+    touch-action: auto; /* Keep scrolling disabled while hovering over the popup */
+}
+
     /*width: 1200px;
     height: 850px; /*can#t go more than this for some reason*/
     /*background-color: white;/*
@@ -53,13 +81,48 @@
       #map {
         width: 100%;   The map should take up the full width of its container 
         height: 100%;
-}*/
+}
 
 	    #bottom-div {
-            width: 1000px;
-            height: 5px;
-            background-color: yellow;
+            width: 100%;
+            height: 10px;
+            background-color: var(--myyellow);
 	}	
+*/
+  #nameList {
+                background-color: yellow;
+                position: relative;
+                justify-content: center;
+                height: fit-content; /* Set a fixed height to allow scrolling */
+                padding-left: 40px;
+                overflow-y: auto; /* Allow vertical scrolling */
+                font-family: Mochiy Pop One;
+}
+
+      /* Style for individual name items */
+      .name-item {
+        width:200px;
+        padding: 10px;
+        margin-bottom: 7px;
+        background-color: var(--newyellow); 
+        border-radius: 4px; /* Slightly rounded corners for each item */
+        border: 2px solid black;
+        text-align: center;
+        cursor: pointer;
+        transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+        font-size: 14px; /* Set a reasonable font size */
+        color: black;
+      }
+
+      /* Hover effect for name items */
+      .name-item:hover { 
+        transform: scaleY(1.2);
+        transform: scaleX(1.1);
+       
+}
+      
+
+
         h1 {
             color: black;
             font-family: Mochiy Pop One;
@@ -78,6 +141,7 @@
 	p {
             color: black;
             font-family: Arial, Helvetica, sans-serif;
+            font-weight: bold; /* Bold text */
 	}
 	.mochiy-pop-one-regular {
   font-family: "Mochiy Pop One", sans-serif;
@@ -85,17 +149,16 @@
   font-style: normal;
 }
 
+
 .leaflet-touch .leaflet-control-layers, .leaflet-touch .leaflet-bar {
-    border: #ff00a2;
-    background-clip: padding-box;
+    border: #00000000;
+    background-clip: padding-box; /* removes ugly box around the buttons */
 }
-
-
 
 		/* Change the popup background color and text color */
 .leaflet-tooltip {
       margin-top: -30px; /* Move tooltip content 30px up */
-      background-color: yellow; 
+      background-color:yellow; 
       border-radius: 6px; /* Rounded corners */
       border: 2px solid black;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
@@ -117,32 +180,41 @@
     top: 5px;/*this is offset*/
     background: yellow;
     border: 2px solid black;
-    /* padding: 1px; /*inside content*/
+    padding: 10px; /*inside content*/
     border-radius: 6px; /* Rounded corners */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-    z-index: 1000;
+    z-index: 9999;
 
-    /* Scrollbar settings */
-    height: fit-content;
-    max-height: 95vh; /*Adjust this value to control the popup height */
-    overflow-y:auto; /* Add vertical scroll if content overflows */
-    /* Add padding to make scrollbar fit within rounded edges */
+    /* Scrollbar settings     height: fit-content;*/
+
+    height: 70vh !important; /*Adjust this value to control the popup height */
+    overflow-y: auto !important; 
+    /*overflow-y:auto;  Add vertical scroll if content overflows */
+
+}
+
+
+/* Style for the popup content inside */
+.leaflet-popup-content {
+    /*max-height: 50vh; /* Limit the content height */
+  /* Allow scrolling inside the popup if content exceeds the height */
+    word-wrap: break-word; /* Ensure long text breaks to fit inside the container */
 }
 
 
 
 /* WebKit browsers */
-.leaflet-right-popup::-webkit-scrollbar {
+#nameList::-webkit-scrollbar {
     width: 30px; /* Width of the scrollbar */
     border-radius: 8px; /* Round the scrollbar to match the popup */
 }
 
-.leaflet-right-popup::-webkit-scrollbar-thumb {
+#nameList::-webkit-scrollbar-thumb {
     background-color: rgba(0, 0, 0, 0.5); /* Color of the scrollbar thumb */
     border-radius: 8px; /* Match the rounded corners */
 }
 
-.leaflet-right-popup::-webkit-scrollbar-track {
+#nameList::-webkit-scrollbar-track {
     background: yellow; /* Transparent track to blend with the background */
     border-radius: 8px; /* Round the track as well */
 }
@@ -160,12 +232,12 @@
 
 /* Button styling */
         .button {
-	    background-color: rgb(202, 133, 6);
+	        background-color: var(--newyellow);
             color: black;
             font-family: Mochiy Pop One;
             font-size: 10px;
             padding: 10px;
-            border: black;
+            border: 2px solid black;
             cursor: pointer;
             text-align: center;
             border-radius: 5px;
@@ -173,23 +245,35 @@
             margin: 10px auto; /* Center the button horizontally with auto margins */
             width: fit-content; /* Set button width based on its content */
 }
+/* Button hover effect */
+.button:hover {
+  transform: scale(1.15); /* Increase size by 15% (3px more in every direction) */
+}
+
 
 .leaflet-control-zoom-in {
-	background-color: yellow !important;  
+	background-color: yellow  !important;  
     color: black;
     border: 2px solid black !important;
     margin-bottom: 10px !important;
     border-radius: 20px !important;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-
-
 }
+
+.leaflet-control-zoom-in:hover {
+  transform: scale(1.25); /* Increase size by 25% */
+}
+
 .leaflet-control-zoom-out{
 	background-color: yellow !important;  
     color: black;
     border: 2px solid black !important;
     border-radius: 20px !important;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.leaflet-control-zoom-out:hover {
+  transform: scale(1.25); /* Increase size by 25 */
 }
 
 /* Style the fullscreen button */
@@ -201,17 +285,21 @@
     border-radius: 20px !important;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
+
+.leaflet-control-fullscreen a:hover {
+
+  transform: scale(1.25); /* Increase size by 25% */
+}
         
   
 
-
-	  
+  
     </style>
   </head>
  
   <body>
     <header>
-      <h1>🐝hold my map</h1>
+      <h1>Johanns Bee-utiful Travel Map</h1>
     </header>
     <!-- The map container   <div id="top-div">-->
     <div id="map"></div>
@@ -225,31 +313,19 @@
 	
   
   //Add the OpenStreetMap tile layer
-L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://carto.com/attributions">CARTO</a>',
+//L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+    //attribution: '&copy; <a href="https://carto.com/attributions">CARTO</a>',
+	//maxZoom: 12,
+      	//minZoom: 5
+//}).addTo(map);
+
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
 	maxZoom: 12,
-      	minZoom: 5
-}).addTo(map);
-
-
-//L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-//attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-  //}).addTo(map);
-  
- // Add fullscreen control to the map
-L.control.fullscreen().addTo(map);
-
-// Handle events when entering/exiting fullscreen mode (optional)
-map.on('enterFullscreen', function(){
-    console.log('Entered fullscreen');
-});
-
-map.on('exitFullscreen', function(){
-    console.log('Exited fullscreen');
-});	    
-
-
-
+  minZoom: 5,
+  }).addTo(map);
+ 
 
 //L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 //attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -262,8 +338,9 @@ map.on('exitFullscreen', function(){
 var lastClickedMarker = null;
 
 // Default content for the right-hand popup
-var DefaultPopupContent = '<h3>Zoom in, then click a 🐝 to see where I was.</h3>' + 
-  '<button class="button" onclick="setLegendPopupContent()">View Legend</button>';
+var DefaultPopupContent = '<h2>?!</h2><p>Zoom in and click on a 🐝, or navigate the list :)</p>' + 
+  '<button class="button" onclick="setLegendPopupContent()">View Legend</button>' +
+  '<button class="button" onclick="setListPopupContent()">View List</button>';
 
 // Create a custom control for the right-hand side popup
 var rightSidePopup = L.Control.extend({
@@ -293,8 +370,8 @@ function setDefaultPopupContent() {
 
 // Function to set the legend content in the right-hand popup
 function setLegendPopupContent() {
-  rightPopupDiv.innerHTML = '<h3>Legend:</h3>' + 
-    '<img src="BeeKey.jpeg" style="width: auto; height: auto;">' + 
+  rightPopupDiv.innerHTML = '<h2>Legend:</h2>' + 
+    '<img src="MyBeeKey.png" style="width: auto; height: auto;">' + '<p> Map inspired by the German idiom - "Du hast hummeln im Hintern🐝" <br> This expression, out of the many I have learnt while on my OE, left a lasting impression and inspired the theme of this map. <br> Translated to English, it means you got bees in your bottom. Still confused? So was I, so it was further explained that your bottom is at such a risk of beeing stung that your always moving. In my case, traveling through 11 countires.  </p>'+
     '<button class="button" onclick="setDefaultPopupContent()">Buzz off</button>';
   
   if (lastClickedMarker) {
@@ -303,11 +380,27 @@ function setLegendPopupContent() {
   }
 }
 
+// Function to set the list content inside the popup
+function setListPopupContent() {
+  // Set the HTML content of the popup, including a header and a button
+  rightPopupDiv.innerHTML = `
+    <h2>Places I have 🐝-n</h2>
+    <div id="nameList"></div> <!-- This is where the list will be inserted -->
+    <button class="button" onclick="setDefaultPopupContent()">Buzz off</button>
+  `;
+
+  // Now, after setting the popup content, create the list dynamically
+  createClickableList(); // This function will populate the list inside #nameList
+}
+
 // Function to update the right-hand popup content with marker info
 function updateRightPopup(properties, latlng) {
   var subtext = properties.words || ''; // Show subtext if available
-  rightPopupDiv.innerHTML = '<h2>' + properties.name + '</h2> \n <img src="fotos/' + properties.abv + '.jpeg" alt="404" style="width: 100%; height: auto; object-fit: contain;"> \n <p>' + subtext + '</p> \n <button class="button" onclick="setDefaultPopupContent()">Buzz off</button>';
+  rightPopupDiv.innerHTML = '<h2>' + properties.name + '</h2> \n <img src="fotos/' + properties.abv + '.jpeg" alt="4🐝4" style="width: 100%;'+
+  'height: auto; object-fit: contain;"> \n <p>' + subtext + '</p> \n <button class="button" onclick="setDefaultPopupContent()">Buzz off</button>'+
+  '<button class="button" onclick="setListPopupContent()">View List</button>';
 }
+
 //---------------------------------   POINT LAYER   --------------------------------------------
 
 // Marker icons for different states
@@ -326,6 +419,10 @@ var PopupMarkerIcon = L.icon({
   iconSize: [80, 75]
 });
 
+var geoJsonLayer;  // GeoJSON Layer
+var markers = {};   // Store markers by name for easy lookup
+var lastClickedMarker = null; // To keep track of the last clicked marker
+
 // Function to add GeoJSON layer but not immediately to the map
 function addGeoJsonLayer() {
   geoJsonLayer = L.geoJSON(geoJsonData, {
@@ -336,7 +433,7 @@ function addGeoJsonLayer() {
 
       // Bind tooltip (shown on hover)
       marker.bindTooltip(HoverContent, {
-        offset: [0, -30],
+        offset: [0, -10], // Just a little bit up
         permanent: false,
         direction: 'top',
         className: 'custom-tooltip'
@@ -344,15 +441,8 @@ function addGeoJsonLayer() {
 
       // Event listener for marker click (updates right-hand popup and changes icon)
       marker.on('click', function() {
-        if (lastClickedMarker && lastClickedMarker !== marker) {
-          lastClickedMarker.setIcon(DefaultMarkerIcon); // Reset previous marker
-        }
-
-        lastClickedMarker = marker; // Set the current marker as last clicked
-
-        this.setIcon(PopupMarkerIcon); // Change to popup icon
-
-        updateRightPopup(feature.properties, latlng); // Update popup
+        // Same behavior as clicking the name from the list
+        handleMarkerClick(marker, feature, latlng);
       });
 
       // Hover behavior
@@ -370,10 +460,15 @@ function addGeoJsonLayer() {
         }
       });
 
+    // Store marker in global markers object by name
+    markers[feature.properties.name] = marker;
+
       // Return marker without adding it to the map yet
       return marker;
+
     }
 });
+
 }
 
 // Function to handle layer visibility based on zoom level and feature properties
@@ -413,6 +508,61 @@ function updateLayerVisibility() {
 });
 }
 
+// Function to handle actions when a marker is clicked or a name is clicked from the list
+function handleMarkerClick(marker, feature, latlng) {
+  // Reset the last clicked marker if necessary
+  if (lastClickedMarker && lastClickedMarker !== marker) {
+    lastClickedMarker.setIcon(DefaultMarkerIcon); // Reset previous marker
+  }
+
+  lastClickedMarker = marker; // Set the current marker as last clicked
+  marker.setIcon(PopupMarkerIcon); // Change to popup icon
+  marker.openPopup(); // Open the popup for the clicked marker
+
+  updateRightPopup(feature.properties, latlng); // Update the right-side popup
+}
+
+// Create the clickable list from GeoJSON properties
+function createClickableList() {
+  var nameListDiv = document.getElementById('nameList');
+  var names = [];
+
+  // Loop through GeoJSON features and collect names
+  geoJsonData.features.forEach(function(feature) {
+    if (feature.properties && feature.properties.name) {
+      names.push({
+        name: feature.properties.name,
+        latlng: feature.geometry.coordinates ? L.latLng(feature.geometry.coordinates[1], feature.geometry.coordinates[0]) : null
+      });
+    }
+  });
+
+  // Sort the names alphabetically
+  names.sort(function(a, b) {
+    return a.name.localeCompare(b.name);
+  });
+
+// Create list items for each name and add them to the popup content
+names.forEach(function(item) {
+    var listItem = document.createElement('div');
+    listItem.classList.add('name-item');
+    listItem.textContent = item.name;
+    
+    // When a name is clicked, zoom to the marker and trigger the same behavior as a marker click
+    listItem.addEventListener('click', function() {
+      var marker = markers[item.name];  // Retrieve marker by name
+      if (marker) {
+        handleMarkerClick(marker, geoJsonData.features.find(f => f.properties.name === item.name));
+        map.setView(item.latlng, 11);  // Zoom to the marker
+      
+      }
+    });
+
+    // Append the list item to the #nameList div inside the popup
+    nameListDiv.appendChild(listItem);
+  });
+}
+
 
 // Load the GeoJSON data and add it to the map
 $.getJSON("orte.geojson")
@@ -423,6 +573,7 @@ $.getJSON("orte.geojson")
 
     // Initialize visibility based on the initial zoom level
     updateLayerVisibility();
+    createClickableList();
   })
   .fail(function(jqxhr, textStatus, error) {
     var err = textStatus + ", " + error;
@@ -476,13 +627,15 @@ map.on('zoomend', adjustOpacityBasedOnZoom);
 adjustOpacityBasedOnZoom();
 });
 </script>
+<div id="popup-container">
+  <h3>Popup Content</h3>
+  <div id="popup-content"></div>
+</div>
 <div id="bottom-div">
 	  
-	<h2><br>Du hast Hummeln im Hintern🐝</h2>
-	  
-	<p>This expression, out of the many I have learnt while on my OE, left a lasting impression and inspired the theme of this map. <br> 
-		Translated to English, it means you got bees in your bottom. Still confused? So was I, so it was further explained that your bottom is at such a risk of beeing stung that your always moving. In my case, traveling through 11 countires.  </p>
-</div>  	  
+	<p>Johann Rosteck | Kissick, 2025 </p>
+
+  </div>  	  
   </body>
 </html>
 
