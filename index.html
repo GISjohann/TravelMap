@@ -2,19 +2,15 @@
 <html>
   <head> 
     <title>Travel Map</title>
-    <!-- Include Leaflet CSS and JS -->
-        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
-    <!-- Fullscreen plugin CSS and JS -->
-        <link rel="stylesheet" href="https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css" />
-        <script src="https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js"></script>
+<!-- Leaflet CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
 
-    <!-- Link to Leaflet Sidebar CSS -->
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/noerw/leaflet-sidebar-v2@latest/dist/leaflet-sidebar.min.css" />
+<!-- Link to Leaflet Sidebar CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/noerw/leaflet-sidebar-v2@latest/dist/leaflet-sidebar.min.css" />
 
-    <!-- Link to Leaflet Sidebar JavaScript -->
-      <script src="https://cdn.jsdelivr.net/gh/noerw/leaflet-sidebar-v2@latest/dist/leaflet-sidebar.min.js"></script>
+<!-- Link to Leaflet Fullscreen Plugin CSS -->
+<link rel="stylesheet" href="https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css" />
 
     <!-- JQuery -->
       <script src="jquery-2.1.1.min.js"></script> 
@@ -293,19 +289,22 @@
       <h1>Johanns Bee-utiful Travel Map</h1>
     </header>
     <!-- The map container   <div id="top-div">-->
+
+
+
+
+
     <div id="map"></div>
-    <link rel="stylesheet" href="https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css" />
+    
+    <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 
-    <script src="https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js"></script>
+  <!-- Leaflet Fullscreen Plugin JS -->
+  <script src="https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js"></script>
 
+  <!-- Leaflet Sidebar Plugin JS -->
+  <script src="https://cdn.jsdelivr.net/gh/noerw/leaflet-sidebar-v2@latest/dist/leaflet-sidebar.min.js"></script>
 
-
-    <!-- Link to Leaflet Sidebar CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/noerw/leaflet-sidebar-v2@latest/dist/leaflet-sidebar.min.css" />
-
-    <script src="https://cdn.jsdelivr.net/gh/noerw/leaflet-sidebar-v2@latest/dist/leaflet-sidebar.min.js"></script>
-
-	  </div>
     <script>
   // Initialize the map and set its view to the center of Europe with an appropriate zoom level
   var startingZoomLevel = 5;
