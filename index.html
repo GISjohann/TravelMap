@@ -54,23 +54,8 @@
     position: relative; /* Set the map's position to relative */
     width: 100%;   /*The map should take up the full width of its container */
     height: 100%;
-    pointer-events: none !important;
-    touch-action: none;  /* Allows interaction with the popup */
-
   }
 
-  /* Enable scrolling on the map when the cursor is not over the popup */
-#map:hover {
-    overflow: auto;  /* Allow scrolling when hovering over the map (outside the popup) */
-    pointer-events: auto !important;
-    touch-action: auto;  /* Allows interaction with the popup */
-}
-
-/* Prevent the map from scrolling when the cursor is over the popup */
-.leaflet-right-popup:hover ~ #map {
-    overflow: hidden; 
-    touch-action: auto; /* Keep scrolling disabled while hovering over the popup */
-}
 
     /*width: 1200px;
     height: 850px; /*can#t go more than this for some reason*/
@@ -326,6 +311,20 @@ attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStree
   minZoom: 5,
   }).addTo(map);
  
+
+  // Add fullscreen control to the map
+L.control.fullscreen().addTo(map);
+
+// Handle events when entering/exiting fullscreen mode (optional)
+map.on('enterFullscreen', function(){
+    console.log('Entered fullscreen');
+});
+
+map.on('exitFullscreen', function(){
+    console.log('Exited fullscreen');
+});	    
+
+
 
 //L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 //attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
