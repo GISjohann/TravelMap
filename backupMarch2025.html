@@ -6,23 +6,17 @@
         <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
         <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
-    <!-- Fullscreen plugin CSS and JS -->
+        <!-- Fullscreen plugin CSS and JS -->
         <link rel="stylesheet" href="https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css" />
         <script src="https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js"></script>
 
-    <!-- Link to Leaflet Sidebar CSS -->
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/noerw/leaflet-sidebar-v2@latest/dist/leaflet-sidebar.min.css" />
-
-    <!-- Link to Leaflet Sidebar JavaScript -->
-      <script src="https://cdn.jsdelivr.net/gh/noerw/leaflet-sidebar-v2@latest/dist/leaflet-sidebar.min.js"></script>
-
-    <!-- JQuery -->
-      <script src="jquery-2.1.1.min.js"></script> 
+        <!-- JQuery -->
+        <script src="jquery-2.1.1.min.js"></script> 
 
 	  <!-- Fonts -->
     	<link rel="preconnect" href="https://fonts.googleapis.com">
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap" rel="stylesheet">
     	<style>
         :root {
           --myyellow: #f2c91c; /* rgb(242, 201, 28); */
@@ -330,16 +324,6 @@ map.on('exitFullscreen', function(){
     console.log('Exited fullscreen');
 });	    
 
-// Initialize the sidebar
-var sidebar = L.sidebar({
-      autopan: true,       // Automatically pan the map when the sidebar opens
-      closeButton: true,   // Show the close button
-      container: 'sidebar', // Attach to an element with ID 'sidebar'
-    }).addTo(map);
-
-    // Optionally, add content to the sidebar
-    var content = '<h2>My Sidebar Content</h2><p>This is a sample content inside the sidebar.</p>';
-    sidebar.setContent(content);  // Set content for the sidebar
 
 
 //L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
