@@ -59,19 +59,6 @@ height: 100%;
 
 }
 
-/* Enable scrolling on the map when the cursor is not over the popup */
-#map:hover {
-overflow: auto;  /* Allow scrolling when hovering over the map (outside the popup) */
-    pointer-events: auto !important;  /* Allows interaction with the popup */
-    touch-action: auto;  /* Allows interaction with the popup */
-}
-
-/* Prevent the map from scrolling when the cursor is over the popup */
-.leaflet-right-popup:hover ~ #map {
-    overflow: hidden;  /* Keep scrolling disabled while hovering over the popup */
-    overflow: hidden; 
-    touch-action: auto; /* Keep scrolling disabled while hovering over the popup */
-}
 
 /*width: 1200px;
    height: 850px; /*can#t go more than this for some reason*/
