@@ -598,8 +598,8 @@ var HexLayer = L.geoJSON(data, {
 style: function(feature) {
 var fillColor,
 density = feature.properties.NUMPOINTS;
-if ( density >= 8.0 ) fillColor = "#ff841f";
-else if ( density >= 4.0 ) fillColor = "#ffb61f";
+if ( density >= 6.0 ) fillColor = "#ff841f";
+else if ( density >= 5.0 ) fillColor = "#ffb61f";
 else if ( density >= 3.0 ) fillColor = "#ffe91f";
 else if ( density >= 2.0 ) fillColor = "#ffff6a";
 else if ( density >= 1.0 ) fillColor = "#ffff9b";
