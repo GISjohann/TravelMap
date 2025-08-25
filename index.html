@@ -602,7 +602,7 @@ if ( density > 6.0 ) fillColor = "#ff841f";
 else if ( density > 5.0 ) fillColor = "#ffb61f";
 else if ( density > 3.0 ) fillColor = "#ffe91f";
 else if ( density > 2.0 ) fillColor = "#ffff6a";
-else if ( density > 1.0 ) fillColor = "#ffff9b";
+else if ( density >= 1.0 ) fillColor = "#ffff9b";
 else fillColor = "#000000";  // no data
 return { color: "yellow", weight: 3, fillColor: fillColor, initialOpacity}; //see above for initial Opacity variable.
 
