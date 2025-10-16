@@ -100,7 +100,15 @@
 { "type": "Feature", "properties": { "fid": 96, "name": "Innsbrück", "weight": 2, "abv": "IUNK", "name_eng": "Innsbrueck", "words": null, "days_spent": null }, "geometry": { "type": "Point", "coordinates": [ 11.394069123393756, 47.26769048053815 ] } },
 { "type": "Feature", "properties": { "fid": 97, "name": "Leutasch", "weight": 3, "abv": "LAUH", "name_eng": "Leutasch", "words": null, "days_spent": null }, "geometry": { "type": "Point", "coordinates": [ 11.157621944724687, 47.377265163159059 ] } },
 { "type": "Feature", "properties": { "fid": 98, "name": "Gehrenspitze", "weight": 2, "abv": "GIHE", "name_eng": "Gehrenspitze", "words": null, "days_spent": null }, "geometry": { "type": "Point", "coordinates": [ 11.135086978367267, 47.386677582892297 ] } },
-{ "type": "Feature", "properties": { "fid": 99, "name": "Augsburg", "weight": 2, "abv": "ABGG", "name_eng": "Augsburg", "words": null, "days_spent": null }, "geometry": { "type": "Point", "coordinates": [ 10.8999959, 48.3500061 ] } }
+{ "type": "Feature", "properties": { "fid": 99, "name": "Augsburg", "weight": 2, "abv": "ABGG", "name_eng": "Augsburg", "words": null, "days_spent": null }, "geometry": { "type": "Point", "coordinates": [ 10.8999959, 48.3500061 ] } },
+{ "type": "Feature", "properties": { "fid": null, "name": "Lübeck", "weight": 2, "abv": "LBUK", "name_eng": "Luebeck", "words": "", "days_spent": null }, "geometry": { "type": "Point", "coordinates": [ 10.686876055627101, 53.867008056751345 ] } },
+{ "type": "Feature", "properties": { "fid": null, "name": "Timmendorfer Strand", "weight": 3, "abv": "TRID", "name_eng": "Timmendorfer Strand", "words": "Cold Swim", "days_spent": null }, "geometry": { "type": "Point", "coordinates": [ 10.797236430743471, 53.993006963613233 ] } },
+{ "type": "Feature", "properties": { "fid": null, "name": "Flensburg", "weight": 2, "abv": "FBLG", "name_eng": "Flensburg", "words": "Biggest Jellyfish I ever saw", "days_spent": null }, "geometry": { "type": "Point", "coordinates": [ 9.433789238911698, 54.786206913857505 ] } },
+{ "type": "Feature", "properties": { "fid": null, "name": "Kolding", "weight": 2, "abv": "KDOG", "name_eng": "Kolding", "words": null, "days_spent": null }, "geometry": { "type": "Point", "coordinates": [ 9.477208201645665, 55.489995562811188 ] } },
+{ "type": "Feature", "properties": { "fid": null, "name": "Billund", "weight": 1, "abv": "BLID", "name_eng": "Billund", "words": "Legoland", "days_spent": null }, "geometry": { "type": "Point", "coordinates": [ 9.117076450038367, 55.727780069167991 ] } },
+{ "type": "Feature", "properties": { "fid": null, "name": "Silkeborg", "weight": 2, "abv": "SBIG", "name_eng": "Silkeborg", "words": "Leah was here", "days_spent": null }, "geometry": { "type": "Point", "coordinates": [ 9.550347453697714, 56.169540914646227 ] } },
+{ "type": "Feature", "properties": { "fid": null, "name": "Kopenhavn", "weight": 1, "abv": "KHON", "name_eng": "Copenhagen", "words": null, "days_spent": null }, "geometry": { "type": "Point", "coordinates": [ 12.570396068532112, 55.686163937127603 ] } },
+{ "type": "Feature", "properties": { "fid": null, "name": "Roskilde", "weight": 2, "abv": "RIOE", "name_eng": "Roskilde", "words": "Viking Central", "days_spent": null }, "geometry": { "type": "Point", "coordinates": [ 12.082107741944416, 55.64345116473077 ] } }
 ]
 }
 
