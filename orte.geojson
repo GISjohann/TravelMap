@@ -3,8 +3,8 @@
 "name": "orte",
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC::CRS84" } },
 "features": [
-{ "type": "Feature", "properties": { "fid": 1, "name": "Vatican City", "weight": 3, "abv": "VCAY", "name_eng": "Vatican City", "words": null, "days_spent": null }, "geometry": { "type": "Point", "coordinates": [ 12.4533865, 41.9032822 ] } },
-{ "type": "Feature", "properties": { "fid": 2, "name": "Dortmund", "weight": 2, "abv": "DMOD", "name_eng": "Dortmund", "words": null, "days_spent": null }, "geometry": { "type": "Point", "coordinates": [ 7.4500256, 51.5299671 ] } },
+{ "type": "Feature", "properties": { "fid": 1, "name": "Vatican City", "weight": 3, "abv": "VCAY", "name_eng": "Vatican City", "words": "As a Geo-nerd, I can claim to have visited the tinyest country in the world", "days_spent": null }, "geometry": { "type": "Point", "coordinates": [ 12.4533865, 41.9032822 ] } },
+{ "type": "Feature", "properties": { "fid": 2, "name": "Dortmund", "weight": 2, "abv": "DMOD", "name_eng": "Dortmund", "words": "Sadly didn't spend much time here, as I found Wuppertal way cooler!", "days_spent": null }, "geometry": { "type": "Point", "coordinates": [ 7.4500256, 51.5299671 ] } },
 { "type": "Feature", "properties": { "fid": 3, "name": "Wuppertal", "weight": 2, "abv": "WRUL", "name_eng": "Wuppertal", "words": null, "days_spent": null }, "geometry": { "type": "Point", "coordinates": [ 7.169991, 51.25001 ] } },
 { "type": "Feature", "properties": { "fid": 4, "name": "Oldenburg", "weight": 2, "abv": "OBLG", "name_eng": "Oldenburg", "words": null, "days_spent": null }, "geometry": { "type": "Point", "coordinates": [ 8.2200044, 53.1299986 ] } },
 { "type": "Feature", "properties": { "fid": 5, "name": "Erfurt", "weight": 2, "abv": "EFRT", "name_eng": "Erfurt", "words": null, "days_spent": null }, "geometry": { "type": "Point", "coordinates": [ 11.0299621, 50.9700529 ] } },
