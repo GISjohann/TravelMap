@@ -124,6 +124,8 @@
 {"type":"Feature","properties":{"fid":null,"name":"Souillac","weight":3,"abv":"?","name_eng":"Souillac","words":"3rd night Campoing","days_spent":1.0},"geometry":{"type":"Point","coordinates":[1.47633643506554,44.888971837627736]}},
 {"type":"Feature","properties":{"fid":null,"name":"Saint-Julien-de-Lampon","weight":3,"abv":"?","name_eng":"Saint Julien-de-Lampon","words":null,"days_spent":1.0},"geometry":{"type":"Point","coordinates":[1.359927427989934,44.86420778511738]}},
 {"type":"Feature","properties":{"fid":null,"name":"Vitrac","weight":3,"abv":"?","name_eng":"Vitrac","words":null,"days_spent":1.0},"geometry":{"type":"Point","coordinates":[1.218020110021106,44.815641083159171]}},
-{"type":"Feature","properties":{"fid":null,"name":"Vezac","weight":1,"abv":"?","name_eng":"Vezac","words":"end of trip","days_spent":1.0},"geometry":{"type":"Point","coordinates":[1.148709288137954,44.833865481870916]}}
+{"type":"Feature","properties":{"fid":null,"name":"Vezac","weight":1,"abv":"?","name_eng":"Vezac","words":"end of trip","days_spent":1.0},"geometry":{"type":"Point","coordinates":[1.148709288137954,44.833865481870916]}},
+{"type":"Feature","properties":{"fid":null,"name":"Füssen","weight":2,"abv":"?","name_eng":"Fuessen","words":"pretty!","days_spent":1.0},"geometry":{"type":"Point","coordinates":[10.693255381012643,47.567640257333814]}},
+{"type":"Feature","properties":{"fid":null,"name":"Schloss Neuschwanstein","weight":null,"abv":"?","name_eng":"Schloss Neuschwanstein","words":"overrated","days_spent":0.0},"geometry":{"type":"Point","coordinates":[10.749113523833895,47.557994185590537]}}
 ]
 }
