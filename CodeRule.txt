@@ -1,0 +1,5 @@
+4 Digits of Ortsname, all in caps, umlaute are considered as normal vowels, letters collected from the folowing positions (to match with photos)
+
+0,-4,1,-1
+
+meaning starting letter, for letters from back of word, second letter, last letter of word
