@@ -74,13 +74,17 @@ main {
    border: 2px solid black;
    box-sizing: border-box;
    padding: 20px;
-   background-color: green;
+   background-color: yellow;
    position:absolute;
    z-index: 1000;
-   border-radius: 6px; /* Rounded corners */
+   border-radius: 8px; /* Rounded corners */
    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
    top:20px;
    right:20px;
+
+   /* Makes overflowing content scroll */ 
+   overflow-y: auto;
+   overflow-x: hidden; 
 }
 
 /*width: 1200px;
