@@ -19,52 +19,58 @@
 <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap" rel="stylesheet">
 <style>
 :root {
---myyellow: #f2c91c; /* rgb(242, 201, 28); */
---newyellow:#ffb02e;
+  --myyellow: #f2c91c; /* rgb(242, 201, 28); */
+  --newyellow:#ffb02e;
 }
 
 
 html, body {
-height: 100%;
-margin: 0;
-font-family: Arial, Helvetica, sans-serif
+  height: 100%;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif
+}
+
+body {
+  background-color: yellow; /* Background color */
+  display: flex; /* used to say block;*/
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* 100% of the viewport height */
 }
 
 header {
-width: 100%; /* Full width */
-background-color: yellow; /* Background color */
-padding: 10px; /* Space inside the header */
-box-sizing: border-box;
-z-index: 1000; /* Ensure it stays above other content */
+  width: 100%; /* Full width */
+  background-color: yellow; /* Background color */
+  padding: 10px; /* Space inside the header */
+  box-sizing: border-box;
+  z-index: 1000; /* Ensure it stays above other content */
 
 }
 
-
-body {
-background-color: yellow; /* Background color */
-display: flex; /* used to say block;*/
-flex-direction: column;
-justify-content: center;
-align-items: center;
-height: 100vh; /* 100% of the viewport height */
-
+/* The area containing the map */ 
+main {
+  position: relative;
+  flex: 1; 
 }
+
 
 
 #map { /*used to be called top-div, with map css following*/
-border: 2px solid black;
-position: relative; /* Set the map's position to relative */
-width: 100%;   /*The map should take up 70% of its container */
-height: 100%;
-box-sizing: border-box;
-pointer-events: auto !important;  /* Allows interaction with the popup */
-touch-action: auto;  /* Allows interaction with the popup */
+  border: 2px solid black;
+  position: absolute;  /* #relative; Set the map's position to relative */
+  inset:0;
+  width: 100%;   /*The map should take up 70% of its container */
+  height: 100%;
+  box-sizing: border-box;
+  pointer-events: auto !important;  /* Allows interaction with the popup */
+  touch-action: auto;  /* Allows interaction with the popup */
 
 }
 
 #sidebar_test {
    width: 30%;
-   height: 100%;
+   height: calc(100% - 40px);
    border: 2px solid black;
    box-sizing: border-box;
    padding: 20px;
@@ -74,6 +80,8 @@ touch-action: auto;  /* Allows interaction with the popup */
    float:right;
    border-radius: 6px; /* Rounded corners */
    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+   top:20px;
+   right:20px;
 }
 
 /*width: 1200px;
@@ -306,10 +314,10 @@ transform: scale(1.25); /* Increase size by 25% */
 
 <body>
   <header>
-    <h1>🐝 Travel Map 0 🐝</h1>
+    <h1>🐝 Travel Map 23 🐝</h1>
   </header>
 
-<!-- The map container   <div id="top-div">-->
+<main>
   <div id="map"></div>
     <link rel="stylesheet" href="https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css" />
     <script src="https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js"></script>
@@ -319,7 +327,7 @@ transform: scale(1.25); /* Increase size by 25% */
     <h2>Sidebar</h2> 
     p>Your information goes here.</p>
   </div>
-
+</main>
 <script>
 // Initialize the map and set its view to the center of Europe with an appropriate zoom level
 var startingZoomLevel = 5;
