@@ -39,6 +39,7 @@ z-index: 1000; /* Ensure it stays above other content */
 
 }
 
+
 body {
 background-color: yellow; /* Background color */
 display: flex; /* used to say block;*/
@@ -49,17 +50,25 @@ height: 100vh; /* 100% of the viewport height */
 
 }
 
+
 #map { /*used to be called top-div, with map css following*/
 border: 2px solid black;
 position: relative; /* Set the map's position to relative */
 width: 70%;   /*The map should take up 70% of its container */
 height: 100%;
-float:right;
+float:left;
 pointer-events: auto !important;  /* Allows interaction with the popup */
 touch-action: auto;  /* Allows interaction with the popup */
 
 }
 
+#sidebar {
+   width: 30%;
+   height: 100%;
+   border: 2px solid black;
+   box-sizing: border-box;
+   padding: 20px;
+}
 
 /*width: 1200px;
    height: 850px; /*can#t go more than this for some reason*/
@@ -174,6 +183,7 @@ border-radius: 6px; /* Rounded corners */
 box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 z-index: 9999;
 pointer-events: auto!important;
+float:right;
 
 /* Scrollbar settings     height: fit-content;*/
 
@@ -633,6 +643,11 @@ map.on('zoomend', adjustOpacityBasedOnZoom);
 adjustOpacityBasedOnZoom();
 });
 </script>
+<div id="sidebar"> <!-- Sidebar content goes here --> 
+  <h2>Sidebar</h2> 
+  <p>Your information goes here.</p>
+</div>
+
 <div id="bottom-div">
 
 <p>Johann Rosteck | Kissick, 2025 </p>
