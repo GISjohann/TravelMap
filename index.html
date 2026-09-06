@@ -68,7 +68,7 @@ main {
 
 }
 
-#sidebar_test {
+#sidebar_info {
    width: 30%;
    height: calc(100% - 40px);
    border: 2px solid black;
@@ -289,7 +289,7 @@ box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 transform: scale(1.25); /* Increase size by 25 */
 }
 
-/* Style the fullscreen button */
+/* Style the fullscreen button 
 .leaflet-control-fullscreen a {
 background-color: yellow !important;  
 color: black;
@@ -301,8 +301,10 @@ box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 
 .leaflet-control-fullscreen a:hover {
 
-transform: scale(1.25); /* Increase size by 25% */
+transform: scale(1.25); /* Increase size by 25% 
+
 }
+*/
 
 
 
@@ -322,7 +324,7 @@ transform: scale(1.25); /* Increase size by 25% */
       <script src="https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js"></script>
     </div>
 
-    <div id="sidebar_test"> <!-- Sidebar content goes here --> 
+    <div id="sidebar_info"> <!-- Sidebar content goes here --> 
       <h2>Sidebar</h2> 
       <p>Your information goes here.</p>
     </div>
@@ -348,6 +350,8 @@ maxZoom: 12,
 minZoom: 5,
 }).addTo(map);
 
+
+/*
 // Add fullscreen control to the map
 L.control.fullscreen().addTo(map);
 
@@ -359,7 +363,7 @@ console.log('Entered fullscreen');
 map.on('exitFullscreen', function(){
 console.log('Exited fullscreen');
 });	    
-
+*/
 
 
 
@@ -368,6 +372,8 @@ console.log('Exited fullscreen');
 //}).addTo(map);
 
 // Load GeoJSON from an external file and add GeoJSON layer to the map once the file is loaded
+
+const sidebar_info = document.getElementById("sidebar_info");
 
 
 // Global variable to keep track of the last clicked marker
@@ -378,7 +384,8 @@ var DefaultPopupContent = '<h2>?!</h2><p>Zoom in and click on a 🐝, or navigat
 '<button class="button" onclick="setLegendPopupContent()">View Legend</button>' +
 '<button class="button" onclick="setListPopupContent()">View List</button>';
 
-// Create a custom control for the right-hand side popup
+// Create a custom control for the right-hand side popup 
+/*shaded out on the 06.09.26
 var rightSidePopup = L.Control.extend({
 onAdd: function(map) {
 var div = L.DomUtil.create('div', 'leaflet-right-popup');
@@ -393,6 +400,14 @@ map.addControl(rightPopupControl);
 
 // Reference to the control's div for updating content
 var rightPopupDiv = document.querySelector('.leaflet-right-popup');
+
+*/
+var rightPopupDiv = document.getElementById('sidebar_info');
+
+rightPopupDiv.innerHTML = DefaultPopupContent;
+
+
+
 
 // Function to reset the right-hand popup to the default content
 function setDefaultPopupContent() {
@@ -415,6 +430,10 @@ lastClickedMarker.setIcon(DefaultMarkerIcon);
 lastClickedMarker = null;
 }
 }
+
+//johann working from here
+
+
 
 // Function to set the list content inside the popup
 function setListPopupContent() {
@@ -668,7 +687,7 @@ adjustOpacityBasedOnZoom();
 
 <div id="bottom-div">
 
-<p>Johann Rosteck | Kissick, 2025 </p>
+<p style="text-align: center;">Johann Rosteck | Kissick, 2023 - 2026 </p>
 
 </div>  	  
 </body>
