@@ -34,8 +34,8 @@ body {
   background-color: yellow; /* Background color */
   display: flex; /* used to say block;*/
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  /*ustify-content: center;*/
+  /*align-items: center;*/
   height: 100vh; /* 100% of the viewport height */
 }
 
@@ -60,11 +60,11 @@ main {
   border: 2px solid black;
   position: absolute;  /* #relative; Set the map's position to relative */
   inset:0;
-  width: 100%;   /*The map should take up 70% of its container */
+  width: 100%;   /*The map should take up 100% of its container */
   height: 100%;
-  box-sizing: border-box;
-  pointer-events: auto !important;  /* Allows interaction with the popup */
-  touch-action: auto;  /* Allows interaction with the popup */
+  /*box-sizing: border-box;*/
+  /*pointer-events: auto !important;  /* Allows interaction with the popup */
+  /*touch-action: auto;  /* Allows interaction with the popup */
 
 }
 
@@ -77,7 +77,6 @@ main {
    background-color: green;
    position:absolute;
    z-index: 1000;
-   float:right;
    border-radius: 6px; /* Rounded corners */
    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
    top:20px;
@@ -314,20 +313,21 @@ transform: scale(1.25); /* Increase size by 25% */
 
 <body>
   <header>
-    <h1>🐝 Travel Map 23 🐝</h1>
+    <h1>🐝 Travel Map 🐝</h1>
   </header>
 
-<main>
-  <div id="map"></div>
-    <link rel="stylesheet" href="https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css" />
-    <script src="https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js"></script>
-  </div>
+  <main>
+    <div id="map"></div>
+      <link rel="stylesheet" href="https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css" />
+      <script src="https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js"></script>
+    </div>
 
-  <div id="sidebar_test"> <!-- Sidebar content goes here --> 
-    <h2>Sidebar</h2> 
-    p>Your information goes here.</p>
-  </div>
-</main>
+    <div id="sidebar_test"> <!-- Sidebar content goes here --> 
+      <h2>Sidebar</h2> 
+      <p>Your information goes here.</p>
+    </div>
+  </main>
+
 <script>
 // Initialize the map and set its view to the center of Europe with an appropriate zoom level
 var startingZoomLevel = 5;
