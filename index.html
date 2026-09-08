@@ -18,6 +18,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap" rel="stylesheet">
 <style>
+
+  
+
+
 :root {
   --myyellow: #f2c91c; /* rgb(242, 201, 28); */
   --newyellow:#ffb02e;
@@ -247,6 +251,12 @@ scrollbar-color: rgba(0, 0, 0, 0.5) transparent; /* Thumb and track colors */
 border-radius: 8px; /* Rounded corners */
 }
 
+.button-container {
+    display: flex;
+    gap: 5px;
+}
+
+
 /* Button styling */
 .button {
 background-color: var(--newyellow);
@@ -384,10 +394,11 @@ const sidebar_info = document.getElementById("sidebar_info");
 var lastClickedMarker = null;
 
 // Default content for the right-hand popup
-var DefaultPopupContent = '<h2>Bienvenue,<br> Hertzlichwilkommen,<br> Welcome!<p>Zoom in and click on a 🐝, or navigate the list :) <br>'  + 
-'<button class="button" onclick="setLegendPopupContent()">View Legend</button>' +
+  var DefaultPopupContent = '<h2>Bienvenue,<br> Hertzlichwilkommen,<br> Welcome!<p>Zoom in and click on a 🐝, or navigate the list :) <br>'  + '<div class="button-container">' +
+  '<button class="button" onclick="setLegendPopupContent()">View Legend</button>' +
 '<button class="button" onclick="setListPopupContent()">View List</button>'+
-'<button class="button" onclick="setListPopupContent()">Quick facts!</button>'+
+'<button class="button" onclick="setListPopupContent()">Quick facts!</button></div>' +
+''+
 '<br> <h2> "Du hast hummeln im Hintern🐝"</h2> <br> This expression, out of the many I have learnt while on my OE, left a lasting impression and inspired the theme of this map. <br> Translated to English, it means you got bees in your bottom. So many bees that you always need to be on the move, keep on travelling, and not settle.</p>'
 
 // Create a custom control for the right-hand side popup 
@@ -447,6 +458,19 @@ function setListPopupContent() {
 rightPopupDiv.innerHTML = `
    <h2>Places I have 🐝-n</h2>
    <div id="nameList"></div> <!-- This is where the list will be inserted -->
+   <button class="button" onclick="setDefaultPopupContent()">Buzz off</button>
+ `;
+
+// Now, after setting the popup content, create the list dynamically
+createClickableList(); // This function will populate the list inside #nameList
+}
+
+// Function to set quick facts content inside the popup
+function setQuickFactsContent() {
+// Set the HTML content of the popup, including a header and a button
+rightPopupDiv.innerHTML = `
+   <h2>Quick Buzzy Facts 🐝</h2> + <br>+ <br> +
+   <p>Bees (Places I have been): 100 <br> Countries visited: 11 </p>
    <button class="button" onclick="setDefaultPopupContent()">Buzz off</button>
  `;
 
