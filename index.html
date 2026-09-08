@@ -384,10 +384,11 @@ const sidebar_info = document.getElementById("sidebar_info");
 var lastClickedMarker = null;
 
 // Default content for the right-hand popup
-var DefaultPopupContent = '<h2>Bienvenue,<br> Hertzlichwilkommen,<br> Welcome!</h2><p>Zoom in and click on a 🐝, or navigate the list :) <br>'  + 
+var DefaultPopupContent = '<h2>Bienvenue,<br> Hertzlichwilkommen,<br> Welcome!<p>Zoom in and click on a 🐝, or navigate the list :) <br>'  + 
 '<button class="button" onclick="setLegendPopupContent()">View Legend</button>' +
 '<button class="button" onclick="setListPopupContent()">View List</button>'+
-'<br> Map inspired by the German idiom - "Du hast hummeln im Hintern🐝" <br> This expression, out of the many I have learnt while on my OE, left a lasting impression and inspired the theme of this map. <br> Translated to English, it means you got bees in your bottom. Still confused? So was I, so it was further explained that your bottom is at such a risk of beeing stung that your always moving. In my case, traveling through 11 countires.</p>'
+'<button class="button" onclick="setListPopupContent()">Quick facts!</button>'+
+'<br> <h2> "Du hast hummeln im Hintern🐝"</h2> <br> This expression, out of the many I have learnt while on my OE, left a lasting impression and inspired the theme of this map. <br> Translated to English, it means you got bees in your bottom. So many bees that you always need to be on the move, keep on travelling, and not settle.</p>'
 
 // Create a custom control for the right-hand side popup 
 /*shaded out on the 06.09.26
