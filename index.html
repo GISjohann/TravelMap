@@ -69,7 +69,7 @@ main {
 }
 
 #sidebar_info {
-   width: 25%;
+   width: 28%;
    height: calc(100% - 40px);
    border: 2px solid black;
    box-sizing: border-box;
@@ -149,7 +149,7 @@ margin: 0;
 h2 {
 color: black;
 font-family: Mochiy Pop One;
-font-size: 250%;
+font-size: 200%;
 text-align: center;
 margin: 0;
 }
@@ -384,9 +384,10 @@ const sidebar_info = document.getElementById("sidebar_info");
 var lastClickedMarker = null;
 
 // Default content for the right-hand popup
-var DefaultPopupContent = '<h2>Bienvenue,/n Hertzlichwilkommen,/n Welcome!</h2><p>Zoom in and click on a 🐝, or navigate the list :) <br> <br> Map inspired by the German idiom - "Du hast hummeln im Hintern🐝" <br> This expression, out of the many I have learnt while on my OE, left a lasting impression and inspired the theme of this map. <br> Translated to English, it means you got bees in your bottom. Still confused? So was I, so it was further explained that your bottom is at such a risk of beeing stung that your always moving. In my case, traveling through 11 countires.</p>' + 
+var DefaultPopupContent = '<h2>Bienvenue,<br> Hertzlichwilkommen,<br> Welcome!</h2><p>Zoom in and click on a 🐝, or navigate the list :) <br>'  + 
 '<button class="button" onclick="setLegendPopupContent()">View Legend</button>' +
-'<button class="button" onclick="setListPopupContent()">View List</button>';
+'<button class="button" onclick="setListPopupContent()">View List</button>'+
+'<br> Map inspired by the German idiom - "Du hast hummeln im Hintern🐝" <br> This expression, out of the many I have learnt while on my OE, left a lasting impression and inspired the theme of this map. <br> Translated to English, it means you got bees in your bottom. Still confused? So was I, so it was further explained that your bottom is at such a risk of beeing stung that your always moving. In my case, traveling through 11 countires.</p>'
 
 // Create a custom control for the right-hand side popup 
 /*shaded out on the 06.09.26
