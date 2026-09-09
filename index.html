@@ -396,8 +396,8 @@ const MyControl = L.Control.extend({
 
       div.innerHTML = `
         <button onclick="setLegendPopupContent()" title="Legend">🔍</button>
-        <button onclick="setListPopupContent()" title="View List">🧾</button>
-        <button onclick="setListPopupContent()" title="Quick facts!">💡</button>
+        <button onclick="setListPopupContent()" title="View List">≡</button>
+        <button onclick="setListPopupContent()" title="Quick facts!">⁉</button>
       `;
 
       // Prevent clicks from propagating to the map
@@ -508,10 +508,6 @@ function setListPopupContent() {
 rightPopupDiv.innerHTML = `
    <h2>Places I have 🐝-n</h2>
    <div id="nameList"></div> <!-- This is where the list will be inserted -->
-   '<div class="button-container">' +
-  '<button class="button" onclick="setLegendPopupContent()">View Legend</button>' +
-'<button class="button" onclick="setListPopupContent()">View List</button>'+
-'<button class="button" onclick="setListPopupContent()">Quick facts!</button></div>'
  `;
 
 // Now, after setting the popup content, create the list dynamically
@@ -524,10 +520,6 @@ function setQuickFactsContent() {
 rightPopupDiv.innerHTML = `
    <h2>Quick Buzzy Facts 🐝</h2> + <br>+ <br> +
    <p>Bees (Places I have been): 100 <br> Countries visited: 11 <br> Densest Hexcell: not Frankfurt</p>
-   <div class="button-container">' +
-  '<button class="button" onclick="setLegendPopupContent()">View Legend</button>' +
-'<button class="button" onclick="setListPopupContent()">View List</button>'+
-'<button class="button" onclick="setListPopupContent()">Quick facts!</button></div>'
  `;
 
 // Now, after setting the popup content, create the list dynamically
@@ -538,10 +530,7 @@ createClickableList(); // This function will populate the list inside #nameList
 function updateRightPopup(properties, latlng) {
 var subtext = properties.words || ''; // Show subtext if available
 rightPopupDiv.innerHTML = '<h2>' + properties.name + '</h2> \n <img src="fotos/' + properties.abv + '.jpeg" alt="4🐝4" style="width: 100%;'+
-'height: auto; object-fit: contain;"> \n <p>' + subtext + '</p> \n <div class="button-container">' +
-  '<button class="button" onclick="setLegendPopupContent()">View Legend</button>' +
-'<button class="button" onclick="setListPopupContent()">View List</button>'+
-'<button class="button" onclick="setListPopupContent()">Quick facts!</button></div>';
+'height: auto; object-fit: contain;"> \n <p>' + subtext + '</p>';
 }
 
 //---------------------------------   POINT LAYER   --------------------------------------------
