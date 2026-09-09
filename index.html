@@ -321,21 +321,24 @@ transform: scale(1.25); /* Increase size by 25%
 */
 .my-control {
   display: flex;
-  gap: 2px;
+  flex-direction: column;
+  gap: 5px;
 }
+
 
 .my-control button {
-  width: 30px;
-  height: 30px;
-  padding: 0;
-  border: 0;
-  background: white;
-  cursor: pointer;
-  font-size: 16px;
+  background-color: var(--newyellow);
+  color: black;
+  border: 2px solid black !important;
+  margin-bottom: 10px !important;
+  border-radius: 20px !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
+
+
 .my-control button:hover {
-  background: #f4f4f4;
+  transform: scale(1.15); /* Increase size by 15% (3px more in every direction) */
 }
 
 
@@ -390,9 +393,9 @@ const MyControl = L.Control.extend({
       const div = L.DomUtil.create('div', 'leaflet-bar my-control');
 
       div.innerHTML = `
-        <button onclick="setLegendPopupContent()" title="Legend">★</button>
-        <button onclick="setListPopupContent()" title="View List">:)</button>
-        <button onclick="setListPopupContent()" title="Quick facts!">⌂</button>
+        <button onclick="setLegendPopupContent()" title="Legend">🔍🔑🗝️</button>
+        <button onclick="setListPopupContent()" title="View List">🧾</button>
+        <button onclick="setListPopupContent()" title="Quick facts!">💡</button>
       `;
 
       // Prevent clicks from propagating to the map
@@ -440,9 +443,9 @@ var lastClickedMarker = null;
 
 // Default content for the right-hand popup
   var DefaultPopupContent = '<h2>Bienvenue,<br> Hertzlichwilkommen,<br> Welcome!</h2><p>Zoom in and click on a 🐝, or navigate the list :) <br>'  + '<div class="button-container">' +
-  '<button class="button" onclick="setLegendPopupContent()">View Legend</button>' +
-'<button class="button" onclick="setListPopupContent()">View List</button>'+
-'<button class="button" onclick="setListPopupContent()">Quick facts!</button></div>' +
+  '<button class="button" onclick="setLegendPopupContent()">🔍🔑🗝️ View Legend</button>' +
+'<button class="button" onclick="setListPopupContent()">🧾 View List</button>'+
+'<button class="button" onclick="setListPopupContent()">💡Quick facts!</button></div>' +
 ''+
 '<br> <h2> "Du hast hummeln im Hintern🐝"</h2> <br> This expression, out of the many I have learnt while on my OE, left a lasting impression and inspired the theme of this map. <br> Translated to English, it means you got bees in your bottom. So many bees that you always need to be on the move, keep on travelling, and not settle.</p>'
 
