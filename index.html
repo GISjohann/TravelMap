@@ -319,7 +319,24 @@ transform: scale(1.25); /* Increase size by 25%
 
 }
 */
+.my-control {
+  display: flex;
+  gap: 2px;
+}
 
+.my-control button {
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: 0;
+  background: white;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.my-control button:hover {
+  background: #f4f4f4;
+}
 
 
 
@@ -364,6 +381,34 @@ maxZoom: 12,
 minZoom: 5,
 }).addTo(map);
 
+const MyControl = L.Control.extend({
+    options: {
+      position: 'topleft'
+    },
+
+    onAdd: function (map) {
+      const div = L.DomUtil.create('div', 'leaflet-bar my-control');
+
+      div.innerHTML = `
+        <button onclick="setLegendPopupContent()" title="Legend">★</button>
+        <button onclick="setListPopupContent()" title="View List">:)</button>
+        <button onclick="setListPopupContent()" title="Quick facts!">⌂</button>
+      `;
+
+      // Prevent clicks from propagating to the map
+      L.DomEvent.disableClickPropagation(div);
+
+      div.querySelectorAll('button').forEach((button, index) => {
+        button.addEventListener('click', () => {
+          console.log('Clicked button', index + 1);
+        });
+      });
+
+      return div;
+    }
+  });
+
+  map.addControl(new MyControl());
 
 /*
 // Add fullscreen control to the map
@@ -473,7 +518,7 @@ function setQuickFactsContent() {
 // Set the HTML content of the popup, including a header and a button
 rightPopupDiv.innerHTML = `
    <h2>Quick Buzzy Facts 🐝</h2> + <br>+ <br> +
-   <p>Bees (Places I have been): 100 <br> Countries visited: 11 </p>
+   <p>Bees (Places I have been): 100 <br> Countries visited: 11 <br> Densest Hexcell: not Frankfurt</p>
    <div class="button-container">' +
   '<button class="button" onclick="setLegendPopupContent()">View Legend</button>' +
 '<button class="button" onclick="setListPopupContent()">View List</button>'+
