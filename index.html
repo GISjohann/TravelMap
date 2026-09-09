@@ -191,35 +191,35 @@ font-family: Mochiy Pop One;
 /* Custom popup style on the right side inside the map frame */
 .leaflet-right-popup {
 position: absolute;
-display: block; /* Ensure it's not hidden */
+display: block; /* Ensure it's not hidden 
 visibility: visible;
-width:25vw;/*fit-content;*/
-max-width:50vw !important; /* Set the width to 30% of the map's width */ 
+width:25vw;/*fit-content;
+max-width:50vw !important;  Set the width to 30% of the map's width 
 right: 0px;
 top: 5px;/*this is offset*/
 background: yellow;
 border: 2px solid black;
-padding: 10px; /*inside content*/
-border-radius: 6px; /* Rounded corners */
+padding: 10px; /*inside content
+border-radius: 6px; /* Rounded corners 
 box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 z-index: 9999;
 pointer-events: auto!important;
 float:right;
 
-/* Scrollbar settings     height: fit-content;*/
+/* Scrollbar settings     height: fit-content;
 
-height: 70vh !important; /*Adjust this value to control the popup height */
+height: 70vh !important; /*Adjust this value to control the popup height 
 overflow-y: auto !important; 
 /*overflow-y:auto;  Add vertical scroll if content overflows */
 
 }
 
 
-/* Style for the popup content inside */
+/* Style for the popup content inside
 .leaflet-popup-content {
 /*max-height: 50vh; /* Limit the content height */
-/* Allow scrolling inside the popup if content exceeds the height */
-word-wrap: break-word; /* Ensure long text breaks to fit inside the container */
+/* Allow scrolling inside the popup if content exceeds the height 
+word-wrap: break-word; Ensure long text breaks to fit inside the container 
 }
 
 
@@ -262,7 +262,7 @@ border-radius: 8px; /* Rounded corners */
 background-color: var(--newyellow);
 color: black;
 font-family: Mochiy Pop One;
-font-size: 10px;
+font-size: 18px;
 padding: 10px;
 border: 2px solid black;
 cursor: pointer;
@@ -395,7 +395,7 @@ const MyControl = L.Control.extend({
       const div = L.DomUtil.create('div', 'leaflet-bar my-control');
 
       div.innerHTML = `
-        <button onclick="setLegendPopupContent()" title="Legend">🔍</button>
+        <button onclick="setLegendPopupContent()" title="Legend">ℹ</button>
         <button onclick="setListPopupContent()" title="View List">≡</button>
         <button onclick="setListPopupContent()" title="Quick facts!">⁉</button>
       `;
