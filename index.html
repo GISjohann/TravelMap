@@ -64,7 +64,7 @@ html, body {
 }
 
 body {
-  background-color: yellow; /* Background color */
+  background-color: rgb(0, 255, 213); /* Background color */
   display: flex; /* used to say block;*/
   flex-direction: column;
   /*ustify-content: center;*/
@@ -74,7 +74,7 @@ body {
 
 header {
   width: 100%; /* Full width */
-  height: 12%;
+  height: 10%;
   background-color: yellow; /* Background color */
   padding: 10px; /* Space inside the header */
   box-sizing: border-box;
@@ -84,7 +84,7 @@ header {
 
 /* The area between header and footer */
 main {
-  height: 88%;
+  height: 90%;
   position: relative;
   flex: 1; 
 }
@@ -348,7 +348,7 @@ const MyControl = L.Control.extend({
       div.innerHTML = `
         <button onclick="setLegendPopupContent()" title="Legend">ℹ</button>
         <button onclick="setListPopupContent()" title="View List">≡</button>
-        <button onclick="setListPopupContent()" title="Quick facts!">⁉</button>
+        <button onclick="setListPopupContent()" title="Quick facts!">💡</button>
       `;
 
       // Prevent clicks from propagating to the map
@@ -457,7 +457,7 @@ lastClickedMarker = null;
 function setListPopupContent() {
 // Set the HTML content of the popup, including a header and a button
 rightPopupDiv.innerHTML = `
-   <h2>less buzz🐝, more scroll</h2>
+   <h2>less buzz, more scroll</h2>
    <div id="nameList"></div>
   `;
 
