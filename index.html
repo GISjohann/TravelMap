@@ -44,6 +44,16 @@ text-align: center;
 margin: 0;
 }
 
+h3 {
+color: black;
+font-family: Mochiy Pop One;
+font-style: italic;
+font-size: 150%;
+text-align: center;
+margin: 0;
+}
+
+
 p {
 color: black;
 font-family: Arial, Helvetica, sans-serif;
@@ -106,7 +116,7 @@ main {
 #footer {
   width: 100%; /* Full width */
   height: 3%;
-  padding: 0;
+  padding: 2;
   background-color: yellow; /* Background color */
   box-sizing: border-box;
   z-index: 1000; /* Ensure it stays above other content */
@@ -302,8 +312,8 @@ transform: scale(1.25); /* Increase size by 25%
   border: 2px solid black;
   margin-bottom: 10px;
   border-radius: 50px ;
-  height:20px;
-  width:20px;
+  height:50px;
+  width:50px;
   cursor: pointer;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
@@ -338,7 +348,7 @@ transform: scale(1.25); /* Increase size by 25%
 <script>
 // Initialize the map and set its view to the center of Europe with an appropriate zoom level
 var startingZoomLevel = 5;
-var map = L.map('map').setView([48.1657, 9.9515], startingZoomLevel);
+var map = L.map('map').setView([48.1657, 9.6515], startingZoomLevel);
 
 
 //Add the OpenStreetMap tile layer
@@ -418,7 +428,7 @@ var lastClickedMarker = null;
 '<button class="button" onclick="setListPopupContent()">🧾View List</button>'+
 '<button class="button" onclick="setListPopupContent()">💡Quick facts!</button></div>' +
 ''+
-'<br> <h2 style:italic> "Du hast hummeln im Hintern🐝"</h2> <br> "You have bees in your behind" - This expression, out of the many I have learnt while on my OE, left a lasting impression and inspired the theme of this map. <br> So many bees in my behind kept me on the move</p>'
+'<br> <h3> 🐝 "Du hast hummeln im Hintern" 🐝</h3> <br><p> "You have bees in your behind" - This expression, out of the many I have learnt while on my OE, left a lasting impression and inspired the theme of this map. So many bees in my behind kept me on the move</p>'
 
 // Create a custom control for the right-hand side popup 
 /*shaded out on the 06.09.26
