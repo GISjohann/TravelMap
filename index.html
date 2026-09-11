@@ -76,7 +76,7 @@ body {
 
 header {
   width: 100%; /* Full width */
-  height: 10%;
+  height: 13%;
   background-color: yellow; /* Background color */
   padding: 10px; /* Space inside the header */
   box-sizing: border-box;
@@ -86,14 +86,15 @@ header {
 
 /* The area between header and footer */
 main {
-  height: 87%;
+  border: 2px solid black;
+  height: 84%;
   position: relative;
   flex: 1; 
 }
 
 
 #map { 
-  border: 2px solid black;
+  /*border: 2px solid black;*/
   position: absolute;  /* #absolute in relation to the main divider b*/
   inset:0;
   width: 100%;  
@@ -107,6 +108,7 @@ main {
 #footer {
   width: 100%; /* Full width */
   height: 3%;
+  padding: 1px;
   background-color: yellow; /* Background color */
   box-sizing: border-box;
   z-index: 1000; /* Ensure it stays above other content */
