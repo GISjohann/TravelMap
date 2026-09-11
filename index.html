@@ -56,8 +56,6 @@ font-style: normal;
 }
 
 
-
-
 /* Div-Blocks */
 html, body {
   height: 100%;
@@ -76,7 +74,7 @@ body {
 
 header {
   width: 100%; /* Full width */
-  height: 10%;
+  height: 15%;
   background-color: yellow; /* Background color */
   padding: 10px; /* Space inside the header */
   box-sizing: border-box;
@@ -86,6 +84,7 @@ header {
 
 /* The area between header and footer */
 main {
+  height: 80%;
   position: relative;
   flex: 1; 
 }
@@ -122,27 +121,7 @@ main {
    overflow-x: hidden; 
 }
 
-#footer {
-  width: 100%;
-  height: 10px;
-  background-color: brown;
-}
 
-
-
-/*width: 1200px;
-   height: 850px; /*can#t go more than this for some reason*/
-/*background-color: white;/*
-	}  
-
- /* Ensure the map container is set to fill the available screen space 
-     #map {
-       width: 100%;   The map should take up the full width of its container 
-       height: 100%;
-}
-
-	    	
-*/
 #nameList {
 background-color: green;
 position: relative;
@@ -416,12 +395,12 @@ console.log('Exited fullscreen');
 var lastClickedMarker = null;
 
 // Default content for the right-hand popup
-  var DefaultPopupContent = '<h2>Bienvenue,<br> Hertzlichwilkommen,<br> Welcome!</h2><p>Zoom in and click on a 🐝, or navigate the list :) <br>'  + '<div class="button-container">' +
+  var DefaultPopupContent = '<h2>Bienvenue,<br> Hertzlichwilkommen,<br> Welcome!</h2><p>Zoom in to find some 🐝`s, or navigate to one of the info-panes below<br>'  + '<div class="button-container">' +
   '<button class="button" onclick="setLegendPopupContent()">🔍View Legend</button>' +
 '<button class="button" onclick="setListPopupContent()">🧾View List</button>'+
 '<button class="button" onclick="setListPopupContent()">💡Quick facts!</button></div>' +
 ''+
-'<br> <h2> "Du hast hummeln im Hintern🐝"</h2> <br> This expression, out of the many I have learnt while on my OE, left a lasting impression and inspired the theme of this map. <br> Translated to English, it means you got bees in your bottom. So many bees that you always need to be on the move, keep on travelling, and not settle.</p>'
+'<br> <h2 style:italic> "Du hast hummeln im Hintern🐝"</h2> <br> "You have bees in your behind" - This expression, out of the many I have learnt while on my OE, left a lasting impression and inspired the theme of this map. <br> So many bees in my behind kept me on the move</p>'
 
 // Create a custom control for the right-hand side popup 
 /*shaded out on the 06.09.26
