@@ -116,7 +116,7 @@ main {
 #footer {
   width: 100%; /* Full width */
   height: 3%;
-  padding: 2;
+  padding: 4;
   background-color: yellow; /* Background color */
   box-sizing: border-box;
   z-index: 1000; /* Ensure it stays above other content */
@@ -311,9 +311,9 @@ transform: scale(1.25); /* Increase size by 25%
   color: black;
   border: 2px solid black;
   margin-bottom: 10px;
-  border-radius: 50px ;
-  height:50px;
-  width:50px;
+  border-radius: 30px ;
+  height:30px;
+  width:30px;
   cursor: pointer;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
@@ -376,7 +376,7 @@ const MyControl = L.Control.extend({
       div.innerHTML = `
         <button onclick="setLegendPopupContent()" title="Legend">ℹ</button>
         <button onclick="setListPopupContent()" title="View List">≡</button>
-        <button onclick="setListPopupContent()" title="Quick facts!">⌕</button>
+        <button onclick="setQuickFactsPopupContent()" title="Quick facts!">⌕</button>
       `;
 
       // Prevent clicks from propagating to the map
@@ -426,7 +426,7 @@ var lastClickedMarker = null;
   var DefaultPopupContent = '<h2>Bienvenue,<br> Hertzlichwilkommen,<br> Welcome!</h2><p>Zoom in to find some 🐝`s, or navigate to one of the info-panes below<br>'  + '<div class="button-container">' +
   '<button class="button" onclick="setLegendPopupContent()">🔍View Legend</button>' +
 '<button class="button" onclick="setListPopupContent()">🧾View List</button>'+
-'<button class="button" onclick="setListPopupContent()">💡Quick facts!</button></div>' +
+'<button class="button" onclick="setQuickFactsContent()">💡Quick facts!</button></div>' +
 ''+
 '<br> <h3> 🐝 "Du hast hummeln im Hintern" 🐝</h3> <br><p> "You have bees in your behind" - This expression, out of the many I have learnt while on my OE, left a lasting impression and inspired the theme of this map. So many bees in my behind kept me on the move</p>'
 
