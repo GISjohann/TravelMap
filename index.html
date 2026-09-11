@@ -60,7 +60,8 @@ font-style: normal;
 html, body {
   height: 100%;
   margin: 0;
-  background-color: blue
+  background-color: blue;
+  overflow-x: hidden; 
   /*font-family: Arial, Helvetica, sans-serif */
 }
 
@@ -75,9 +76,9 @@ body {
 
 header {
   width: 100%; /* Full width */
-  height: 20%;
+  height: 10%;
   background-color: yellow; /* Background color */
-  padding: 10px; /* Space inside the header */
+  padding: 13px; /* Space inside the header */
   box-sizing: border-box;
   z-index: 1000; /* Ensure it stays above other content */
 
@@ -85,7 +86,7 @@ header {
 
 /* The area between header and footer */
 main {
-  height: 90%;
+  height: 94%;
   position: relative;
   flex: 1; 
 }
@@ -103,9 +104,9 @@ main {
 
 }
 
-footer {
+#footer {
   width: 100%; /* Full width */
-  height: 2%;
+  height: 3%;
   background-color: yellow; /* Background color */
   box-sizing: border-box;
   z-index: 1000; /* Ensure it stays above other content */
