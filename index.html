@@ -311,9 +311,9 @@ transform: scale(1.25); /* Increase size by 25%
   color: black;
   border: 2px solid black;
   margin-bottom: 10px;
-  border-radius: 30px ;
-  height:35px;
-  width:35px;
+  border-radius: 33px ;
+  height:33px;
+  width:33px;
   cursor: pointer;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
@@ -322,7 +322,19 @@ transform: scale(1.25); /* Increase size by 25%
   transform: scale(1.25); 
 }
 
+.question {
+  margin-bottom: 20px;
+  }
 
+label {
+  display: block;
+  margin: 5px 0;
+  }
+
+#result {
+  font-weight: bold;
+  margin-top: 20px;
+  }
 
 
 </style>
@@ -468,8 +480,7 @@ lastClickedMarker = null;  // Clear the lastClickedMarker after resetting
 // Function to set the legend content in the right-hand popup
 function setLegendPopupContent() {
 rightPopupDiv.innerHTML = '<h2>Legend:</h2>' + 
-'<img src="MyBeeKey.png" style="width: auto; height: auto;">' + '<p> Map inspired by the German idiom - "Du hast hummeln im Hintern🐝" <br> This expression, out of the many I have learnt while on my OE, left a lasting impression and inspired the theme of this map. <br> Translated to English, it means you got bees in your bottom. Still confused? So was I, so it was further explained that your bottom is at such a risk of beeing stung that your always moving. In my case, traveling through 11 countires.  </p>'+
-'<div class="button-container">' +
+'<img src="MyBeeKey.png" style="width: auto; height: auto;">' +
   '<button class="button" onclick="setLegendPopupContent()">View Legend</button>' +
 '<button class="button" onclick="setListPopupContent()">View List</button>'+
 '<button class="button" onclick="setListPopupContent()">Quick facts!</button></div>';
@@ -497,7 +508,76 @@ createClickableList(); // This function will populate the list inside #nameList
 function setQuickFactsContent() {
 // Set the HTML content of the popup, including a header and a button
 rightPopupDiv.innerHTML = `
-   <h2>Quick Buzzy Facts 🐝</h2> + <br>+ <br> +
+   <h2>Quick Buzzy Facts 🐝</h2> + <br>+ 
+   
+   <div class="question">
+        <p>1. How many bees?</p>
+
+        <label>
+            <input type="radio" name="q1" value="1 - 25">
+            3
+        </label>
+
+        <label>
+            <input type="radio" name="q1" value="26 - 50">
+            4
+        </label>
+
+        <label>
+            <input type="radio" name="q1" value="51 - 75">
+            5
+        </label>
+
+        <label>
+            <input type="radio" name="q1" value="76 - 100">
+            5
+        </label>
+    </div>
+
+    <div class="question">
+        <p>2. How many countries?</p>
+
+        <label>
+            <input type="radio" name="q2" value="1-5">
+            Red
+        </label>
+
+        <label>
+            <input type="radio" name="q2" value="6-10">
+            Blue
+        </label>
+
+        <label>
+            <input type="radio" name="q2" value="10-15">
+            Green
+        </label>
+    </div>
+
+    <button onclick="checkQuiz()">Submit</button>
+
+    <div id="result"></div>
+
+    <script>
+        function checkQuiz() {
+            let score = 0;
+
+            const q1 = document.querySelector('input[name="q1"]:checked');
+            const q2 = document.querySelector('input[name="q2"]:checked');
+
+            if (q1 && q1.value === "76 - 100") {
+                score++;
+            }
+
+            if (q2 && q2.value === "10-15") {
+                score++;
+            }
+
+            document.getElementById("result").textContent =
+                "You got " + score + " out of 2 correct!";
+        }
+   +
+   
+   <br> +
    <p>Bees (Places I have been): 100 <br> Countries visited: 11 <br> Densest Hexcell: not Frankfurt</p>
  `;
 
