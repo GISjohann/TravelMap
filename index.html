@@ -102,7 +102,7 @@ main {
 
 }
 
-#sidebar {
+#sidebar_info {
    width: 28%;
    height: calc(100% - 40px);
    border: 2px solid black;
@@ -121,6 +121,16 @@ main {
    overflow-x: hidden; 
 }
 
+/*width: 1200px;
+   height: 850px; /*can#t go more than this for some reason*/
+/*background-color: white;/*
+	}  
+
+ /* Ensure the map container is set to fill the available screen space 
+     #map {
+       width: 100%;   The map should take up the full width of its container 
+       height: 100%;
+}
 
 	    #bottom-div {
            width: 100%;
@@ -159,6 +169,7 @@ transform: scaleY(1.2);
 transform: scaleX(1.2);
 
 }
+
 
 
 .leaflet-touch .leaflet-control-layers, .leaflet-touch .leaflet-bar {
@@ -352,7 +363,10 @@ transform: scale(1.25); /* Increase size by 25%
       <link rel="stylesheet" href="https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css" />
       <script src="https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js"></script>
     </div>
-    <div id="sidebar"> <!-- Sidebar content goes here --> 
+
+    <div id="sidebar_info"> <!-- Sidebar content goes here --> 
+      <h2>Sidebar</h2> 
+      <p>Your information goes here.</p>
     </div>
   </main>
 
