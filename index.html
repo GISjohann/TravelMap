@@ -60,11 +60,12 @@ font-style: normal;
 html, body {
   height: 100%;
   margin: 0;
+  background-color: blue
   /*font-family: Arial, Helvetica, sans-serif */
 }
 
 body {
-  background-color: rgb(0, 255, 213); /* Background color */
+  background-color: rgb(254, 23, 235); /* Background color */
   display: flex; /* used to say block;*/
   flex-direction: column;
   /*ustify-content: center;*/
@@ -74,7 +75,7 @@ body {
 
 header {
   width: 100%; /* Full width */
-  height: 10%;
+  height: 20%;
   background-color: yellow; /* Background color */
   padding: 10px; /* Space inside the header */
   box-sizing: border-box;
@@ -102,6 +103,15 @@ main {
 
 }
 
+footer {
+  width: 100%; /* Full width */
+  height: 2%;
+  background-color: yellow; /* Background color */
+  box-sizing: border-box;
+  z-index: 1000; /* Ensure it stays above other content */
+
+}
+
 #sidebar_info {
    width: 28%;
    height: calc(100% - 40px);
@@ -117,9 +127,10 @@ main {
    right:20px;
 
    /* Makes overflowing content scroll */ 
-   overflow-y: hidden; /*auto; is normal!!!!*/
+   overflow-y: auto; /*auto; is normal!!!!*/
    overflow-x: hidden; 
 }
+
 
 
 #nameList {
@@ -348,7 +359,7 @@ const MyControl = L.Control.extend({
       div.innerHTML = `
         <button onclick="setLegendPopupContent()" title="Legend">ℹ</button>
         <button onclick="setListPopupContent()" title="View List">≡</button>
-        <button onclick="setListPopupContent()" title="Quick facts!">💡</button>
+        <button onclick="setListPopupContent()" title="Quick facts!">⌕</button>
       `;
 
       // Prevent clicks from propagating to the map
