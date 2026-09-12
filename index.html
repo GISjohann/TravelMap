@@ -562,12 +562,12 @@ iconSize: [80, 75]
 
 var QueenMarkerIcon = L.icon({
 iconUrl: 'beeIconQueen.png',
-iconSize: [85, 85]
+iconSize: [65, 65]
 });
 
-var QueenHoverMarkerIcon = L.icon({
+var QueenHoverPopupMarkerIcon = L.icon({
 iconUrl: 'BuzzBee40.gif',
-iconSize: [105, 100]
+iconSize: [90, 90]
 });
 
 
@@ -578,18 +578,25 @@ var lastClickedMarker = null; // To keep track of the last clicked marker
 
 // Function to add GeoJSON layer but not immediately to the map
 function addGeoJsonLayer() {
-geoJsonLayer = L.geoJSON(geoJsonData, {
-pointToLayer: function(feature, latlng) {
-var marker;
-var noActionMarker;
+  geoJsonLayer = L.geoJSON(geoJsonData, {
+  pointToLayer: function(feature, latlng) {
+  var marker;
+  var normalMarker;
+  var hoverMarker;
+  var popupMarker;
 
 if (feature.properties.queen === true){
-  noActionMarker = QueenMarkerIcon;
+  normalMarker = QueenMarkerIcon;
+  hoverMarker = HoverQueenMarkerIcon;
+  popupMarker = PopupQueenMarkerIcon;
 } else {
-  noActionMarker = DefaultMarkerIcon; 
+  normalMarker = DefaultMarkerIcon;
+  hoverMarker = HoverMarkerIcon;
+  popupMarker = PopupMarkerIcon; 
 }  
-  marker = L.marker(latlng, {
-    icon: noActionMarker
+  
+marker = L.marker(latlng, {
+    icon: normalMarker
   });
 
 
@@ -603,35 +610,34 @@ direction: 'top',
 className: 'custom-tooltip'
 });
 
-// Event listener for marker click (updates right-hand popup and changes icon)
-marker.on('click', function() {
-// Same behavior as clicking the name from the list
-handleMarkerClick(marker, feature, latlng);
-});
 
+// Don't change the icon if this marker is currently selected
 // Hover behavior
 marker.on('mouseover', function() {
-if (!this.isPopupOpen() && this !== lastClickedMarker) {
-if (feature.properties.queen === true) {
-    this.setIcon(QueenHoverMarkerIcon);
-  } else {
+if (this !== lastClickedMarker) {
+
     this.setIcon(HoverMarkerIcon);
-  }
     this.openTooltip();
 }
 });
 
-
 marker.on('mouseout', function() {
-if (!this.isPopupOpen() && this !== lastClickedMarker) {
-if (feature.properties.queen === true) {
-    this.setIcon(QueenMarkerIcon);
-  } else {
-    this.setIcon(DefaultMarkerIcon);
-  }
-    this.closeTooltip();
+if (this !== lastClickedMarker) {
+  this.setIcon(DefaultMarkerIcon);
+  this.closeTooltip();
 }
 });
+
+
+// Event listener for marker click (updates right-hand popup and changes icon)
+marker.on('click', function() {
+
+
+
+// Same behavior as clicking the name from the list
+handleMarkerClick(marker, feature, latlng);
+});
+
 
 // Store marker in global markers object by name
 markers[feature.properties.name] = marker;
