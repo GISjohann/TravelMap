@@ -575,14 +575,15 @@ geoJsonLayer = L.geoJSON(geoJsonData, {
 pointToLayer: function(feature, latlng) {
 var marker;
 
-if (feautre.properties.queen === true){
+if (feautre.properties.weight === 1){
   marker =L.marker(latlng,{
     icon: QueenMarkerIcon
   });
-} else {
+/*} else {
   marker = L.marker(latlng, {
     icon: DefaultMarkerIcon
   });
+*/  
 }
 
 
