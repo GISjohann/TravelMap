@@ -572,12 +572,19 @@ iconSize: [90, 90]
 
 
 
-var geoJsonLayer;  // GeoJSON Layer
-var markers = {};   // Store markers by name for easy lookup
-var lastClickedMarker = null; // Keep track of the last clicked marker
+// ============================================================
+// GLOBAL VARIABLES
+// ============================================================
+
+var geoJsonLayer;
+var markers = {};
+var lastClickedMarker = null;
 
 
-// Function to add GeoJSON layer
+// ============================================================
+// CREATE GEOJSON LAYER AND MARKERS
+// ============================================================
+
 function addGeoJsonLayer() {
 
     geoJsonLayer = L.geoJSON(geoJsonData, {
@@ -590,7 +597,10 @@ function addGeoJsonLayer() {
             var popupMarker;
 
 
-            // Decide which icons this marker should use
+            // ------------------------------------------------
+            // Decide which icons this marker uses
+            // ------------------------------------------------
+
             if (feature.properties.queen === true) {
 
                 normalMarker = QueenMarkerIcon;
@@ -606,23 +616,27 @@ function addGeoJsonLayer() {
             }
 
 
+            // ------------------------------------------------
             // Create marker using normal icon
+            // ------------------------------------------------
+
             marker = L.marker(latlng, {
                 icon: normalMarker
             });
 
 
-            // Store the three icons on the marker itself
+            // Store the marker's three icon states
             marker.normalMarker = normalMarker;
             marker.hoverMarker = hoverMarker;
             marker.popupMarker = popupMarker;
 
 
-            // Tooltip content
+            // ------------------------------------------------
+            // Tooltip
+            // ------------------------------------------------
+
             var HoverContent = feature.properties.name;
 
-
-            // Bind tooltip
             marker.bindTooltip(HoverContent, {
                 offset: [0, -10],
                 permanent: false,
@@ -631,8 +645,14 @@ function addGeoJsonLayer() {
             });
 
 
-            // Mouse enters marker
+            // ------------------------------------------------
+            // MOUSEOVER
+            // ------------------------------------------------
+
             marker.on('mouseover', function() {
+
+                // Do not change the icon of the currently
+                // selected marker
 
                 if (this !== lastClickedMarker) {
 
@@ -644,8 +664,14 @@ function addGeoJsonLayer() {
             });
 
 
-            // Mouse leaves marker
+            // ------------------------------------------------
+            // MOUSEOUT
+            // ------------------------------------------------
+
             marker.on('mouseout', function() {
+
+                // Do not change the icon of the currently
+                // selected marker
 
                 if (this !== lastClickedMarker) {
 
@@ -657,11 +683,17 @@ function addGeoJsonLayer() {
             });
 
 
-            // Marker clicked
+            // ------------------------------------------------
+            // CLICK
+            // ------------------------------------------------
+
             marker.on('click', function() {
 
-                // Return previous marker to its normal icon
-                if (lastClickedMarker && lastClickedMarker !== marker) {
+                // Return the previous clicked marker
+                // to its normal icon
+
+                if (lastClickedMarker &&
+                    lastClickedMarker !== marker) {
 
                     lastClickedMarker.setIcon(
                         lastClickedMarker.normalMarker
@@ -670,149 +702,235 @@ function addGeoJsonLayer() {
                 }
 
 
-                // Make this marker the selected marker
+                // Make this marker the active marker
+
                 lastClickedMarker = marker;
 
 
-                // Apply popup icon
+                // Change to the appropriate popup icon
+
                 marker.setIcon(marker.popupMarker);
 
 
-                // Existing popup logic
-                handleMarkerClick(marker, feature, latlng);
+                // Update your right-side popup
+
+                handleMarkerClick(
+                    marker,
+                    feature,
+                    latlng
+                );
 
             });
 
 
+            // ------------------------------------------------
             // Store marker by name
+            // ------------------------------------------------
+
             markers[feature.properties.name] = marker;
 
 
-            // Return marker to GeoJSON layer
+            // Give the marker back to Leaflet
+
             return marker;
 
         }
 
     });
 
-
-    // Add GeoJSON layer to map
-    geoJsonLayer.addTo(map);
-
 }
 
-// Function to handle layer visibility based on zoom level and feature properties
+
+// ============================================================
+// CONTROL WHICH MARKERS ARE VISIBLE BASED ON ZOOM
+// ============================================================
+
 function updateLayerVisibility() {
-var zoom = map.getZoom();
-geoJsonLayer.eachLayer(function(layer) {
-var weight = layer.feature.properties.weight; // Get the weight of each layer
 
-// Remove all layers if zoom is less than 7
-if (zoom < 6) {
-if (map.hasLayer(layer)) {
-map.removeLayer(layer); // Remove any layers that are already added
-}
-} 
-// Show only layers with weight 1 if zoom is 7 or more
-else if (zoom >= 6 && zoom < 7) {
-if (weight === 1 && !map.hasLayer(layer)) {
-map.addLayer(layer); // Add layer with weight 1
-} else if (weight !== 1 && map.hasLayer(layer)) {
-map.removeLayer(layer); // Remove layers that don't have weight 1
-}
-} 
-// Show layers with weight 1 and 2 if zoom is 9 or more
-else if (zoom >= 7 && zoom < 8) {
-if ((weight === 1 || weight === 2) && !map.hasLayer(layer)) {
-map.addLayer(layer); // Add layers with weight 1 or 2
-} else if (weight > 2 && map.hasLayer(layer)) {
-map.removeLayer(layer); // Remove layers that don't match the weight condition
-}
-} 
-// Show layers with weight 1, 2, and 3 if zoom is 10 or more
-else if (zoom >= 10) {
-if ((weight === 1 || weight === 2 || weight === 3) && !map.hasLayer(layer)) {
-map.addLayer(layer); // Add layers with weight 1, 2, or 3
-}
-}
-});
+    var zoom = map.getZoom();
+
+
+    geoJsonLayer.eachLayer(function(layer) {
+
+        var weight = layer.feature.properties.weight;
+
+
+        // ------------------------------------------------
+        // ZOOM < 6
+        // Show nothing
+        // ------------------------------------------------
+
+        if (zoom < 6) {
+
+            if (map.hasLayer(layer)) {
+
+                map.removeLayer(layer);
+
+            }
+
+        }
+
+
+        // ------------------------------------------------
+        // ZOOM 6 - < 7
+        // Show weight 1
+        // ------------------------------------------------
+
+        else if (zoom >= 6 && zoom < 7) {
+
+            if (weight === 1) {
+
+                if (!map.hasLayer(layer)) {
+
+                    map.addLayer(layer);
+
+                }
+
+            } else {
+
+                if (map.hasLayer(layer)) {
+
+                    map.removeLayer(layer);
+
+                }
+
+            }
+
+        }
+
+
+        // ------------------------------------------------
+        // ZOOM 7 - < 8
+        // Show weight 1 and 2
+        // ------------------------------------------------
+
+        else if (zoom >= 7 && zoom < 8) {
+
+            if (weight === 1 || weight === 2) {
+
+                if (!map.hasLayer(layer)) {
+
+                    map.addLayer(layer);
+
+                }
+
+            } else {
+
+                if (map.hasLayer(layer)) {
+
+                    map.removeLayer(layer);
+
+                }
+
+            }
+
+        }
+
+
+        // ------------------------------------------------
+        // ZOOM 8+
+        // Show weight 1, 2 and 3
+        // ------------------------------------------------
+
+        else if (zoom >= 8) {
+
+            if (weight === 1 ||
+                weight === 2 ||
+                weight === 3) {
+
+                if (!map.hasLayer(layer)) {
+
+                    map.addLayer(layer);
+
+                }
+
+            } else {
+
+                if (map.hasLayer(layer)) {
+
+                    map.removeLayer(layer);
+
+                }
+
+            }
+
+        }
+
+    });
+
 }
 
-// Function to handle actions when a marker is clicked or a name is clicked from the list
+
+// ============================================================
+// HANDLE MARKER CLICK
+// ============================================================
+
 function handleMarkerClick(marker, feature, latlng) {
-// Reset the last clicked marker if necessary
-/*if (lastClickedMarker && lastClickedMarker !== marker) {
-lastClickedMarker.setIcon(DefaultMarkerIcon); // Reset previous marker
-}
 
-lastClickedMarker = marker; // Set the current marker as last clicked
-marker.setIcon(PopupMarkerIcon); // Change to popup icon
-marker.openPopup(); // Open the popup for the clicked marker */
-
-updateRightPopup(feature.properties, latlng); // Update the right-side popup
-}
-
-// Create the clickable list from GeoJSON properties
-function createClickableList() {
-var nameListDiv = document.getElementById('nameList');
-var names = [];
-
-// Loop through GeoJSON features and collect names
-geoJsonData.features.forEach(function(feature) {
-if (feature.properties && feature.properties.name) {
-names.push({
-name: feature.properties.name,
-latlng: feature.geometry.coordinates ? L.latLng(feature.geometry.coordinates[1], feature.geometry.coordinates[0]) : null
-});
-}
-});
-
-// Sort the names alphabetically
-names.sort(function(a, b) {
-return a.name.localeCompare(b.name);
-});
-
-// Create list items for each name and add them to the popup content
-names.forEach(function(item) {
-var listItem = document.createElement('div');
-listItem.classList.add('name-item');
-listItem.textContent = item.name;
-
-// When a name is clicked, zoom to the marker and trigger the same behavior as a marker click
-listItem.addEventListener('click', function() {
-var marker = markers[item.name];  // Retrieve marker by name
-if (marker) {
-handleMarkerClick(marker, geoJsonData.features.find(f => f.properties.name === item.name));
-map.setView(item.latlng, 11);  // Zoom to the marker
+    updateRightPopup(
+        feature.properties,
+        latlng
+    );
 
 }
-});
-
-// Append the list item to the #nameList div inside the popup
-nameListDiv.appendChild(listItem);
-});
-}
 
 
-// Load the GeoJSON data and add it to the map
+// ============================================================
+// LOAD GEOJSON
+// ============================================================
+
 $.getJSON("orte.geojson")
-.done(function(loadedData) {
-geoJsonData = loadedData; // Store loaded data globally
-console.log("GeoJSON data loaded: ", geoJsonData); // Log the loaded data
-addGeoJsonLayer(); // Add the GeoJSON layer after the data is loaded
 
-// Initialize visibility based on the initial zoom level
-updateLayerVisibility();
-createClickableList();
+.done(function(loadedData) {
+
+    // Store GeoJSON globally
+
+    geoJsonData = loadedData;
+
+
+    console.log(
+        "GeoJSON data loaded:",
+        geoJsonData
+    );
+
+
+    // Create the markers
+
+    addGeoJsonLayer();
+
+
+    // Apply visibility based on current zoom
+
+    updateLayerVisibility();
+
+
+    // Create your clickable name list
+
+    createClickableList();
+
 })
+
+
 .fail(function(jqxhr, textStatus, error) {
-var err = textStatus + ", " + error;
-console.error("GeoJSON load failed: " + err); // Log the error
+
+    var err = textStatus + ", " + error;
+
+    console.error(
+        "GeoJSON load failed: " + err
+    );
+
 });
 
-// Listen for zoom changes and update layer visibility
-map.on('zoomend', updateLayerVisibility);
 
+// ============================================================
+// UPDATE MARKERS WHEN MAP ZOOM CHANGES
+// ============================================================
+
+map.on('zoomend', function() {
+
+    updateLayerVisibility();
+
+});
 
 
 //---------------------------------   POLYGON LAYER   --------------------------------------------
