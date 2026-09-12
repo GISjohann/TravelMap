@@ -560,6 +560,11 @@ iconUrl: 'BuzzBee40.gif',
 iconSize: [80, 75]
 });
 
+var QueenMarkerIcon = L.icon({
+iconUrl: 'beeIconMod.png',
+iconSize: [100, 100]
+});
+
 var geoJsonLayer;  // GeoJSON Layer
 var markers = {};   // Store markers by name for easy lookup
 var lastClickedMarker = null; // To keep track of the last clicked marker
@@ -568,7 +573,19 @@ var lastClickedMarker = null; // To keep track of the last clicked marker
 function addGeoJsonLayer() {
 geoJsonLayer = L.geoJSON(geoJsonData, {
 pointToLayer: function(feature, latlng) {
-var marker = L.marker(latlng, { icon: DefaultMarkerIcon });
+var marker;
+
+if (feautre.properties.queen === true){
+  marker =L.marker(latlng,{
+    icon: QueenMarkerIcon
+  });
+} else {
+  marker = L.marker(latlng, {
+    icon: DefaultMarkerIcon
+  });
+}
+
+
 
 var HoverContent = feature.properties.name;
 
