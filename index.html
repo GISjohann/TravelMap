@@ -574,66 +574,90 @@ iconSize: [90, 90]
 
 var geoJsonLayer;  // GeoJSON Layer
 var markers = {};   // Store markers by name for easy lookup
-var lastClickedMarker = null; // To keep track of the last clicked marker
+var lastClickedMarker = null; // Keep track of the last clicked marker
 
-// Function to add GeoJSON layer but not immediately to the map
+
+// Function to add GeoJSON layer
 function addGeoJsonLayer() {
-  geoJsonLayer = L.geoJSON(geoJsonData, {
-  pointToLayer: function(feature, latlng) {
-  var marker;
-  var NORMALSTATE;
-  var HOVERSTATE;
-  var POPUPSTATE;
 
-if (feature.properties.queen === true){
-  NORMALSTATE = QueenMarkerIcon;
-  HOVERSTATE = HoverQueenMarkerIcon;
-  POPUPSTATE = PopupQueenMarkerIcon;
-} else {
-  NORMALSTATE = DefaultMarkerIcon;
-  HOVERSTATE = HoverMarkerIcon;
-  POPUPSTATE = PopupMarkerIcon; 
-}  
-  
-marker = L.marker(latlng, {
-    icon: NORMALSTATE
-  });
+    geoJsonLayer = L.geoJSON(geoJsonData, {
 
-// Store the three icons on the marker itself
-marker.normalMarker = NORMALSTATE;
-marker.hoverMarker = HOVERSTATE;
-marker.popupMarker = POPUPSTATE;
+        pointToLayer: function(feature, latlng) {
+
+            var marker;
+            var normalMarker;
+            var hoverMarker;
+            var popupMarker;
 
 
-var HoverContent = feature.properties.name;
+            // Decide which icons this marker should use
+            if (feature.properties.queen === true) {
 
-// Bind tooltip (shown on hover)
-marker.bindTooltip(HoverContent, {
-offset: [0, -10], // Just a little bit up
-permanent: false,
-direction: 'top',
-className: 'custom-tooltip'
-});
+                normalMarker = QueenMarkerIcon;
+                hoverMarker = HoverQueenMarkerIcon;
+                popupMarker = PopupQueenMarkerIcon;
+
+            } else {
+
+                normalMarker = DefaultMarkerIcon;
+                hoverMarker = HoverMarkerIcon;
+                popupMarker = PopupMarkerIcon;
+
+            }
 
 
-// Don't change the icon if this marker is currently selected
-// Hover behavior
-marker.on('mouseover', function() {
-if (this !== lastClickedMarker) {
+            // Create marker using normal icon
+            marker = L.marker(latlng, {
+                icon: normalMarker
+            });
 
-    this.setIcon(HOVERSTATE);
-    this.openTooltip();
-}
-});
 
-marker.on('mouseout', function() {
-if (this !== lastClickedMarker) {
-  this.setIcon(NORMALSTATE);
-  this.closeTooltip();
-}
-});
+            // Store the three icons on the marker itself
+            marker.normalMarker = normalMarker;
+            marker.hoverMarker = hoverMarker;
+            marker.popupMarker = popupMarker;
 
-// Marker clicked
+
+            // Tooltip content
+            var HoverContent = feature.properties.name;
+
+
+            // Bind tooltip
+            marker.bindTooltip(HoverContent, {
+                offset: [0, -10],
+                permanent: false,
+                direction: 'top',
+                className: 'custom-tooltip'
+            });
+
+
+            // Mouse enters marker
+            marker.on('mouseover', function() {
+
+                if (this !== lastClickedMarker) {
+
+                    this.setIcon(this.hoverMarker);
+                    this.openTooltip();
+
+                }
+
+            });
+
+
+            // Mouse leaves marker
+            marker.on('mouseout', function() {
+
+                if (this !== lastClickedMarker) {
+
+                    this.setIcon(this.normalMarker);
+                    this.closeTooltip();
+
+                }
+
+            });
+
+
+            // Marker clicked
             marker.on('click', function() {
 
                 // Return previous marker to its normal icon
@@ -671,9 +695,9 @@ if (this !== lastClickedMarker) {
 
     });
 
- 
-     geoJsonLayer.addTo(map);
 
+    // Add GeoJSON layer to map
+    geoJsonLayer.addTo(map);
 
 }
 
