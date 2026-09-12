@@ -581,16 +581,17 @@ function addGeoJsonLayer() {
 geoJsonLayer = L.geoJSON(geoJsonData, {
 pointToLayer: function(feature, latlng) {
 var marker;
+var noActionMarker;
 
 if (feature.properties.queen === true){
-  marker =L.marker(latlng,{
-    icon: QueenMarkerIcon
-  });
+  noActionMarker = QueenMarkerIcon;
 } else {
+  noActionMarker = DefaultMarkerIcon; 
+}  
   marker = L.marker(latlng, {
-    icon: DefaultMarkerIcon
+    icon: noActionMarker
   });
-}
+
 
 var HoverContent = feature.properties.name;
 
@@ -623,11 +624,7 @@ if (feature.properties.queen === true) {
 
 marker.on('mouseout', function() {
 if (!this.isPopupOpen() && this !== lastClickedMarker) {
-if (feature.properties.queen === true) {
-    this.setIcon(QueenHoverMarkerIcon);
-  } else {
-    this.setIcon(DefaultMarkerIcon);
-  }
+    this.setIcon(noActionMarker);
     this.closeTooltip();
 }
 });
