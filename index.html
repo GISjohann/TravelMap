@@ -562,8 +562,15 @@ iconSize: [80, 75]
 
 var QueenMarkerIcon = L.icon({
 iconUrl: 'beeIconMod.png',
-iconSize: [100, 100]
+iconSize: [75, 75]
 });
+
+var QueenHoverMarkerIcon = L.icon({
+iconUrl: 'BuzzBee40.gif',
+iconSize: [105, 100]
+});
+
+
 
 var geoJsonLayer;  // GeoJSON Layer
 var markers = {};   // Store markers by name for easy lookup
@@ -585,8 +592,6 @@ if (feature.properties.queen === true){
   });
 }
 
-
-
 var HoverContent = feature.properties.name;
 
 // Bind tooltip (shown on hover)
@@ -606,15 +611,24 @@ handleMarkerClick(marker, feature, latlng);
 // Hover behavior
 marker.on('mouseover', function() {
 if (!this.isPopupOpen() && this !== lastClickedMarker) {
-this.setIcon(HoverMarkerIcon);
-this.openTooltip();
+if (feature.properties.queen === true) {
+    this.setIcon(QueenHoverMarkerIcon);
+  } else {
+    this.setIcon(HoverMarkerIcon);
+  }
+    this.openTooltip();
 }
 });
 
+
 marker.on('mouseout', function() {
 if (!this.isPopupOpen() && this !== lastClickedMarker) {
-this.setIcon(DefaultMarkerIcon);
-this.closeTooltip();
+if (feature.properties.queen === true) {
+    this.setIcon(QueenHoverMarkerIcon);
+  } else {
+    this.setIcon(DefaultMarkerIcon);
+  }
+    this.closeTooltip();
 }
 });
 
