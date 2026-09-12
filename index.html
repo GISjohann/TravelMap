@@ -581,23 +581,28 @@ function addGeoJsonLayer() {
   geoJsonLayer = L.geoJSON(geoJsonData, {
   pointToLayer: function(feature, latlng) {
   var marker;
-  var normalMarker;
-  var hoverMarker;
-  var popupMarker;
+  var NORMALSTATE;
+  var HOVERSTATE;
+  var POPUPSTATE;
 
 if (feature.properties.queen === true){
-  normalMarker = QueenMarkerIcon;
-  hoverMarker = HoverQueenMarkerIcon;
-  popupMarker = PopupQueenMarkerIcon;
+  NORMALSTATE = QueenMarkerIcon;
+  HOVERSTATE = HoverQueenMarkerIcon;
+  POPUPSTATE = PopupQueenMarkerIcon;
 } else {
-  normalMarker = DefaultMarkerIcon;
-  hoverMarker = HoverMarkerIcon;
-  popupMarker = PopupMarkerIcon; 
+  NORMALSTATE = DefaultMarkerIcon;
+  HOVERSTATE = HoverMarkerIcon;
+  POPUPSTATE = PopupMarkerIcon; 
 }  
   
 marker = L.marker(latlng, {
-    icon: normalMarker
+    icon: NORMALSTATE
   });
+
+// Store the three icons on the marker itself
+marker.normalMarker = NORMALSTATE;
+marker.hoverMarker = HOVERSTATE;
+marker.popupMarker = POPUPSTATE;
 
 
 var HoverContent = feature.properties.name;
@@ -616,51 +621,59 @@ className: 'custom-tooltip'
 marker.on('mouseover', function() {
 if (this !== lastClickedMarker) {
 
-    this.setIcon(HoverMarkerIcon);
+    this.setIcon(HOVERSTATE);
     this.openTooltip();
 }
 });
 
 marker.on('mouseout', function() {
 if (this !== lastClickedMarker) {
-  this.setIcon(DefaultMarkerIcon);
+  this.setIcon(NORMALSTATE);
   this.closeTooltip();
 }
 });
 
-
- // Marker clicked
+// Marker clicked
             marker.on('click', function() {
 
-                // If another marker was previously selected,
-                // return it to its normal icon
+                // Return previous marker to its normal icon
                 if (lastClickedMarker && lastClickedMarker !== marker) {
 
-                    lastClickedMarker.setIcon(lastClickedMarker.normalMarker);
+                    lastClickedMarker.setIcon(
+                        lastClickedMarker.normalMarker
+                    );
+
                 }
 
-                // Store this marker's normal icon
-                marker.normalMarker = normalMarker;
 
-                // Make this marker the currently selected marker
+                // Make this marker the selected marker
                 lastClickedMarker = marker;
 
-                // Apply popup/selected icon
-                marker.setIcon(popupMarker);
+
+                // Apply popup icon
+                marker.setIcon(marker.popupMarker);
+
 
                 // Existing popup logic
                 handleMarkerClick(marker, feature, latlng);
 
             });
 
-            // Store marker
+
+            // Store marker by name
             markers[feature.properties.name] = marker;
 
+
+            // Return marker to GeoJSON layer
             return marker;
+
         }
 
+    });
 
-});
+ 
+
+
 
 }
 
