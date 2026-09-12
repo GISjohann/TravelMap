@@ -629,23 +629,37 @@ if (this !== lastClickedMarker) {
 });
 
 
-// Event listener for marker click (updates right-hand popup and changes icon)
-marker.on('click', function() {
+ // Marker clicked
+            marker.on('click', function() {
+
+                // If another marker was previously selected,
+                // return it to its normal icon
+                if (lastClickedMarker && lastClickedMarker !== marker) {
+
+                    lastClickedMarker.setIcon(lastClickedMarker.normalMarker);
+                }
+
+                // Store this marker's normal icon
+                marker.normalMarker = normalMarker;
+
+                // Make this marker the currently selected marker
+                lastClickedMarker = marker;
+
+                // Apply popup/selected icon
+                marker.setIcon(popupMarker);
+
+                // Existing popup logic
+                handleMarkerClick(marker, feature, latlng);
+
+            });
+
+            // Store marker
+            markers[feature.properties.name] = marker;
+
+            return marker;
+        }
 
 
-
-// Same behavior as clicking the name from the list
-handleMarkerClick(marker, feature, latlng);
-});
-
-
-// Store marker in global markers object by name
-markers[feature.properties.name] = marker;
-
-// Return marker without adding it to the map yet
-return marker;
-
-}
 });
 
 }
@@ -690,13 +704,13 @@ map.addLayer(layer); // Add layers with weight 1, 2, or 3
 // Function to handle actions when a marker is clicked or a name is clicked from the list
 function handleMarkerClick(marker, feature, latlng) {
 // Reset the last clicked marker if necessary
-if (lastClickedMarker && lastClickedMarker !== marker) {
+/*if (lastClickedMarker && lastClickedMarker !== marker) {
 lastClickedMarker.setIcon(DefaultMarkerIcon); // Reset previous marker
 }
 
 lastClickedMarker = marker; // Set the current marker as last clicked
 marker.setIcon(PopupMarkerIcon); // Change to popup icon
-marker.openPopup(); // Open the popup for the clicked marker
+marker.openPopup(); // Open the popup for the clicked marker */
 
 updateRightPopup(feature.properties, latlng); // Update the right-side popup
 }
