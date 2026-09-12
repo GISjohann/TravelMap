@@ -562,7 +562,7 @@ iconSize: [80, 75]
 
 var QueenMarkerIcon = L.icon({
 iconUrl: 'beeIconQueen.png',
-iconSize: [75, 75]
+iconSize: [85, 85]
 });
 
 var QueenHoverMarkerIcon = L.icon({
@@ -624,7 +624,11 @@ if (feature.properties.queen === true) {
 
 marker.on('mouseout', function() {
 if (!this.isPopupOpen() && this !== lastClickedMarker) {
-    this.setIcon(noActionMarker);
+if (feature.properties.queen === true) {
+    this.setIcon(QueenMarkerIcon);
+  } else {
+    this.setIcon(DefaultMarkerIcon);
+  }
     this.closeTooltip();
 }
 });
